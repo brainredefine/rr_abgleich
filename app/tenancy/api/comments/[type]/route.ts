@@ -39,7 +39,7 @@ function toRows(v: unknown): CommentRow[] {
               ? cv
               : cv == null
               ? null
-              : String(cv), // coercition prudente
+              : String(cv),
         });
       }
     }
@@ -47,12 +47,13 @@ function toRows(v: unknown): CommentRow[] {
   return out;
 }
 
+/** GET /tenancy/api/comments/[type]?ids=a,b,c */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { type: TableType } }
+  ctx: { params: Promise<{ type: string }> } // ← conforme à ton config
 ) {
   try {
-    const { type } = params;
+    const { type } = await ctx.params; // ← important
     if (!isTableType(type)) {
       return NextResponse.json({ error: "bad type" }, { status: 400 });
     }
@@ -71,19 +72,18 @@ export async function GET(
     return NextResponse.json({ items });
   } catch (e: unknown) {
     const msg =
-      typeof e === "object" && e !== null && "message" in e
-        ? String((e as { message?: unknown }).message)
-        : String(e);
+      e instanceof Error ? e.message : String(e);
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
 
+/** POST /tenancy/api/comments/[type]  { id, comment } */
 export async function POST(
   req: NextRequest,
-  { params }: { params: { type: TableType } }
+  ctx: { params: Promise<{ type: string }> } // ← conforme à ton config
 ) {
   try {
-    const { type } = params;
+    const { type } = await ctx.params; // ← important
     if (!isTableType(type)) {
       return NextResponse.json({ error: "bad type" }, { status: 400 });
     }
@@ -102,16 +102,13 @@ export async function POST(
     const table = type === "am" ? "comments_am" : "comments_pm";
     const sb = supa();
 
-    // upsert simple (id = clé)
     const { error } = await sb.from(table).upsert({ id, comment }, { onConflict: "id" });
     if (error) throw new Error(error.message);
 
     return NextResponse.json({ ok: true });
   } catch (e: unknown) {
     const msg =
-      typeof e === "object" && e !== null && "message" in e
-        ? String((e as { message?: unknown }).message)
-        : String(e);
+      e instanceof Error ? e.message : String(e);
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
