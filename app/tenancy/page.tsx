@@ -16,7 +16,7 @@ type TenantRow = {
 type FilterMode = "none" | "highlighted" | "missing_rent";
 type AMFilter = "ALL" | "CFR" | "BKO" | "FKE" | "MSC";
 
-/* ===== Helpers ===== */
+/* ===== Helpers (formatting) ===== */
 const fmtInt = (v?: number) =>
   v == null || !Number.isFinite(v) || v === 0 ? "–" : Math.round(v).toLocaleString();
 const fmtYears = (v?: number) =>
@@ -26,25 +26,36 @@ const fmtDeltaInt = (d: number | null, th: number) =>
 const fmtDeltaYears = (d: number | null, th: number) =>
   d == null || Math.abs(d) < th ? "–" : d.toFixed(2);
 
+/* ===== Helpers (filters/keys) ===== */
 const isHiddenTenant = (name: string) => {
   const n = normalizeForKey(name);
   return n.includes("leerstand") || n.includes("vacant") || n.includes("stpfl") || n.includes("stfr");
 };
-
 const rowKey = (asset: string, tenant: string) =>
   `${asset.toUpperCase()}@@${normalizeForKey(tenant)}`;
-
 const chunk = <T,>(arr: T[], size = 120): T[][] => {
   const out: T[][] = [];
   for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
   return out;
 };
 
-const parseComments = (json: any) => {
-  if (json && Array.isArray(json.items)) return json.items;
-  if (Array.isArray(json)) return json;
+/* ===== Helpers (safe JSON & comments parsing, no any) ===== */
+type CommentsResponse = { items: Array<{ id: string; comment: string | null }> };
+
+function safeJson<T>(txt: string): T | null {
+  try { return JSON.parse(txt) as T; } catch { return null; }
+}
+function parseComments(json: unknown): Array<{ id: string; comment: string | null }> {
+  if (json && typeof json === "object" && json !== null && Array.isArray((json as { items?: unknown }).items)) {
+    return (json as CommentsResponse).items;
+  }
+  if (Array.isArray(json)) {
+    return (json as Array<{ id: unknown; comment?: unknown }>).filter(
+      (x) => x && typeof x.id === "string"
+    ) as Array<{ id: string; comment: string | null }>;
+  }
   return [];
-};
+}
 
 /* ===== Component ===== */
 export default function TenancyComparePage() {
@@ -67,14 +78,21 @@ export default function TenancyComparePage() {
   const SPACE_HL = 1, RENT_HL = 5, WALT_HL = 0.5;
   const SPACE_D  = 1, RENT_D  = 5, WALT_D  = 0.2;
 
-  /* Load */
+  /* Load base data (typed, no any) */
   useEffect(() => {
     (async () => {
       const res = await fetch("/tenancy/api", { cache: "no-store" });
-      let json: any = {};
+      let json: unknown = null;
       try { json = await res.json(); } catch {}
-      setPm((json.pm || []).filter((x: TenantRow) => !isHiddenTenant(x.tenant_name)));
-      setOdoo((json.odoo || []).filter((x: TenantRow) => !isHiddenTenant(x.tenant_name)));
+      const obj = (json && typeof json === "object")
+        ? (json as { pm?: TenantRow[]; odoo?: TenantRow[] })
+        : {};
+
+      const pmArr = Array.isArray(obj.pm) ? obj.pm : [];
+      const odArr = Array.isArray(obj.odoo) ? obj.odoo : [];
+
+      setPm(pmArr.filter((x) => !isHiddenTenant(x.tenant_name)));
+      setOdoo(odArr.filter((x) => !isHiddenTenant(x.tenant_name)));
     })();
   }, []);
 
@@ -156,6 +174,44 @@ export default function TenancyComparePage() {
       );
   }, [allKeys, pmIdx, odooIdx, qn, amFilter, filterMode, assetAMGuess]);
 
+  /* Comments load (typed parse, no any) */
+  useEffect(() => {
+    if (!pm || !odoo) return;
+    const idsSet = new Set<string>();
+    for (const r of pm) idsSet.add(rowKey(r.asset_ref, r.tenant_name));
+    for (const r of odoo) idsSet.add(rowKey(r.asset_ref, r.tenant_name));
+    const ids = Array.from(idsSet);
+    if (!ids.length) return;
+
+    (async () => {
+      const amObj: Record<string, string> = {};
+      const pmObj: Record<string, string> = {};
+
+      for (const group of chunk(ids, 120)) {
+        try {
+          const res = await fetch(`/tenancy/api/comments/am?ids=${encodeURIComponent(group.join(","))}`, { cache: "no-store" });
+          const txt = await res.text();
+          if (!txt) continue;
+          const parsed = safeJson<CommentsResponse>(txt);
+          const items = parseComments(parsed);
+          for (const it of items) amObj[it.id] = it.comment ?? "";
+        } catch {}
+      }
+      for (const group of chunk(ids, 120)) {
+        try {
+          const res = await fetch(`/tenancy/api/comments/pm?ids=${encodeURIComponent(group.join(","))}`, { cache: "no-store" });
+          const txt = await res.text();
+          if (!txt) continue;
+          const parsed = safeJson<CommentsResponse>(txt);
+          const items = parseComments(parsed);
+          for (const it of items) pmObj[it.id] = it.comment ?? "";
+        } catch {}
+      }
+      setComAM(amObj);
+      setComPM(pmObj);
+    })();
+  }, [pm, odoo]);
+
   async function saveComment(type: "am" | "pm", id: string, comment: string) {
     try {
       await fetch(`/tenancy/api/comments/${type}`, {
@@ -166,46 +222,44 @@ export default function TenancyComparePage() {
     } catch {}
   }
 
-  /* ===== Dynamic grid with true separators that don't kill background =====
-     Order:
-     [Asset, City, Tenant] | SEP | (GLA x3?) | SEP | (Rent x3) | SEP | (WALT x3?) | Comments x2
-     Tenant column is capped to prevent big gaps when GLA is hidden.
+  /* ===== Dynamic grid with properly synced separators =====
+     Layout order:
+     [Asset, City, Tenant] | (SEP + GLA?) | SEP + Rent | (SEP + WALT?) | Comments x2
   */
-  const gridTemplateColumns = useMemo(() => {
+  const gridMeta = useMemo(() => {
     const cols: string[] = [
-      "70px",                  // Asset
-      "110px",                 // City
-      "minmax(160px, 420px)",  // Tenant (cap width)
+      "70px",              // Asset
+      "110px",             // City
+      "minmax(180px,1fr)", // Tenant
     ];
-    const pushSep = () => cols.push("1px"); // vertical rule
-    const pushGLA = () => cols.push("85px","85px","70px");
-    const pushRent = () => cols.push("95px","95px","70px");
-    const pushWALT = () => cols.push("70px","70px","70px");
 
     const wantGLA = !hideGLA;
     const wantWALT = !hideWALT;
 
-    // Names → SEP
-    pushSep();
+    const pushSep = () => { cols.push("2px"); };
+    const pushGLA = () => { cols.push("85px","85px","70px"); };
+    const pushRent = () => { cols.push("95px","95px","70px"); };
+    const pushWALT = () => { cols.push("70px","70px","70px"); };
 
-    // GLA (optional)
     if (wantGLA) {
-      pushGLA();
       pushSep();
+      pushGLA();
     }
 
-    // Rent (always)
+    // Always one SEP before Rent
+    pushSep();
     pushRent();
 
-    // WALT (optional)
+    // If WALT is visible: SEP + WALT
     if (wantWALT) {
       pushSep();
       pushWALT();
     }
 
-    // Comments
+    // Comments (always at the end)
     cols.push("220px","220px");
-    return cols.join(" ");
+
+    return { gridTemplate: cols.join(" ") };
   }, [hideGLA, hideWALT]);
 
   const loading = !pm || !odoo;
@@ -265,56 +319,47 @@ export default function TenancyComparePage() {
               </select>
             </div>
           </div>
-
-          {/* Legend */}
-          <div className="legend">
-            <div className="item">
-              <span className="swatch blue" aria-hidden />
-              <span>Blue = missing in PM</span>
-            </div>
-            <div className="item">
-              <span className="swatch orange" aria-hidden />
-              <span>Orange = missing in Odoo</span>
-            </div>
-            <div className="item">
-              <span className="swatch red" aria-hidden />
-              <span>Red = differences</span>
-            </div>
-          </div>
         </header>
 
         {/* Table */}
         <div className="rowsWrapper">
           {/* Header row */}
-          <div className="row headerRow" style={{ gridTemplateColumns }}>
+          <div className="row headerRow" style={{ gridTemplateColumns: gridMeta.gridTemplate }}>
             <div>Asset</div>
             <div>City</div>
             <div>Tenant (AM)</div>
 
-            <div className="sep" aria-hidden />
-
+            {/* SEP + GLA (only if visible) */}
+            {!hideGLA && <div className="sep" aria-hidden />}
             {!hideGLA && (
               <>
-                <div className="right">GLA Odoo</div>
-                <div className="right">GLA PM</div>
-                <div className="right">Δ GLA</div>
-                <div className="sep" aria-hidden />
+                <div className="right">Space Odoo</div>
+                <div className="right">Space PM</div>
+                <div className="right">Δ Space</div>
               </>
             )}
 
-            <div className="right">Rent Odoo</div>
-            <div className="right">Rent PM</div>
-            <div className="right">Δ Rent</div>
+            {/* SEP before Rent (always once) */}
+            <div className="sep" aria-hidden />
 
+            {/* Rent group (always) */}
+            <>
+              <div className="right">Rent Odoo</div>
+              <div className="right">Rent PM</div>
+              <div className="right">Δ Rent</div>
+            </>
+
+            {/* SEP + WALT (only if visible) */}
+            {!hideWALT && <div className="sep" aria-hidden />}
             {!hideWALT && (
               <>
-                <div className="sep" aria-hidden />
                 <div className="right">WALT Odoo</div>
                 <div className="right">WALT PM</div>
                 <div className="right">Δ WALT</div>
               </>
             )}
 
+            {/* Comments */}
             <div>AM comment</div>
             <div>PM comment</div>
           </div>
@@ -330,35 +375,46 @@ export default function TenancyComparePage() {
               const showDW = r.dW !== null && Math.abs(r.dW) >= WALT_D;
 
               return (
-                <div key={r.id + i} className={`row dataRow ${rowClass}`} style={{ gridTemplateColumns }}>
+                <div
+                  key={r.id + i}
+                  className={`row dataRow ${rowClass}`}
+                  style={{ gridTemplateColumns: gridMeta.gridTemplate }}
+                >
                   <div>{r.asset}</div>
                   <div>{r.city || "–"}</div>
                   <div>{r.tenant}</div>
 
-                  <div className="sep" aria-hidden />
-
+                  {/* SEP + GLA (only if visible) */}
+                  {!hideGLA && <div className="sep" aria-hidden />}
                   {!hideGLA && (
                     <>
                       <div className="right">{fmtInt(r.odRow?.space)}</div>
                       <div className="right">{fmtInt(r.pmRow?.space)}</div>
                       <div className={`right ${showDS ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dS, SPACE_D)}</div>
-                      <div className="sep" aria-hidden />
                     </>
                   )}
 
-                  <div className="right">{fmtInt(r.odRow?.rent)}</div>
-                  <div className="right">{fmtInt(r.pmRow?.rent)}</div>
-                  <div className={`right ${showDR ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dR, RENT_D)}</div>
+                  {/* SEP before Rent (always once) */}
+                  <div className="sep" aria-hidden />
 
+                  {/* Rent group (always) */}
+                  <>
+                    <div className="right">{fmtInt(r.odRow?.rent)}</div>
+                    <div className="right">{fmtInt(r.pmRow?.rent)}</div>
+                    <div className={`right ${showDR ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dR, RENT_D)}</div>
+                  </>
+
+                  {/* SEP + WALT (only if visible) */}
+                  {!hideWALT && <div className="sep" aria-hidden />}
                   {!hideWALT && (
                     <>
-                      <div className="sep" aria-hidden />
                       <div className="right">{fmtYears(r.odRow?.walt)}</div>
                       <div className="right">{fmtYears(r.pmRow?.walt)}</div>
                       <div className={`right ${showDW ? "deltaStrong" : ""}`}>{fmtDeltaYears(r.dW, WALT_D)}</div>
                     </>
                   )}
 
+                  {/* Comments */}
                   <div className="commentCell">
                     <textarea
                       className="comment"
@@ -389,7 +445,7 @@ export default function TenancyComparePage() {
         .container { max-width: 1600px; margin: 0 auto; padding: 16px 28px 24px; }
 
         /* Header */
-        .header { display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:8px; }
+        .header { display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:12px; }
         .title { margin:0; font-size:22px; font-weight:600; text-align:center; }
 
         .toolbar { display:flex; gap:12px; align-items:stretch; width:100%; max-width:1100px; }
@@ -405,44 +461,50 @@ export default function TenancyComparePage() {
           .toolbarRight { width:100%; justify-content:flex-end; flex-wrap:wrap; }
         }
 
-        /* Legend */
-        .legend {
-          display:flex; gap:16px; align-items:center; justify-content:center;
-          margin:6px 0 12px; font-size:12px; color:#374151;
-        }
-        .legend .item { display:flex; align-items:center; gap:6px; }
-        .legend .swatch { width:12px; height:12px; border-radius:3px; box-shadow:0 0 0 1px rgba(0,0,0,0.25) inset; }
-        .legend .swatch.blue   { background: rgba(147, 197, 253, 0.60); }
-        .legend .swatch.orange { background: rgba(253, 186, 116, 0.70); }
-        .legend .swatch.red    { background: rgba(239,  68,  68, 0.60); }
+        /* Table wrapper */
+        .rowsWrapper { border:1px solid #e5e7eb; border-radius:10px; overflow-x:auto; overflow-y:auto; max-height:78vh; background:#fff; }
 
-        /* Table */
-        .rowsWrapper { border:1px solid #e5e7eb; border-radius:10px; overflow-x:auto; overflow-y:auto; max-height:78vh; }
+        /* Grid rows */
+        .row { display:grid; align-items:center; column-gap:8px; }
+        .row > div { padding:10px 12px; font-size:13px; min-width:0; border-top:0; }
 
-        .row { display:grid; align-items:center; column-gap:10px; }
-        .row > div { padding:10px 12px; font-size:13px; min-width:0; }
+        /* A single divider per row (avoid per-cell borders = no white stripes) */
+        .rowsWrapper .row + .row { border-top: 1px solid #f1f5f9; }
 
-        .headerRow { position:sticky; top:0; z-index:1; background:#f9fafb; font-weight:600; border-bottom:1px solid #e5e7eb; }
+        .headerRow { position:sticky; top:0; z-index:3; background:#f9fafb; font-weight:600; border-bottom:1px solid #e5e7eb; }
         .headerRow > div { white-space:nowrap; }
-
-        /* Single row divider (no per-cell borders) */
-        .dataRow { border-top:1px solid #f1f5f9; }
-        .dataRow:hover { background:rgba(0,0,0,0.02); }
         .right { text-align:right; }
 
-        /* Vertical separator column that doesn't kill row background */
-        .sep { padding:0 !important; position:relative; }
-        .sep::after { content:""; position:absolute; top:0; bottom:0; left:0; width:1px; background:#111; }
+        /* True vertical separators as grid columns, drawn above highlight */
+        .sep { padding:0 !important; border:0 !important; background:#111; min-width:0; position:relative; z-index:2; }
 
-        /* Row highlights cover full width */
-        .hl-red    { background: rgba(239, 68, 68, 0.22); }
-        .hl-orange { background: rgba(253, 186, 116, 0.25); }
-        .hl-blue   { background: rgba(147, 197, 253, 0.22); }
+        /* Row highlight as a continuous ribbon under cells (fills gaps) */
+        .dataRow { position: relative; background: transparent; }
+        .dataRow.hl-red::before,
+        .dataRow.hl-orange::before,
+        .dataRow.hl-blue::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+        }
+        .dataRow.hl-red::before    { background: rgba(239, 68, 68, 0.22); }
+        .dataRow.hl-orange::before { background: rgba(253, 186, 116, 0.25); }
+        .dataRow.hl-blue::before   { background: rgba(147, 197, 253, 0.22); }
+        .dataRow > div { position: relative; z-index: 1; }
 
         .deltaStrong { font-weight:700; }
 
         .commentCell { display:flex; align-items:center; gap:8px; }
         .comment { width:100%; min-height:34px; padding:6px 8px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; }
+
+        /* Slight outline for textareas on colored rows to keep legibility */
+        .dataRow.hl-red .comment,
+        .dataRow.hl-orange .comment,
+        .dataRow.hl-blue .comment {
+          background:#fff;
+          box-shadow: 0 0 0 2px rgba(255,255,255,0.6);
+        }
 
         .loading { padding:14px; }
       `}</style>

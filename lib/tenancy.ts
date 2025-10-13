@@ -1,137 +1,151 @@
 // lib/tenancy.ts
 import { OdooClient } from "@/lib/odoo";
-import type { TenantData } from "@/types";
-import { normRef } from "@/lib/banlist"; // ⬅️ même normalisation que la route
+import { normRef } from "@/lib/banlist";
 
-/** AM codes selon sales_person_id */
-type AM = "CFR" | "BKO" | "FKE" | "MSC" | "";
+export type AMCode = "CFR" | "BKO" | "FKE" | "MSC" | "";
 
-/** "AA1 - 01 - Netto" => "Netto" (on garde seulement la 3e partie si elle existe) */
+export interface OdooM2O<TId = number, TName = string> extends Array<TId | TName> {
+  0: TId;
+  1: TName;
+}
+
+interface TenancyRec {
+  id: number;
+  name: string;
+  main_property_id: OdooM2O<number, string> | false | null;
+  total_current_rent: number | null;
+  space: number | null;
+  date_end_display: string | null; // ISO
+}
+
+interface PropertyRec {
+  id: number;
+  reference_id: string | null;
+  city?: string | null;
+  sales_person_id?: OdooM2O<number, string> | false | null;
+}
+
+export interface TenancyRow {
+  asset_ref: string;
+  tenant_name: string;
+  space: number;
+  rent: number;
+  walt?: number;
+  city?: string;
+  am?: AMCode;
+}
+
+/** Nettoie "AA1 - 01 - SCHWARZ-Außenwerbung" -> "SCHWARZ-Außenwerbung" */
 function cleanTenancyName(raw: string): string {
-  // split sur tirets, trim, filtre vide
-  const parts = String(raw).split("-").map(s => s.trim()).filter(Boolean);
-  if (parts.length === 0) return "";
-
-  // Heuristique:
-  // - 1er segment = code asset (toujours à ignorer)
-  // - 2e segment: si c'est purement numérique (lot/numéro), on l'ignore aussi
-  // - tout le reste = nom du tenant => on les REJOINT (pas seulement le 3e)
-  const rest = parts.slice(1); // on retire le code asset
-  let startIdx = 0;
-  if (rest.length > 0 && /^[0-9]+$/.test(rest[0])) {
-    startIdx = 1; // ignorer le lot numérique
-  }
-  const nameSegments = rest.slice(startIdx);
-  if (nameSegments.length === 0) {
-    // fallback : si on n'a rien, on prend le dernier segment connu
-    return parts[parts.length - 1];
-  }
-  return nameSegments.join(" ");
+  const parts = String(raw).split("-").map((s) => s.trim()).filter(Boolean);
+  if (parts.length >= 3) return parts.slice(2).join(" - "); // jointure robuste
+  if (parts.length >= 1) return parts[parts.length - 1];
+  return String(raw).trim();
 }
 
-/** Différence en années (avec 365.25 jours/an) */
-function yearsDiff(from: Date, to: Date) {
-  return (to.getTime() - from.getTime()) / (365.25 * 24 * 3600 * 1000);
+function m2oId(v: OdooM2O | false | null | undefined): number | null {
+  if (v === null || v === undefined || v === false) return null;
+  const id = v[0];
+  return typeof id === "number" ? id : null;
 }
 
-/**
- * Récupère toutes les tenancies (par main_property_id) et renvoie une liste TenantData.
- * - PAS de mapping via dictionnaire côté Odoo
- * - Nettoyage du libellé seulement (AA1 - 01 - X → X)
- * - Calcule WALT = max(0, date_end - today) en années
- * - Ajoute city et AM (via sales_person_id de la main_property)
- */
 
-export async function getOdooTenants(banned?: Set<string>) {
+function salesToAM(id: number | null): AMCode {
+  // CFR : 12, FKE : 7, BKO : 8, MSC : 9
+  switch (id ?? 0) {
+    case 12: return "CFR";
+    case 7:  return "FKE";
+    case 8:  return "BKO";
+    case 9:  return "MSC";
+    default: return "";
+  }
+}
+
+export async function getAssetAMMap(): Promise<Map<string, AMCode>> {
   const odoo = new OdooClient();
-  // charge les tenancies comme avant…
-  const tenancies = await odoo.searchRead<any>(
+  const props = await odoo.searchRead<PropertyRec>(
+    "property.property",
+    [["reference_id","!=",false]],
+    ["id","reference_id","sales_person_id"],
+    5000
+  );
+
+  const map = new Map<string, AMCode>();
+  for (const p of props) {
+    const ref = (p.reference_id ?? "").trim();
+    if (!ref) continue;
+    const spId = m2oId(p.sales_person_id as OdooM2O | false | null);
+    map.set(ref, salesToAM(spId));
+  }
+  return map;
+}
+
+export async function getOdooTenants(banned?: Set<string>): Promise<TenancyRow[]> {
+  const odoo = new OdooClient();
+
+  const tenancies = await odoo.searchRead<TenancyRec>(
     "property.tenancy",
-    [["main_property_id", "!=", false]],
+    [["main_property_id","!=",false]],
     ["id","name","main_property_id","total_current_rent","space","date_end_display"],
     5000
   );
 
-  // map main ids -> reference_id
-  const mainIds = Array.from(new Set(
-    tenancies.map((t:any)=> Array.isArray(t.main_property_id) ? t.main_property_id[0] : null).filter(Boolean)
-  ));
+  const mainIds = Array.from(
+    new Set(
+      tenancies
+        .map((t) => m2oId(t.main_property_id as OdooM2O | false | null))
+        .filter((x): x is number => typeof x === "number")
+    )
+  );
+
   const mains = mainIds.length
-    ? await odoo.searchRead<any>("property.property", [["id","in",mainIds]], ["id","reference_id","sales_person_id","city"], 5000)
+    ? await odoo.searchRead<PropertyRec>(
+        "property.property",
+        [["id","in",mainIds]],
+        ["id","reference_id","city","sales_person_id"],
+        5000
+      )
     : [];
 
-  const byMain = new Map<number, {ref:string; city?:string; am?:string}>();
+  const refById = new Map<number, { ref: string; city: string; am: AMCode }>();
   for (const m of mains) {
     const ref = (m.reference_id ?? String(m.id)).trim();
-    const city = m.city ?? "";
-    // si tu as déjà une logique pour AM ici, garde-la, sinon laisse vide
-    byMain.set(m.id, { ref, city });
+    const city = (m.city ?? "").trim();
+    const spId = m2oId(m.sales_person_id as OdooM2O | false | null);
+    refById.set(m.id, { ref, city, am: salesToAM(spId) });
   }
 
-  const today = new Date();
-  const out: any[] = [];
+  const today = Date.now();
+  const out: TenancyRow[] = [];
 
   for (const t of tenancies) {
-    const mid = Array.isArray(t.main_property_id) ? t.main_property_id[0] : null;
+    const mid = m2oId(t.main_property_id as OdooM2O | false | null);
     if (!mid) continue;
-    const meta = byMain.get(mid);
+    const meta = refById.get(mid);
     if (!meta) continue;
 
     const assetRef = meta.ref;
-    // ⬅️ FILTRE BANLIST ICI (avant push)
     if (banned && banned.has(normRef(assetRef))) continue;
 
-    // nettoie nom Odoo (version “join des segments restants”)
     const cleaned = cleanTenancyName(String(t.name ?? ""));
-    // calcule WALT…
+
     let waltYears = 0;
     if (t.date_end_display) {
-      const end = new Date(String(t.date_end_display));
-      waltYears = Math.max(0, (end.getTime() - today.getTime()) / (365.25 * 24 * 3600 * 1000));
+      const end = new Date(String(t.date_end_display)).getTime();
+      const diffY = (end - today) / (365.25 * 24 * 3600 * 1000);
+      waltYears = Math.max(0, diffY);
     }
 
     out.push({
       asset_ref: assetRef,
-      city: meta.city ?? "",
       tenant_name: cleaned,
-      space: Number(t.space) || 0,
-      rent: Number(t.total_current_rent) || 0,
+      space: Number(t.space ?? 0) || 0,
+      rent: Number(t.total_current_rent ?? 0) || 0,
       walt: waltYears,
-      // am: (si tu renseignes AM ici, garde-le)
+      city: meta.city,
+      am: meta.am,
     });
   }
 
   return out;
-}
-
-/**
- * Construit un map reference_id (asset) → AM (CFR/BKO/FKE/MSC)
- * basé sur property.property.sales_person_id.
- * Utile si ta route API a besoin d’annoter d’autres jeux de données avec l’AM.
- */
-export async function getAssetAMMap(): Promise<Map<string, AM>> {
-  const odoo = new OdooClient();
-
-  const mains = await odoo.searchRead<any>(
-    "property.property",
-    [["reference_id", "!=", false]],
-    ["reference_id", "sales_person_id"],
-    10000
-  );
-
-  const map = new Map<string, AM>();
-  for (const m of mains) {
-    const ref: string = String(m.reference_id ?? "").trim();
-    if (!ref) continue;
-
-    const sp = Array.isArray(m.sales_person_id) ? m.sales_person_id[0] : null;
-    let am: AM = "";
-    if (sp === 12) am = "CFR";
-    else if (sp === 7) am = "FKE";
-    else if (sp === 8) am = "BKO";
-    else if (sp === 9) am = "MSC";
-
-    map.set(ref, am);
-  }
-  return map;
 }
