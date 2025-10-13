@@ -189,6 +189,9 @@ export default function TenancyComparePage() {
       );
   }, [allKeys, pmIdx, odooIdx, qn, amFilter, filterMode, assetAMGuess]);
 
+  /* Subtotal (rows after filters) */
+  const subtotal = rows.length;
+
   /* Comments load */
   useEffect(() => {
     if (!pm || !odoo) return;
@@ -318,11 +321,16 @@ export default function TenancyComparePage() {
             </div>
           </div>
 
-          {/* Legend */}
-          <div className="legend">
-            <span className="legendItem hl-red">Δ important</span>
-            <span className="legendItem hl-orange">PM uniquement</span>
-            <span className="legendItem hl-blue">Odoo uniquement</span>
+          {/* Legend + Subtotal (same row) */}
+          <div className="legendBar">
+            <div className="subtotal">
+              Subtotal&nbsp;: <strong>{subtotal}</strong>
+            </div>
+            <div className="legend">
+              <span className="legendItem hl-red">Δ important</span>
+              <span className="legendItem hl-orange">PM uniquement</span>
+              <span className="legendItem hl-blue">Odoo uniquement</span>
+            </div>
           </div>
         </header>
 
@@ -442,14 +450,27 @@ export default function TenancyComparePage() {
         .toggle { display:flex; gap:6px; align-items:center; padding:0 6px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; height:36px; }
         .toolbarRight select { width:182px; min-width:160px; border:1px solid #d1d5db; border-radius:8px; padding:8px 10px; background:#fff; }
 
-        /* Legend */
+        /* Legend row with subtotal on the left */
+        .legendBar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          width: 100%;
+          max-width: 1100px;
+          margin-top: 6px;
+        }
+        .subtotal {
+          font-size: 13px;
+          color: #374151;
+        }
         .legend {
           display: flex;
           gap: 12px;
-          margin-top: 6px;
           font-size: 13px;
           color: #374151;
-          justify-content: center;
+          justify-content: flex-end;
+          flex-wrap: wrap;
         }
         .legendItem {
           display: inline-flex;
@@ -475,6 +496,7 @@ export default function TenancyComparePage() {
         .dataRow:hover { background:rgba(0,0,0,0.02); }
         .right { text-align:right; }
 
+        /* Vertical separator that doesn't kill row background */
         .sep { padding:0 !important; position:relative; }
         .sep::after { content:""; position:absolute; top:0; bottom:0; left:0; width:1px; background:#111; }
 
@@ -488,6 +510,10 @@ export default function TenancyComparePage() {
         .comment { width:100%; min-height:34px; padding:6px 8px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; }
 
         .loading { padding:14px; }
+        @media (max-width: 640px) {
+          .legendBar { flex-direction: column; align-items: stretch; }
+          .legend { justify-content: center; }
+        }
       `}</style>
     </main>
   );
