@@ -7,9 +7,9 @@ export interface TenantRule {
   am: string; // libellé cible (AM canonical)
 }
 
-/** normalise pour comparaison (minuscules, accents retirés, espaces unique) */
-function normalize(s: string): string {
-  return s
+/** Normalisation de base (accents/espaces/casse) */
+export function normBasic(s: string): string {
+  return String(s)
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "")
     .toLowerCase()
@@ -17,17 +17,57 @@ function normalize(s: string): string {
     .trim();
 }
 
-/** mappe un libellé PM -> libellé AM selon règles (contient/égal) */
-export function mapLabelWithRules(label: string, rules: TenantRule[]): string {
-  const L = normalize(label);
-  for (const r of rules) {
-    const pat = normalize(r.pm);
-    if (!pat) continue;
-    if (L === pat || L.includes(pat) || pat.includes(L)) {
-      return r.am;
-    }
-  }
-  return label;
+/** Enlève ce qui crée du bruit juridique/administratif */
+function stripJuridique(raw: string): string {
+  let s = ` ${raw} `;
+  s = s.replace(/\bc\/o\b.*$/i, " ");
+  s = s.replace(/\bobjektmanagement\b.*$/i, " ");
+  s = s.replace(/\bzweigniederlassung\b.*$/i, " ");
+  s = s.replace(/\bvertragswesen\b.*$/i, " ");
+  s = s.replace(/\bregion\b.*$/i, " ");
+
+  const legalBits = [
+    "gmbh","gmbh & co","gmbh & co. kg","kg","se","ag","eg","e\\.k\\.","ohg","ug",
+    "stiftung","stiftung & co\\. kg","stiftung & co kg",
+    "gesellschaft","gesellschaft mbh",
+    "vermessungs","verwaltung","immobilien","immobilien-?service","service","handelsgesellschaft",
+    "vertrieb","vertriebs-?gmbh","discothekenbetriebs","qualitatswerkzeuge","qualitätswerkzeuge",
+    "center","center gmbh","beteiligungs","holding","objekt","objektmanagement","niederlassung"
+  ];
+  const re = new RegExp(`\\b(?:${legalBits.join("|")})\\b`, "gi");
+  s = s.replace(re, " ");
+  s = s.replace(/[.,/()[\]&]+/g, " ").replace(/-/g, " ");
+
+  return normBasic(s);
+}
+
+/** Découpe en tokens & enlève les mots très génériques */
+function toTokensKey(s: string): string[] {
+  const stop = new Set([
+    "gmbh","kg","se","ag","eg","ohg","ug","stiftung","gesellschaft","verwaltung","immobilien","service",
+    "handelsgesellschaft","vertrieb","center","holding","beteiligungs","niederlassung","region","markt",
+    "discothekenbetriebs","qualitatswerkzeuge","qualitats","qualitäts","werkzeuge","objekt","objektmanagement",
+    "abteilung","mietwesen","immobilienmanagement","immobilien-","vertragswesen","zweigniederlassung","co",
+    "und","&","der","die","das"
+  ]);
+  return stripJuridique(s)
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((w) => !stop.has(w));
+}
+
+/** token-set signature (ordre ignoré, doublons supprimés) */
+function tokensSignature(s: string): string {
+  return Array.from(new Set(toTokensKey(s))).sort().join(" ");
+}
+
+/** Similarité Jaccard simple entre 2 ensembles de tokens */
+function jaccard(a: string[], b: string[]): number {
+  const A = new Set(a), B = new Set(b);
+  let inter = 0;
+  for (const x of A) if (B.has(x)) inter++;
+  const union = A.size + B.size - inter;
+  return union === 0 ? 0 : inter / union;
 }
 
 /** charge public/data/tenant_map.json (2 formats supportés) */
@@ -95,4 +135,93 @@ export function loadTenantMap(): TenantRule[] {
   }
 
   return [];
+}
+
+/**
+ * Construit un matcher PM -> AM.
+ * Signature compatible : () => (pmLabel) => { mapped: string | null; reason: string }
+ */
+export function buildPmToAmMatcher(): (pmLabel: string) => { mapped: string | null; reason: string } {
+  // On part des règles (formats A/B) et on regroupe par canonical (am)
+  const rules = loadTenantMap();
+
+  type Entry = { canonical: string; variants: string[] };
+  const grouped = new Map<string, Set<string>>();
+  for (const r of rules) {
+    const can = r.am.trim();
+    const pm = r.pm.trim();
+    if (!can || !pm) continue;
+    if (!grouped.has(can)) grouped.set(can, new Set<string>());
+    grouped.get(can)!.add(pm);
+  }
+
+  const entries: Entry[] = [];
+  for (const [canonical, set] of grouped) {
+    const variants = Array.from(new Set([canonical, ...Array.from(set)]));
+    entries.push({ canonical, variants });
+  }
+
+  // Indexes
+  const idxExact = new Map<string, string>();      // normBasic(variant) -> canonical
+  const idxExactStrip = new Map<string, string>(); // stripJuridique-normalized -> canonical
+  const idxTokens = new Map<string, string>();     // tokensSignature(variant) -> canonical
+  const tokenCache = new Map<string, string[]>();  // cache tokens
+
+  const getTokens = (s: string) => {
+    const key = `#${s}`;
+    let t = tokenCache.get(key);
+    if (!t) { t = toTokensKey(s); tokenCache.set(key, t); }
+    return t;
+  };
+
+  for (const e of entries) {
+    const canonical = e.canonical;
+    for (const v of e.variants) {
+      idxExact.set(normBasic(v), canonical);
+      idxExactStrip.set(stripJuridique(v), canonical);
+      idxTokens.set(tokensSignature(v), canonical);
+      getTokens(v); // warm cache
+    }
+    // s’assure que le canonical lui-même passe partout
+    idxExact.set(normBasic(canonical), canonical);
+    idxExactStrip.set(stripJuridique(canonical), canonical);
+    idxTokens.set(tokensSignature(canonical), canonical);
+    getTokens(canonical);
+  }
+
+  // Matcher final
+  return (pmLabel: string) => {
+    const raw = pmLabel ?? "";
+    const nb = normBasic(raw);
+    const sj = stripJuridique(raw);
+    const sig = tokensSignature(raw);
+
+    // 1) exact normalisé
+    const e1 = idxExact.get(nb);
+    if (e1) return { mapped: e1, reason: "exact" };
+
+    // 2) exact après strip juridique
+    const e2 = idxExactStrip.get(sj);
+    if (e2) return { mapped: e2, reason: "exact_strip" };
+
+    // 3) token-set exact
+    const e3 = idxTokens.get(sig);
+    if (e3) return { mapped: e3, reason: "token_set" };
+
+    // 4) fuzzy léger : meilleur Jaccard sur tokens
+    const pmToks = getTokens(raw);
+    let best: { can: string; score: number } | null = null;
+
+    for (const e of entries) {
+      for (const v of e.variants) {
+        const score = jaccard(pmToks, getTokens(v));
+        if (!best || score > best.score) best = { can: e.canonical, score };
+      }
+    }
+    if (best && best.score >= 0.85) {
+      return { mapped: best.can, reason: `jaccard_${best.score.toFixed(2)}` };
+    }
+
+    return { mapped: null, reason: "no_match" };
+  };
 }
