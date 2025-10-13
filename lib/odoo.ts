@@ -43,7 +43,13 @@ async function postJsonRpc<T>(endpoint: string, payload: unknown): Promise<T> {
   }
   return data.result;
 }
-
+export function hasOdooEnv(cfg?: Partial<OdooConfig>): boolean {
+  const url = cfg?.url ?? process.env.ODOO_URL ?? "";
+  const db = cfg?.db ?? process.env.ODOO_DB ?? "";
+  const user = cfg?.user ?? process.env.ODOO_USER ?? "";
+  const apiKey = cfg?.apiKey ?? process.env.ODOO_API ?? "";
+  return Boolean(url && db && user && apiKey);
+}
 /* ========= Types Odoo utiles ========= */
 export interface OdooM2O<TId = number, TName = string> extends Array<TId | TName> {
   0: TId;
