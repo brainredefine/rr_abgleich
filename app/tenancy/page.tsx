@@ -40,24 +40,34 @@ const chunk = <T,>(arr: T[], size = 120): T[][] => {
   return out;
 };
 
-/* ===== Safe parsing helpers ===== */
+/* ===== Safe parsing helpers (no any) ===== */
 type ApiOk = {
-  pm?: TenantRow[];
-  odoo?: TenantRow[];
-  warnings?: string[];
-  debug?: Record<string, unknown>;
+  pm?: unknown;
+  odoo?: unknown;
 };
+
 function safeJson<T>(txt: string): T | null {
   try { return JSON.parse(txt) as T; } catch { return null; }
 }
-function asTenantList(v: unknown): TenantRow[] {
-  return Array.isArray(v)
-    ? (v as unknown[]).filter((x): x is TenantRow =>
-        !!x && typeof x === "object" &&
-        typeof (x as any).asset_ref === "string" &&
-        typeof (x as any).tenant_name === "string"
-      )
-    : [];
+function isRecord(v: unknown): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null;
+}
+function isTenantRow(v: unknown): v is TenantRow {
+  if (!isRecord(v)) return false;
+  const hasAsset = typeof v.asset_ref === "string";
+  const hasTenant = typeof v.tenant_name === "string";
+  const spaceOk = !("space" in v) || typeof v.space === "number";
+  const rentOk  = !("rent" in v) || typeof v.rent === "number";
+  const waltOk  = !("walt" in v) || typeof v.walt === "number" || typeof v.walt === "undefined";
+  const cityOk  = !("city" in v) || typeof v.city === "string" || typeof v.city === "undefined";
+  const amOk    = !("am" in v) || typeof v.am === "string" || typeof v.am === "undefined";
+  return hasAsset && hasTenant && spaceOk && rentOk && waltOk && cityOk && amOk;
+}
+function toTenantList(v: unknown): TenantRow[] {
+  if (!Array.isArray(v)) return [];
+  const out: TenantRow[] = [];
+  for (const it of v) if (isTenantRow(it)) out.push(it);
+  return out;
 }
 
 /* ===== Component ===== */
@@ -72,15 +82,10 @@ export default function TenancyComparePage() {
   const [amFilter, setAmFilter] = useState<AMFilter>("ALL");
   const [hideGLA, setHideGLA] = useState(false);
   const [hideWALT, setHideWALT] = useState(false);
-  const [showVacant, setShowVacant] = useState(false); // NEW: pour tester l'impact du filtre
 
   /* Comments */
   const [comAM, setComAM] = useState<Record<string, string>>({});
   const [comPM, setComPM] = useState<Record<string, string>>({});
-
-  /* API diag */
-  const [warnings, setWarnings] = useState<string[]>([]);
-  const [debugInfo, setDebugInfo] = useState<Record<string, unknown> | null>(null);
 
   /* Thresholds */
   const SPACE_HL = 1, RENT_HL = 5, WALT_HL = 0.5;
@@ -93,30 +98,18 @@ export default function TenancyComparePage() {
         const res = await fetch("/tenancy/api", { cache: "no-store" });
         const txt = await res.text();
         const obj = safeJson<ApiOk>(txt) ?? {};
-        const rawPm = asTenantList(obj.pm);
-        const rawOdoo = asTenantList(obj.odoo);
-        setWarnings(Array.isArray(obj.warnings) ? obj.warnings : []);
-        setDebugInfo(obj.debug && typeof obj.debug === "object" ? obj.debug : null);
+        const rawPm = toTenantList(obj.pm);
+        const rawOdoo = toTenantList(obj.odoo);
 
-        // log diag
-        console.log("tenancy/api counts", {
-          pm: rawPm.length,
-          odoo: rawOdoo.length,
-          warnings: obj.warnings,
-          debug: obj.debug,
-        });
-
-        const filterVacant = (x: TenantRow) => (showVacant ? true : !isHiddenTenant(x.tenant_name));
-        setPm(rawPm.filter(filterVacant));
-        setOdoo(rawOdoo.filter(filterVacant));
-      } catch (e) {
-        console.error("Failed to load /tenancy/api", e);
+        const filterVisible = (x: TenantRow) => !isHiddenTenant(x.tenant_name);
+        setPm(rawPm.filter(filterVisible));
+        setOdoo(rawOdoo.filter(filterVisible));
+      } catch {
         setPm([]);
         setOdoo([]);
       }
     })();
-    // on relance le fetch quand showVacant change (pour tester sans filtre)
-  }, [showVacant]);
+  }, []);
 
   /* Indexes */
   const pmIdx = useMemo(() => {
@@ -216,7 +209,7 @@ export default function TenancyComparePage() {
           const json = safeJson<{ items: Array<{ id: string; comment: string | null }> }>(txt);
           const items = Array.isArray(json?.items) ? json!.items : [];
           for (const it of items) amObj[it.id] = it.comment ?? "";
-        } catch (e) { console.warn("AM comments load failed", e); }
+        } catch { /* ignore */ }
       }
 
       for (const group of chunk(ids, 120)) {
@@ -226,7 +219,7 @@ export default function TenancyComparePage() {
           const json = safeJson<{ items: Array<{ id: string; comment: string | null }> }>(txt);
           const items = Array.isArray(json?.items) ? json!.items : [];
           for (const it of items) pmObj[it.id] = it.comment ?? "";
-        } catch (e) { console.warn("PM comments load failed", e); }
+        } catch { /* ignore */ }
       }
 
       setComAM(amObj);
@@ -241,9 +234,7 @@ export default function TenancyComparePage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, comment }),
       });
-    } catch (e) {
-      console.warn("Save comment failed", e);
-    }
+    } catch { /* ignore */ }
   }
 
   /* ===== Dynamic grid with true separators that don't kill background ===== */
@@ -271,233 +262,233 @@ export default function TenancyComparePage() {
 
   const loading = !pm || !odoo;
 
- return (
-  <main className="white-root">
-    <div className="container">
-      {/* Header */}
-      <header className="header">
-        <h1 className="title">Rent Roll — Odoo vs PM</h1>
+  return (
+    <main className="white-root">
+      <div className="container">
+        {/* Header */}
+        <header className="header">
+          <h1 className="title">Rent Roll — Odoo vs PM</h1>
 
-        <div className="toolbar">
-          <div className="search">
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Search: Asset / City / Tenant…"
-              aria-label="Search"
-            />
-            {q && (
-              <button onClick={() => setQ("")} aria-label="Clear">
-                ×
-              </button>
-            )}
+          <div className="toolbar">
+            <div className="search">
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Search: Asset / City / Tenant…"
+                aria-label="Search"
+              />
+              {q && (
+                <button onClick={() => setQ("")} aria-label="Clear">
+                  ×
+                </button>
+              )}
+            </div>
+
+            <div className="toolbarRight">
+              <label className="toggle">
+                <input type="checkbox" checked={hideGLA} onChange={(e) => setHideGLA(e.target.checked)} />
+                Hide GLA
+              </label>
+              <label className="toggle">
+                <input type="checkbox" checked={hideWALT} onChange={(e) => setHideWALT(e.target.checked)} />
+                Hide WALT
+              </label>
+
+              <select
+                value={filterMode}
+                onChange={(e) => setFilterMode(e.target.value as FilterMode)}
+                aria-label="View"
+              >
+                <option value="none">View: All</option>
+                <option value="highlighted">View: Highlighted</option>
+                <option value="missing_rent">View: Missing & rent diff</option>
+              </select>
+
+              <select
+                value={amFilter}
+                onChange={(e) => setAmFilter(e.target.value as AMFilter)}
+                aria-label="AM filter"
+              >
+                <option value="ALL">AM — All</option>
+                <option value="CFR">CFR</option>
+                <option value="BKO">BKO</option>
+                <option value="FKE">FKE</option>
+                <option value="MSC">MSC</option>
+              </select>
+            </div>
           </div>
 
-          <div className="toolbarRight">
-            <label className="toggle">
-              <input type="checkbox" checked={hideGLA} onChange={(e) => setHideGLA(e.target.checked)} />
-              Hide GLA
-            </label>
-            <label className="toggle">
-              <input type="checkbox" checked={hideWALT} onChange={(e) => setHideWALT(e.target.checked)} />
-              Hide WALT
-            </label>
-
-            <select
-              value={filterMode}
-              onChange={(e) => setFilterMode(e.target.value as FilterMode)}
-              aria-label="View"
-            >
-              <option value="none">View: All</option>
-              <option value="highlighted">View: Highlighted</option>
-              <option value="missing_rent">View: Missing & rent diff</option>
-            </select>
-
-            <select
-              value={amFilter}
-              onChange={(e) => setAmFilter(e.target.value as AMFilter)}
-              aria-label="AM filter"
-            >
-              <option value="ALL">AM — All</option>
-              <option value="CFR">CFR</option>
-              <option value="BKO">BKO</option>
-              <option value="FKE">FKE</option>
-              <option value="MSC">MSC</option>
-            </select>
+          {/* Legend */}
+          <div className="legend">
+            <span className="legendItem hl-red">Δ important</span>
+            <span className="legendItem hl-orange">PM uniquement</span>
+            <span className="legendItem hl-blue">Odoo uniquement</span>
           </div>
-        </div>
+        </header>
 
-        {/* Legend */}
-        <div className="legend">
-          <span className="legendItem hl-red">Δ over the threshold</span>
-          <span className="legendItem hl-orange">Missing in Odoo</span>
-          <span className="legendItem hl-blue">Missing in PM</span>
-        </div>
-      </header>
+        {/* Table */}
+        <div className="rowsWrapper">
+          {/* Header row */}
+          <div className="row headerRow" style={{ gridTemplateColumns }}>
+            <div>Asset</div>
+            <div>City</div>
+            <div>Tenant (AM)</div>
 
-      {/* Table */}
-      <div className="rowsWrapper">
-        {/* Header row */}
-        <div className="row headerRow" style={{ gridTemplateColumns }}>
-          <div>Asset</div>
-          <div>City</div>
-          <div>Tenant (AM)</div>
+            <div className="sep" aria-hidden />
 
-          <div className="sep" aria-hidden />
-
-          {!hideGLA && (
-            <>
-              <div className="right">GLA Odoo</div>
-              <div className="right">GLA PM</div>
-              <div className="right">Δ GLA</div>
-              <div className="sep" aria-hidden />
-            </>
-          )}
-
-          <div className="right">Rent Odoo</div>
-          <div className="right">Rent PM</div>
-          <div className="right">Δ Rent</div>
-
-          {!hideWALT && (
-            <>
-              <div className="sep" aria-hidden />
-              <div className="right">WALT Odoo</div>
-              <div className="right">WALT PM</div>
-              <div className="right">Δ WALT</div>
-            </>
-          )}
-
-          <div>AM comment</div>
-          <div>PM comment</div>
-        </div>
-
-        {/* Data rows */}
-        {loading ? (
-          <div className="loading">Loading…</div>
-        ) : (
-          rows.map((r, i) => {
-            const rowClass = r.diff ? "hl-red" : r.onlyPM ? "hl-orange" : r.onlyOdoo ? "hl-blue" : "";
-            const showDS = r.dS !== null && Math.abs(r.dS) >= SPACE_D;
-            const showDR = r.dR !== null && Math.abs(r.dR) >= RENT_D;
-            const showDW = r.dW !== null && Math.abs(r.dW) >= WALT_D;
-
-            return (
-              <div key={r.id + i} className={`row dataRow ${rowClass}`} style={{ gridTemplateColumns }}>
-                <div>{r.asset}</div>
-                <div>{r.city || "–"}</div>
-                <div>{r.tenant}</div>
-
+            {!hideGLA && (
+              <>
+                <div className="right">GLA Odoo</div>
+                <div className="right">GLA PM</div>
+                <div className="right">Δ GLA</div>
                 <div className="sep" aria-hidden />
+              </>
+            )}
 
-                {!hideGLA && (
-                  <>
-                    <div className="right">{fmtInt(r.odRow?.space)}</div>
-                    <div className="right">{fmtInt(r.pmRow?.space)}</div>
-                    <div className={`right ${showDS ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dS, SPACE_D)}</div>
-                    <div className="sep" aria-hidden />
-                  </>
-                )}
+            <div className="right">Rent Odoo</div>
+            <div className="right">Rent PM</div>
+            <div className="right">Δ Rent</div>
 
-                <div className="right">{fmtInt(r.odRow?.rent)}</div>
-                <div className="right">{fmtInt(r.pmRow?.rent)}</div>
-                <div className={`right ${showDR ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dR, RENT_D)}</div>
+            {!hideWALT && (
+              <>
+                <div className="sep" aria-hidden />
+                <div className="right">WALT Odoo</div>
+                <div className="right">WALT PM</div>
+                <div className="right">Δ WALT</div>
+              </>
+            )}
 
-                {!hideWALT && (
-                  <>
-                    <div className="sep" aria-hidden />
-                    <div className="right">{fmtYears(r.odRow?.walt)}</div>
-                    <div className="right">{fmtYears(r.pmRow?.walt)}</div>
-                    <div className={`right ${showDW ? "deltaStrong" : ""}`}>{fmtDeltaYears(r.dW, WALT_D)}</div>
-                  </>
-                )}
+            <div>AM comment</div>
+            <div>PM comment</div>
+          </div>
 
-                <div className="commentCell">
-                  <textarea
-                    className="comment"
-                    value={comAM[r.id] ?? ""}
-                    onChange={(e) => setComAM((s) => ({ ...s, [r.id]: e.target.value }))}
-                    onBlur={(e) => saveComment("am", r.id, e.target.value)}
-                    placeholder="AM note…"
-                  />
+          {/* Data rows */}
+          {loading ? (
+            <div className="loading">Loading…</div>
+          ) : (
+            rows.map((r, i) => {
+              const rowClass = r.diff ? "hl-red" : r.onlyPM ? "hl-orange" : r.onlyOdoo ? "hl-blue" : "";
+              const showDS = r.dS !== null && Math.abs(r.dS) >= SPACE_D;
+              const showDR = r.dR !== null && Math.abs(r.dR) >= RENT_D;
+              const showDW = r.dW !== null && Math.abs(r.dW) >= WALT_D;
+
+              return (
+                <div key={r.id + i} className={`row dataRow ${rowClass}`} style={{ gridTemplateColumns }}>
+                  <div>{r.asset}</div>
+                  <div>{r.city || "–"}</div>
+                  <div>{r.tenant}</div>
+
+                  <div className="sep" aria-hidden />
+
+                  {!hideGLA && (
+                    <>
+                      <div className="right">{fmtInt(r.odRow?.space)}</div>
+                      <div className="right">{fmtInt(r.pmRow?.space)}</div>
+                      <div className={`right ${showDS ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dS, SPACE_D)}</div>
+                      <div className="sep" aria-hidden />
+                    </>
+                  )}
+
+                  <div className="right">{fmtInt(r.odRow?.rent)}</div>
+                  <div className="right">{fmtInt(r.pmRow?.rent)}</div>
+                  <div className={`right ${showDR ? "deltaStrong" : ""}`}>{fmtDeltaInt(r.dR, RENT_D)}</div>
+
+                  {!hideWALT && (
+                    <>
+                      <div className="sep" aria-hidden />
+                      <div className="right">{fmtYears(r.odRow?.walt)}</div>
+                      <div className="right">{fmtYears(r.pmRow?.walt)}</div>
+                      <div className={`right ${showDW ? "deltaStrong" : ""}`}>{fmtDeltaYears(r.dW, WALT_D)}</div>
+                    </>
+                  )}
+
+                  <div className="commentCell">
+                    <textarea
+                      className="comment"
+                      value={comAM[r.id] ?? ""}
+                      onChange={(e) => setComAM((s) => ({ ...s, [r.id]: e.target.value }))}
+                      onBlur={(e) => saveComment("am", r.id, e.target.value)}
+                      placeholder="AM note…"
+                    />
+                  </div>
+                  <div className="commentCell">
+                    <textarea
+                      className="comment"
+                      value={comPM[r.id] ?? ""}
+                      onChange={(e) => setComPM((s) => ({ ...s, [r.id]: e.target.value }))}
+                      onBlur={(e) => saveComment("pm", r.id, e.target.value)}
+                      placeholder="PM note…"
+                    />
+                  </div>
                 </div>
-                <div className="commentCell">
-                  <textarea
-                    className="comment"
-                    value={comPM[r.id] ?? ""}
-                    onChange={(e) => setComPM((s) => ({ ...s, [r.id]: e.target.value }))}
-                    onBlur={(e) => saveComment("pm", r.id, e.target.value)}
-                    placeholder="PM note…"
-                  />
-                </div>
-              </div>
-            );
-          })
-        )}
+              );
+            })
+          )}
+        </div>
       </div>
-    </div>
 
-    <style jsx>{`
-      .white-root { min-height: 100vh; background:#fff; color:#111; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
-      .container { max-width: 1600px; margin: 0 auto; padding: 16px 28px 24px; }
+      <style jsx>{`
+        .white-root { min-height: 100vh; background:#fff; color:#111; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 16px 28px 24px; }
 
-      .header { display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:8px; }
-      .title { margin:0; font-size:22px; font-weight:600; text-align:center; }
+        .header { display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:8px; }
+        .title { margin:0; font-size:22px; font-weight:600; text-align:center; }
 
-      .toolbar { display:flex; gap:12px; align-items:stretch; width:100%; max-width:1100px; }
-      .search { position:relative; flex:1 1 360px; min-width:260px; }
-      .search input { width:100%; box-sizing:border-box; padding:8px 28px 8px 10px; border:1px solid #d1d5db; border-radius:8px; background:#fff; }
-      .search button { position:absolute; right:6px; top:4px; bottom:4px; width:22px; border:1px solid #d1d5db; border-radius:6px; background:#f3f4f6; }
-      .toolbarRight { display:flex; flex:0 0 auto; gap:10px; align-items:center; }
-      .toggle { display:flex; gap:6px; align-items:center; padding:0 6px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; height:36px; }
-      .toolbarRight select { width:182px; min-width:160px; border:1px solid #d1d5db; border-radius:8px; padding:8px 10px; background:#fff; }
+        .toolbar { display:flex; gap:12px; align-items:stretch; width:100%; max-width:1100px; }
+        .search { position:relative; flex:1 1 360px; min-width:260px; }
+        .search input { width:100%; box-sizing:border-box; padding:8px 28px 8px 10px; border:1px solid #d1d5db; border-radius:8px; background:#fff; }
+        .search button { position:absolute; right:6px; top:4px; bottom:4px; width:22px; border:1px solid #d1d5db; border-radius:6px; background:#f3f4f6; }
+        .toolbarRight { display:flex; flex:0 0 auto; gap:10px; align-items:center; }
+        .toggle { display:flex; gap:6px; align-items:center; padding:0 6px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; height:36px; }
+        .toolbarRight select { width:182px; min-width:160px; border:1px solid #d1d5db; border-radius:8px; padding:8px 10px; background:#fff; }
 
-      /* Legend */
-      .legend {
-        display: flex;
-        gap: 12px;
-        margin-top: 6px;
-        font-size: 13px;
-        color: #374151;
-        justify-content: center;
-      }
-      .legendItem {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 3px 10px;
-        border-radius: 6px;
-        background: #f3f4f6;
-      }
-      .hl-red.legendItem { background: rgba(239, 68, 68, 0.22); }
-      .hl-orange.legendItem { background: rgba(253, 186, 116, 0.25); }
-      .hl-blue.legendItem { background: rgba(147, 197, 253, 0.22); }
+        /* Legend */
+        .legend {
+          display: flex;
+          gap: 12px;
+          margin-top: 6px;
+          font-size: 13px;
+          color: #374151;
+          justify-content: center;
+        }
+        .legendItem {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 3px 10px;
+          border-radius: 6px;
+          background: #f3f4f6;
+        }
+        .hl-red.legendItem { background: rgba(239, 68, 68, 0.22); }
+        .hl-orange.legendItem { background: rgba(253, 186, 116, 0.25); }
+        .hl-blue.legendItem { background: rgba(147, 197, 253, 0.22); }
 
-      .rowsWrapper { border:1px solid #e5e7eb; border-radius:10px; overflow-x:auto; overflow-y:auto; max-height:78vh; }
+        .rowsWrapper { border:1px solid #e5e7eb; border-radius:10px; overflow-x:auto; overflow-y:auto; max-height:78vh; }
 
-      .row { display:grid; align-items:center; column-gap:10px; }
-      .row > div { padding:10px 12px; font-size:13px; min-width:0; }
+        .row { display:grid; align-items:center; column-gap:10px; }
+        .row > div { padding:10px 12px; font-size:13px; min-width:0; }
 
-      .headerRow { position:sticky; top:0; z-index:1; background:#f9fafb; font-weight:600; border-bottom:1px solid #e5e7eb; }
-      .headerRow > div { white-space:nowrap; }
+        .headerRow { position:sticky; top:0; z-index:1; background:#f9fafb; font-weight:600; border-bottom:1px solid #e5e7eb; }
+        .headerRow > div { white-space:nowrap; }
 
-      .dataRow { border-top:1px solid #f1f5f9; }
-      .dataRow:hover { background:rgba(0,0,0,0.02); }
-      .right { text-align:right; }
+        .dataRow { border-top:1px solid #f1f5f9; }
+        .dataRow:hover { background:rgba(0,0,0,0.02); }
+        .right { text-align:right; }
 
-      .sep { padding:0 !important; position:relative; }
-      .sep::after { content:""; position:absolute; top:0; bottom:0; left:0; width:1px; background:#111; }
+        .sep { padding:0 !important; position:relative; }
+        .sep::after { content:""; position:absolute; top:0; bottom:0; left:0; width:1px; background:#111; }
 
-      .hl-red    { background: rgba(239, 68, 68, 0.22); }
-      .hl-orange { background: rgba(253, 186, 116, 0.25); }
-      .hl-blue   { background: rgba(147, 197, 253, 0.22); }
+        .hl-red    { background: rgba(239, 68, 68, 0.22); }
+        .hl-orange { background: rgba(253, 186, 116, 0.25); }
+        .hl-blue   { background: rgba(147, 197, 253, 0.22); }
 
-      .deltaStrong { font-weight:700; }
+        .deltaStrong { font-weight:700; }
 
-      .commentCell { display:flex; align-items:center; gap:8px; }
-      .comment { width:100%; min-height:34px; padding:6px 8px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; }
+        .commentCell { display:flex; align-items:center; gap:8px; }
+        .comment { width:100%; min-height:34px; padding:6px 8px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; }
 
-      .loading { padding:14px; }
-    `}</style>
-  </main>
-);
+        .loading { padding:14px; }
+      `}</style>
+    </main>
+  );
 }
