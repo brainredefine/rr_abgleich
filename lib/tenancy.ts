@@ -1,27 +1,24 @@
 // lib/tenancy.ts
-import { OdooClient } from "@/lib/odoo";
+import { OdooClient, OdooM2O } from "@/lib/odoo";
 import { normRef } from "@/lib/banlist";
 
 export type AMCode = "CFR" | "BKO" | "FKE" | "MSC" | "";
 
-export interface OdooM2O<TId = number, TName = string> extends Array<TId | TName> {
-  0: TId;
-  1: TName;
-}
-
+/** Tenancies (date_end_display peut être false) */
 interface TenancyRec {
   id: number;
-  name: string;
+  name: string | null;
   main_property_id: OdooM2O<number, string> | false | null;
   total_current_rent: number | null;
   space: number | null;
-  date_end_display: string | null; // ISO
+  date_end_display: string | null | false;
 }
 
+/** Mains: certains champs peuvent être false */
 interface PropertyRec {
   id: number;
-  reference_id: string | null;
-  city?: string | null;
+  reference_id: string | null | false;
+  city?: string | null | false;
   sales_person_id?: OdooM2O<number, string> | false | null;
 }
 
@@ -35,23 +32,13 @@ export interface TenancyRow {
   am?: AMCode;
 }
 
-/** Nettoie "AA1 - 01 - SCHWARZ-Außenwerbung" -> "SCHWARZ-Außenwerbung" */
-function cleanTenancyName(raw: string): string {
-  const parts = String(raw).split("-").map((s) => s.trim()).filter(Boolean);
-  if (parts.length >= 3) return parts.slice(2).join(" - "); // jointure robuste
-  if (parts.length >= 1) return parts[parts.length - 1];
-  return String(raw).trim();
-}
-
 function m2oId(v: OdooM2O | false | null | undefined): number | null {
-  if (v === null || v === undefined || v === false) return null;
+  if (!v) return null;
   const id = v[0];
   return typeof id === "number" ? id : null;
 }
 
-
 function salesToAM(id: number | null): AMCode {
-  // CFR : 12, FKE : 7, BKO : 8, MSC : 9
   switch (id ?? 0) {
     case 12: return "CFR";
     case 7:  return "FKE";
@@ -61,18 +48,27 @@ function salesToAM(id: number | null): AMCode {
   }
 }
 
+function cleanTenancyName(raw: string | null): string {
+  const s = String(raw ?? "").trim();
+  if (!s) return "";
+  const parts = s.split("-").map((p) => p.trim()).filter(Boolean);
+  if (parts.length >= 3) return parts.slice(2).join(" - ");
+  if (parts.length >= 1) return parts[parts.length - 1];
+  return s;
+}
+
 export async function getAssetAMMap(): Promise<Map<string, AMCode>> {
   const odoo = new OdooClient();
   const props = await odoo.searchRead<PropertyRec>(
     "property.property",
     [["reference_id","!=",false]],
     ["id","reference_id","sales_person_id"],
-    5000
+    10000
   );
 
   const map = new Map<string, AMCode>();
   for (const p of props) {
-    const ref = (p.reference_id ?? "").trim();
+    const ref = typeof p.reference_id === "string" ? p.reference_id.trim() : "";
     if (!ref) continue;
     const spId = m2oId(p.sales_person_id as OdooM2O | false | null);
     map.set(ref, salesToAM(spId));
@@ -87,30 +83,32 @@ export async function getOdooTenants(banned?: Set<string>): Promise<TenancyRow[]
     "property.tenancy",
     [["main_property_id","!=",false]],
     ["id","name","main_property_id","total_current_rent","space","date_end_display"],
-    5000
+    10000
   );
 
   const mainIds = Array.from(
     new Set(
       tenancies
-        .map((t) => m2oId(t.main_property_id as OdooM2O | false | null))
+        .map((t) => m2oId(t.main_property_id))
         .filter((x): x is number => typeof x === "number")
     )
   );
 
-  const mains = mainIds.length
+  const mains: PropertyRec[] = mainIds.length
     ? await odoo.searchRead<PropertyRec>(
         "property.property",
         [["id","in",mainIds]],
         ["id","reference_id","city","sales_person_id"],
-        5000
+        10000
       )
     : [];
 
   const refById = new Map<number, { ref: string; city: string; am: AMCode }>();
   for (const m of mains) {
-    const ref = (m.reference_id ?? String(m.id)).trim();
-    const city = (m.city ?? "").trim();
+    // ⬅️ Coercitions sûres (gèrent false/null)
+    const ref = typeof m.reference_id === "string" ? m.reference_id.trim() : "";
+    if (!ref) continue;
+    const city = typeof m.city === "string" ? m.city.trim() : "";
     const spId = m2oId(m.sales_person_id as OdooM2O | false | null);
     refById.set(m.id, { ref, city, am: salesToAM(spId) });
   }
@@ -119,26 +117,25 @@ export async function getOdooTenants(banned?: Set<string>): Promise<TenancyRow[]
   const out: TenancyRow[] = [];
 
   for (const t of tenancies) {
-    const mid = m2oId(t.main_property_id as OdooM2O | false | null);
+    const mid = m2oId(t.main_property_id);
     if (!mid) continue;
+
     const meta = refById.get(mid);
-    if (!meta) continue;
+    if (!meta) continue; // tu as dit: toujours un reference_id → on garde ce comportement
 
     const assetRef = meta.ref;
     if (banned && banned.has(normRef(assetRef))) continue;
 
-    const cleaned = cleanTenancyName(String(t.name ?? ""));
-
     let waltYears = 0;
     if (t.date_end_display) {
-      const end = new Date(String(t.date_end_display)).getTime();
-      const diffY = (end - today) / (365.25 * 24 * 3600 * 1000);
+      const endMs = new Date(String(t.date_end_display)).getTime();
+      const diffY = (endMs - today) / (365.25 * 24 * 3600 * 1000);
       waltYears = Math.max(0, diffY);
     }
 
     out.push({
       asset_ref: assetRef,
-      tenant_name: cleaned,
+      tenant_name: cleanTenancyName(t.name),
       space: Number(t.space ?? 0) || 0,
       rent: Number(t.total_current_rent ?? 0) || 0,
       walt: waltYears,

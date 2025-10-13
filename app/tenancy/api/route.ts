@@ -1,3 +1,4 @@
+// app/tenancy/api/route.ts
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
@@ -10,43 +11,43 @@ export async function GET() {
   try {
     const banned = loadBannedAssets();
 
-    // CSV PM (toujours dispo si le fichier est présent)
+    // PM CSV
     const pmRaw = await loadPmCsvTenants();
-    const pmBase = pmRaw.filter((r) => !banned.has(normRef(r.asset_ref)));
+    const pmFiltered = pmRaw.filter((r) => !banned.has(normRef(r.asset_ref)));
 
-    // Par défaut: on renvoie PM seul si Odoo est indisponible
+    const debug: Record<string, unknown> = {
+      ban_count: banned.size,
+      pm_raw_count: pmRaw.length,
+      pm_after_ban_count: pmFiltered.length,
+    };
+
     if (!hasOdooEnv()) {
-      return NextResponse.json({
-        pm: pmBase.map((r) => ({ ...r, am: "" })),
-        odoo: [],
-        warnings: ["Odoo not configured on server (missing env vars)"],
-      });
+      const warnings = ["Odoo not configured on server (missing env vars)"];
+      return NextResponse.json({ pm: pmFiltered.map((r) => ({ ...r, am: "" })), odoo: [], warnings, debug });
     }
 
-    // Sinon, on tente Odoo — sans faire chuter la route en cas d’échec
+    // IMPORTANT: on récupère Odoo SANS banlist pour diagnostiquer
     const [odooRes, amMapRes] = await Promise.allSettled([
-      getOdooTenants(banned),
+      getOdooTenants(undefined),
       getAssetAMMap(),
     ]);
 
-    const odoo =
-      odooRes.status === "fulfilled" ? odooRes.value : [];
-    const amMap =
-      amMapRes.status === "fulfilled" ? amMapRes.value : new Map<string, string>();
-
-    const pm = pmBase.map((r) => ({ ...r, am: amMap.get(r.asset_ref) || "" }));
-
-
     const warnings: string[] = [];
-    if (odooRes.status === "rejected") warnings.push(`Odoo tenants error: ${String(odooRes.reason)}`);
-    if (amMapRes.status === "rejected") warnings.push(`Odoo AM map error: ${String(amMapRes.reason)}`);
+    if (odooRes.status === "rejected") warnings.push(`getOdooTenants error: ${String(odooRes.reason)}`);
+    if (amMapRes.status === "rejected") warnings.push(`getAssetAMMap error: ${String(amMapRes.reason)}`);
 
-    return NextResponse.json({ pm, odoo, ...(warnings.length ? { warnings } : {}) });
+    const odooAll = odooRes.status === "fulfilled" ? odooRes.value : [];
+    const odoo = odooAll.filter((r) => !banned.has(normRef(r.asset_ref)));
+
+    const amMap = amMapRes.status === "fulfilled" ? amMapRes.value : new Map<string, string>();
+    const pm = pmFiltered.map((r) => ({ ...r, am: amMap.get(r.asset_ref) || "" }));
+
+    debug.odoo_all_count = odooAll.length;
+    debug.odoo_after_ban_count = odoo.length;
+
+    return NextResponse.json({ pm, odoo, ...(warnings.length ? { warnings } : {}), debug });
   } catch (e: unknown) {
-    const msg =
-      typeof e === "object" && e !== null && "message" in e
-        ? String((e as { message?: unknown }).message)
-        : String(e);
+    const msg = e instanceof Error ? e.message : String(e);
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

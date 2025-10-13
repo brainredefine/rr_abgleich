@@ -6,7 +6,8 @@ export interface OdooConfig {
   url: string;
   db: string;
   user: string;
-  apiKey: string;
+  /** Mot de passe OU API key (on supporte les 2) */
+  passwordOrKey: string;
 }
 
 /* ========= JSON-RPC infra ========= */
@@ -38,28 +39,30 @@ async function postJsonRpc<T>(endpoint: string, payload: unknown): Promise<T> {
     const dbg = data.error.data?.debug ? `\n${data.error.data.debug}` : "";
     throw new Error(`Odoo RPC error: ${data.error.message}${dbg}`);
   }
-  if (typeof data.result === "undefined") {
-    throw new Error("Odoo RPC: result undefined");
-  }
+  if (typeof data.result === "undefined") throw new Error("Odoo RPC: result undefined");
   return data.result;
 }
-export function hasOdooEnv(cfg?: Partial<OdooConfig>): boolean {
-  const url = cfg?.url ?? process.env.ODOO_URL ?? "";
-  const db = cfg?.db ?? process.env.ODOO_DB ?? "";
-  const user = cfg?.user ?? process.env.ODOO_USER ?? "";
-  const apiKey = cfg?.apiKey ?? process.env.ODOO_API ?? "";
-  return Boolean(url && db && user && apiKey);
-}
+
 /* ========= Types Odoo utiles ========= */
 export interface OdooM2O<TId = number, TName = string> extends Array<TId | TName> {
   0: TId;
   1: TName;
 }
 const m2oId = (v: OdooM2O | false | null | undefined): number | null => {
-  if (!v) return null; // couvre null/undefined/false
+  if (!v) return null;
   const id = v[0];
   return typeof id === "number" ? id : null;
 };
+
+/* ========= Helpers ========= */
+export function hasOdooEnv(cfg?: Partial<OdooConfig>): boolean {
+  const url = cfg?.url ?? process.env.ODOO_URL ?? "";
+  const db = cfg?.db ?? process.env.ODOO_DB ?? "";
+  const user = cfg?.user ?? process.env.ODOO_USER ?? "";
+  // compat: ODOO_API (token) OU ODOO_PWD (password)
+  const pwdOrKey = cfg?.passwordOrKey ?? process.env.ODOO_API ?? process.env.ODOO_PWD ?? "";
+  return Boolean(url && db && user && pwdOrKey);
+}
 
 /* ========= Client Odoo ========= */
 export class OdooClient {
@@ -69,20 +72,23 @@ export class OdooClient {
     const url = cfg?.url ?? process.env.ODOO_URL ?? "";
     const db = cfg?.db ?? process.env.ODOO_DB ?? "";
     const user = cfg?.user ?? process.env.ODOO_USER ?? "";
-    const apiKey = cfg?.apiKey ?? process.env.ODOO_API ?? "";
-    this.cfg = { url, db, user, apiKey };
-    if (!url || !db || !user || !apiKey) {
-      throw new Error("Odoo env vars manquantes (ODOO_URL/DB/USER/API)");
+    // compat: on prend d’abord ODOO_API (token), puis ODOO_PWD
+    const passwordOrKey =
+      cfg?.passwordOrKey ?? process.env.ODOO_API ?? process.env.ODOO_PWD ?? "";
+    this.cfg = { url, db, user, passwordOrKey };
+    if (!hasOdooEnv(this.cfg)) {
+      throw new Error("Odoo env vars manquantes (ODOO_URL/DB/USER/API ou PWD)");
     }
   }
 
-  private async authenticate(): Promise<number> {
+  /** Auth simple, renvoie uid */
+  async authenticate(): Promise<number> {
     const uid = await postJsonRpc<number>(`${this.cfg.url}/jsonrpc`, {
       service: "common",
       method: "authenticate",
-      args: [this.cfg.db, this.cfg.user, this.cfg.apiKey, {}],
+      args: [this.cfg.db, this.cfg.user, this.cfg.passwordOrKey, {}],
     });
-    if (typeof uid !== "number" || Number.isNaN(uid)) {
+    if (typeof uid !== "number" || !Number.isFinite(uid) || uid <= 0) {
       throw new Error("Échec d'authentification Odoo");
     }
     return uid;
@@ -98,11 +104,11 @@ export class OdooClient {
     return postJsonRpc<T>(`${this.cfg.url}/jsonrpc`, {
       service: "object",
       method: "execute_kw",
-      args: [this.cfg.db, uid, this.cfg.apiKey, model, method, args, kwargs ?? {}],
+      args: [this.cfg.db, uid, this.cfg.passwordOrKey, model, method, args, kwargs ?? {}],
     });
   }
 
-  /** search_read générique (pas de `any`) */
+  /** search_read générique */
   async searchRead<T extends object>(
     model: string,
     domain: unknown[],
@@ -129,16 +135,11 @@ interface PropertyRefRec {
   reference_id: string | null;
 }
 
-/* ========= getAssetsData (ONLY units) =========
-   - GLA: somme des units (property.property où main_property_id != false), puis /2 (choix actuel)
-   - Rent: somme des tenancies par main_property_id
-   - WALT: moyenne pondérée par le loyer des années restantes (>= 0)
-   - reference_id: pris sur la main property
-================================================ */
+/* ========= getAssetsData ========= */
 export async function getAssetsData(): Promise<AssetData[]> {
   const odoo = new OdooClient();
 
-  // 1) GLA = sum of units by main_property_id
+  // 1) units → GLA
   const units = await odoo.searchRead<UnitRec>(
     "property.property",
     [["main_property_id", "!=", false]],
@@ -152,46 +153,39 @@ export async function getAssetsData(): Promise<AssetData[]> {
     glaByMain[mid] = (glaByMain[mid] ?? 0) + area;
   }
 
-  // 2) Tenancies for Rent + WALT inputs
+  // 2) tenancies → Rent + WALT
   const tenancies = await odoo.searchRead<TenancyRec>(
     "property.tenancy",
     [["main_property_id", "!=", false]],
     ["main_property_id", "total_current_rent", "date_end_display"]
   );
-
   const rentByMain: Record<number, number> = {};
-  const waltNumeratorByMain: Record<number, number> = {};   // Σ(rent * remainingYears)
-  const waltDenominatorByMain: Record<number, number> = {}; // Σ(rent)
-
+  const waltNum: Record<number, number> = {};
+  const waltDen: Record<number, number> = {};
   const now = new Date();
   const msPerYear = 365.25 * 24 * 3600 * 1000;
 
   for (const t of tenancies) {
     const mid = m2oId(t.main_property_id);
     if (!mid) continue;
-
     const rent = Number(t.total_current_rent ?? 0) || 0;
     rentByMain[mid] = (rentByMain[mid] ?? 0) + rent;
 
-    // WALT: remaining years from today to date_end_display (>=0)
     let remYears = 0;
     if (t.date_end_display) {
       const end = new Date(String(t.date_end_display));
-      const diff = (end.getTime() - now.getTime()) / msPerYear;
-      remYears = Math.max(0, diff);
+      remYears = Math.max(0, (end.getTime() - now.getTime()) / msPerYear);
     }
     if (rent > 0) {
-      waltNumeratorByMain[mid] = (waltNumeratorByMain[mid] ?? 0) + rent * remYears;
-      waltDenominatorByMain[mid] = (waltDenominatorByMain[mid] ?? 0) + rent;
+      waltNum[mid] = (waltNum[mid] ?? 0) + rent * remYears;
+      waltDen[mid] = (waltDen[mid] ?? 0) + rent;
     }
   }
 
-  // 3) Main IDs to output
+  // 3) mains & refs
   const mainIds = Array.from(
-    new Set([...Object.keys(glaByMain), ...Object.keys(rentByMain)].map((x) => Number(x)))
+    new Set([...Object.keys(glaByMain), ...Object.keys(rentByMain)].map(Number))
   );
-
-  // 4) Get reference_id for each main
   const mains: PropertyRefRec[] = mainIds.length
     ? await odoo.searchRead<PropertyRefRec>(
         "property.property",
@@ -199,19 +193,16 @@ export async function getAssetsData(): Promise<AssetData[]> {
         ["id", "reference_id"]
       )
     : [];
-
   const refById = new Map<number, string>(
     mains.map((m) => [m.id, (m.reference_id ?? String(m.id)).trim()])
   );
 
-  // 5) Build output (GLA halved per your patch + thresholds)
+  // 4) output
   const out: AssetData[] = mainIds.map((id) => {
     const glaRaw = glaByMain[id] ?? 0;
-    const glaFinal = glaRaw / 2; // choix actuel
+    const glaFinal = glaRaw / 2; // ton choix actuel
     const walt =
-      waltDenominatorByMain[id] && waltDenominatorByMain[id] > 0
-        ? waltNumeratorByMain[id] / waltDenominatorByMain[id]
-        : 0;
+      waltDen[id] && waltDen[id] > 0 ? waltNum[id] / waltDen[id] : 0;
 
     return {
       reference_id: refById.get(id) ?? String(id),
@@ -223,4 +214,10 @@ export async function getAssetsData(): Promise<AssetData[]> {
 
   out.sort((a, b) => (a.reference_id || "").localeCompare(b.reference_id || ""));
   return out;
+}
+
+/* ========= util: ping ========= */
+export async function odooPing(): Promise<number> {
+  const c = new OdooClient();
+  return c.authenticate(); // renvoie le uid si OK
 }
