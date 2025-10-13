@@ -1,4 +1,3 @@
-// lib/csvTenants.ts
 import Papa from "papaparse";
 import fs from "fs";
 import path from "path";
@@ -8,7 +7,7 @@ import { buildPmToAmMatcher } from "@/lib/tenantMap";
 /** Lecture robuste UTF-8 → fallback Latin-1 (pour ü/ö/ä/ß quand CSV mal encodé) */
 function readCsvText(filePath: string): string {
   const buf = fs.readFileSync(filePath);
-  let utf8 = buf.toString("utf8");
+  const utf8 = buf.toString("utf8"); // ← const (prefer-const)
   const hasHighBytes = buf.some((b) => b >= 0x80);
   const replacementCharCount = (utf8.match(/\uFFFD/g) || []).length;
   const asciiRatio = utf8.length > 0 ? (utf8.match(/[\x00-\x7F]/g) || []).length / utf8.length : 1;

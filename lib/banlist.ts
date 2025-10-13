@@ -15,22 +15,26 @@ export function loadBannedAssets(): Set<string> {
   const base = path.join(process.cwd(), "public", "data");
   const out = new Set<string>();
 
-  const tryPush = (v: any) => {
+  const tryPush = (v: unknown) => {
+    // cas tableau direct
     if (Array.isArray(v)) {
-      for (const x of v) out.add(normRef(x));
+      for (const x of v) out.add(normRef(String(x)));
       return;
     }
+    // cas objet contenant assets/ban/list
     if (v && typeof v === "object") {
-      // cas { assets: [...]} / { ban: [...] } / { list: [...] }
-      for (const key of ["assets", "ban", "list"]) {
-        if (Array.isArray((v as any)[key])) {
-          for (const x of (v as any)[key]) out.add(normRef(x));
+      const maybeObj = v as Record<string, unknown>;
+
+      for (const key of ["assets", "ban", "list"] as const) {
+        const arr = maybeObj[key];
+        if (Array.isArray(arr)) {
+          for (const x of arr) out.add(normRef(String(x)));
           return;
         }
       }
       // cas map { "AD1": true, "ZZ9": 1 }
-      for (const k of Object.keys(v)) {
-        const val = (v as any)[k];
+      for (const k of Object.keys(maybeObj)) {
+        const val = maybeObj[k];
         if (val) out.add(normRef(k));
       }
     }
@@ -40,7 +44,8 @@ export function loadBannedAssets(): Set<string> {
   const jsonPath = path.join(base, "banlist.json");
   if (fs.existsSync(jsonPath)) {
     try {
-      const j = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+      const txt = fs.readFileSync(jsonPath, "utf8");
+      const j: unknown = JSON.parse(txt);
       tryPush(j);
     } catch {}
   }

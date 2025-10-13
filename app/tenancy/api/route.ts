@@ -22,7 +22,10 @@ export async function GET() {
       .map((r) => ({ ...r, am: amMap.get(r.asset_ref) || "" }));
 
     return NextResponse.json({ pm, odoo });
-  } catch (e: any) {
-    return NextResponse.json({ error: String(e?.message || e) }, { status: 500 });
+  } catch (e: unknown) {
+    const msg = typeof e === "object" && e !== null && "message" in e
+      ? String((e as { message?: unknown }).message)
+      : String(e);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
