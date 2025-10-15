@@ -45,7 +45,7 @@ export default function LandingProtected() {
       if (res.ok) {
         setAuthNow();     // session 24h
         setAuthed(true);
-      } else setError("Mot de passe incorrect.");
+      } else setError("Incorrect password.");
     } catch {
       setError("Erreur de connexion.");
     }
@@ -58,10 +58,10 @@ export default function LandingProtected() {
           onSubmit={handleLogin}
           className="flex w-full max-w-sm flex-col gap-3 rounded-xl border border-gray-300 bg-gray-50 p-6 shadow-lg"
         >
-          <h1 className="text-lg font-semibold text-center mb-2">Accès restreint</h1>
+          <h1 className="text-lg font-semibold text-center mb-2">Restricted access.</h1>
           <input
             type="password"
-            placeholder="Mot de passe"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="rounded-lg border border-gray-300 bg-white px-3 py-2"
@@ -74,7 +74,7 @@ export default function LandingProtected() {
             Entrer
           </button>
           <p className="text-xs text-gray-500 text-center mt-1">
-            La session expire automatiquement après 24h.
+            Automatic logout after 24h.
           </p>
         </form>
       </main>
