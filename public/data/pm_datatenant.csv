@@ -1,198 +1,888 @@
-A1,Annaberg-Buchholz,PENNY Markt GmbH,1077.93,10899.92,4.91
-A1,Annaberg-Buchholz,Fleischerei Richter GmbH & Co. KG,200,650,0.08
-A10,Pausa/Vogtland,Edeka Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,905,7816.31,3.33
-A11,Pirna,Leerstand stpfl.,145.02,0,0
-A11,Pirna,Netto Marken-Discount Stiftung & Co. KG,993.93,10678.04,-0.07
-A11,Pirna,Slate Mobility GmbH & CO. KG (Climova),0,418.13,23.7
-A11,Pirna,Slate Mobility GmbH & Co. KG (Amperio),0,306,0
-A13,Thum,PENNY Markt GmbH Region Ost,953,9432.87,4.03
-A13,Thum,Leerstand stpfl.,156,0,0
-A14,Treuen,Netto Marken-Discount Stiftung & Co. KG,1087,9966.7,4.87
-A15,Weißwasser/Oberlausitz,Netto Marken-Discount Stiftung & Co. KG,1157,7322.28,2.42
-A2,Barby (Elbe),Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1081,9716.89,0.84
-A3,Biederitz,Netto Marken-Discount Stiftung & Co. KG,1357,9812.53,1.17
-A4,Breitungen/Werra,Netto Marken-Discount Stiftung & Co. KG,1058,10104.53,6.58
-A5,Frauenstein,"Wolf GmbH ""Schinkenpeter""",75,1600,2.33
-A5,Frauenstein,Leerstand stpfl.,66,0,0
-A5,Frauenstein,PENNY Markt GmbH,885.37,6357.6,5
-A6,Görlitz,PENNY Markt GmbH,1045.42,10760,7.75
-A6,Görlitz,Leerstand stpfl.,55.48,0,0
-A7,Großröhrsdorf,Netto Marken-Discount Stiftung & Co. KG,1056,10970.93,4.83
-A8,Meiningen,PENNY Markt GmbH,1020.91,12358.97,9.17
-A8,Meiningen,SAGASSER Fachmarkt Nord GmbH & Co. KG,643.13,3507,1.08
-A9,Meißen,Netto Marken-Discount Stiftung & Co. KG,1060,10421.39,0.83
-A9,Meißen,Leerstand stpfl.,205,0,0
-AA1,Amberg,Netto Marken-Discount Stiftung & Co. KG,1507.73,17666.66,10.33
-AA10,Lübbecke,Netto Marken-Discount Stiftung & Co. KG,1162,12028.69,10.33
-AA100,Buttstädt,Netto Marken-Discount Stiftung & Co. KG,1086,9374.2,17.21
-AA101,Edemissen,Netto Marken-Discount Stiftung & Co. KG,1046,9546.51,10.25
-AA102,Eilenburg,Netto Marken-Discount Stiftung & Co. KG,1580.35,16505,14.81
-AA103,Eschelbronn,Netto Marken-Discount Stiftung & Co. KG,1045,12300,10.24
-AA104,Perl,REWE Markt GmbH Zweigniederlassung Südwest,2654,30675.13,10.33
-AA105,Bad Wünneberg,Netto Marken-Discount Stiftung & Co. KG,1046,8718.82,17.21
-AA106,Kefenrod,Netto Marken-Discount Stiftung & Co. KG,1086,9792.16,10.21
-AA107,Küps,Netto Marken-Discount Stiftung & Co. KG,1169,11183.26,10.52
-AA107,Küps,Leerstand stpfl.,300,0,0
-AA108,Eberswalde,Netto Marken-Discount Stiftung & Co. KG,1045,10910.85,11.24
-AA108,Eberswalde,Rettungsdienst Landkreis Barnim GmbH,709.19,4861.07,4.42
-AA109,Bonn Dransdorf,Lidl Vertriebs-GmbH & Co. KG,1333,15190.61,3.33
-AA11,Mülheim an der Ruhr,Netto Marken-Discount Stiftung & Co. KG,1110.06,16495.82,10.33
-AA110,Schöningen,Lidl Vertriebs-GmbH & Co. KG,1032,14789.98,2.25
-AA111,Bergtheim,EDEKA Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,1617.85,21602.2,3.5
-AA112,Döbeln,Lidl Vertriebs-GmbH & Co. KG,1498,15186.15,5.92
-AA113,Herdorf,Lidl Vertriebs-GmbH & Co.KG,1027,10757.28,1.33
-AA114,Lathen,Lidl Vertriebs-GmbH & Co.KG,1410,11447.89,1.67
-AA115,Mittelangeln,Netto Marken-Discount Stiftung & Co. KG,1308,7862.66,8.17
-AA116,Schweinfurt,FISHBULL Franz Fischer SE & Co. KG,1224,4843.35,6.83
-AA117,Wolmirstedt,Lidl Vertriebs- GmbH & Co.KG,1170,9805.86,-0.42
-AA118,Glauchau,Kaufland Vertrieb 418 GmbH & Co. KG,7271.54,51657.67,5.08
-AA118,Glauchau,MEDIMAX Zentrale Electronic SE c/o ADH,1564.69,10945.98,-0.31
-AA118,Glauchau,mister*lady GmbH,336,4095.17,1.42
+AA75,Magdeburg,Netto Marken-Discount Stiftung & Co. KG,1142,12105.2,11.85
+AA75,Magdeburg,Leerstand stpfl.,342,0,0
+AA46,Braunschweig,REWE Markt GmbH Zweigniederladdung Nord,4220,50206.9,3.75
+AA46,Braunschweig,Fahrschule Weber GmbH,35,928.1,1.25
+AA75,Magdeburg,Leerstand stfr.,97.27,0,0
+AA47,Braunschweig,Aldi GmbH & Co. KG,1180,17000,8.25
+AA75,Magdeburg,Thomas Bunge,14.74,263,0.08
+AA75,Magdeburg,Ronald Gebauer,15.21,271,0.08
+AA47,Braunschweig,Casino Merkur Spielothek GmbH,234,2132.71,2.5
+AA75,Magdeburg,Manuela Gradtke,34.2,509.5,0.08
+AA75,Magdeburg,Stefan Köhler,14.74,249,0.08
+AA47,Braunschweig,Heidberg Apotheke,238.49,6150,7.25
+AA75,Magdeburg,None,35.57,694,0
+AA47,Braunschweig,Hörgeräte Berger e.K.,45.12,1000,3.25
+AA75,Magdeburg,Lutz Kühne,14.74,249,0.08
+AA47,Braunschweig,Karl-Heinz Schirm Reformhaus Schirm,161.39,2537.36,0.25
+AA75,Magdeburg,Cathleen Kraus,15.21,289,0.08
+AA75,Magdeburg,Brigitte Aggour,15.1,260,0
+AA47,Braunschweig,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1124.11,14121.83,8.56
+AA75,Magdeburg,Lars Oswald,14.74,265,0.08
+AA47,Braunschweig,Fleischerei und Partyservice Neubauer GmbH und Co. KG,142.24,3362.85,4.42
+AA47,Braunschweig,Sanitätshaus Enge GmbH,58,1260,5.25
+AA75,Magdeburg,Anja Apel,16.02,305,0
+AA49,Husum,DPW Deusche Plakat-Werbung GmbH & Co.KG,0,75,3.75
+AA49,Husum,Elham Jungherr,65,980.74,1.08
+AA49,Husum,Stückwerk,136,1591.21,5.25
+AA49,Husum,Garburg Knoche-Lenz GbR,200.43,2418.22,1.25
+AA75,Magdeburg,Dentz,19.68,263,0.08
+AA49,Husum,Monika Seuthe,69,991.83,-1.75
+AA75,Magdeburg,Ingo Zurek,19.98,390,0.08
+AA49,Husum,ReiseService Schleswig-Holstein GmbH,64,996.24,-1
+AA49,Husum,Dirk Rossmann GmbH,750,8164.21,4.63
+AA49,Husum,Aldi GmbH & Co. KG,1539.17,18343.94,7.78
+AA75,Magdeburg,Ströer Media Deutschland GmbH,0,72.43,-0.25
+AA50,Kell am See,REWE Markt GmbH Zweigniederlassung West,1345.87,21753.04,6.25
+AA33,Adenau,Leerstand stpfl.,1050,0,0
+AA51,Nalbach,REWE Markt GmbH Zweigniederlassung SüdWest,1534.23,25358.39,3.25
+AA33,Adenau,Leerstand stfr.,0,0,0
+AA76,Halle,Netto Marken-Discount Stiftung & Co. KG,1046,9546.51,10.95
+AA34,Ketsch,Lidl Vertriebs-GmbH & Co. KG Gesellschaft Speyer,1005,19079.94,10.25
+AA35,Lübbenau,Lidl Vertriebs-GmbH & Co. KG Gesellschaft Freienbrink,1236,8790.33,0.25
+AA77,Hohenlockstedt,Netto Marken-Discount Stiftung & Co. KG,1088,11724.38,10.77
+AA36,Nagold,Lidl Vertriebs-GmbH & Co. KG,1000,14088.17,10.25
+AA53,Wolfsburg,Thomas Trenkner,44.65,1073.62,1.5
+AA53,Wolfsburg,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1027.25,12200.06,7.47
+AA37,Schorfheide-Finowfurt,Lidl Vertriebs-GmbH & Co. KG Gesellschaft Kremmen,1268,11908.35,0.25
+AA40,Chemnitz,SCHWARZ-Außenwerbung GmbH,0,650,3.25
+AA40,Chemnitz,Kaufland-Center GmbH & Co. KG,10259.36,113113.15,5.25
+AA38,Wendelstein,Lidl Vertriebs-GmbH & Co. KG Westfranken Gesellschaft Eggolsheim,1155,11367.59,1.25
+AA44,Staßfurt,Kaufland Vertrieb 40 GmbH & Co. KG,6265.78,68158.69,5.25
+AA44,Staßfurt,toom Baumarkt GmbH,5430,12664.08,2.83
+AA78,Holzminden,Netto Marken-Discount Stiftung & Co. KG,1146,11026.24,17.74
+AA45,Wurzen,Leerstand stpfl.,7880,0,0
+AA44,Staßfurt,KiK Textilien und Non-Food GmbH,600.37,5557.29,5.17
+AA46,Braunschweig,FB Friseurbetrieb GmbH & Co. KG,72,1828.11,2.25
+AA44,Staßfurt,SCHWARZ-Außenwerbung GmbH,0,487.5,2.25
+AA46,Braunschweig,Aldi GmbH & Co. KG,1281.46,14945.23,7.92
+AA45,Wurzen,Kaufland Vertrieb KDSN GmbH & Co. KG,6178.62,67861.23,3.33
+AA45,Wurzen,AWG Allgemeine Warenvertriebs-GmbH,1009,9500,5.92
+AA46,Braunschweig,Ernsting's family GmbH & Co. KG,232,3754.8,1.25
+AA45,Wurzen,SCHWARZ-Außenwerbung GmbH,0,108.33,2.25
+AA46,Braunschweig,Dirk Rossmann GmbH,899,16724.31,2.08
+AA56,Bischofsheim,REWE Markt GmbH Zweigniederlassung Mitte,2053.09,28882.5,4.92
+AA56,Bischofsheim,Haar 2O,96.74,1852.95,1.92
+AA46,Braunschweig,Ludmila Kleister,103.5,1743.65,1.25
+AA55,Rüdesheim,REWE Markt GmbH Zweigniederlassung Mitte,892.8,10588.55,4.67
+AA46,Braunschweig,Ullrich und Iwona Just oHG TUI Reise Center,74,1949.66,1
+AA55,Rüdesheim,Penny Markt GmbH,1037.49,15593.02,4.67
+AA46,Braunschweig,Monika Övüc Zeki Övüc,168,1758.1,5.25
+AA63,Schwedt Oder,Netto Marken-Discount Stiftung & Co. KG,1396.15,20036.54,10.25
+AA64,Triptis,Netto Marken-Discount Stiftung & Co. KG,1304.82,16663.25,10.25
+AA65,Wilster,Netto Marken-Discount Stiftung & Co. KG,1137.38,16331.91,8.25
+AA66,Wriezen,Eberswalder Brot- und Feinbackwaren GmbH,50,1624.16,0.67
+AA66,Wriezen,Erwin Kaminski,110,1519.63,-0.67
+AA66,Wriezen,Quyet Nguyen Van,160,1485.94,6.25
+AA46,Braunschweig,Zahnwerk GmbH,300,2883.36,1.25
+AA46,Braunschweig,Löwenbäckerei Schaper e.K.,141,4551.02,0.25
+AA48,Himmelpforten,REWE Markt GmbH Zweigniederlassung Nord,2485.32,26772.93,11.08
+AA48,Himmelpforten,Silvia Hinz,43,290.42,0.25
+AA48,Himmelpforten,Luisa-Particia Vidal-Guedes Dirk Doogs,60,457.28,0.25
+AA46,Braunschweig,Fleischerei und Partyservice Neubauer GmbH und Co. KG,71,1768.61,5.58
+AA46,Braunschweig,Ahmad Alkhalid Ewelina Alkhalid,191,3554.05,2.58
+AA46,Braunschweig,Melanie Döhrmann,124,2108,7.25
+AA48,Himmelpforten,Leerstand stfr.,102,0,0
+AA46,Braunschweig,Mert Erer,37,1250,5.25
+AA46,Braunschweig,Leerstand stpfl.,51,0,0
+AA48,Himmelpforten,Leerstand stpfl.,369.35,0,0
+AA46,Braunschweig,Sani Erdogan,101,1717,8.83
+AA46,Braunschweig,WISAG Gebäudetechnik Nord GmbH & Co. KG,35,1,0.08
+AA46,Braunschweig,WOBtalk GmbH,73,1606,1.83
+AA46,Braunschweig,Nguyen Thi Huong,34,800,1
+AA46,Braunschweig,Park & Control PAC GmbH,0,835,-1.08
+AA46,Braunschweig,Dt. Plakat Werbung GmbH,0,200,1.25
+AA46,Braunschweig,Ströer Dt. Städte Medien GmbH,0,50.08,0.91
+AA32,Neustrelitz,Danh Ngo Tran,84.56,1255.2,7.67
+AA32,Neustrelitz,Blumen Schwisow GmbH & Co.KG,84.01,2351.09,1.25
+AA32,Neustrelitz,Augenoptik Radloff Elke Radloff,133.02,1518.97,-1.75
+AA32,Neustrelitz,freenet Shop GmbH,115.42,2424.99,2.45
+AA32,Neustrelitz,ACTIVA Heimtierprodukte GmbH & Co. KG,394.79,4917.64,2.69
+AA32,Neustrelitz,Spiel & Spaß NZ GmbH,182.92,1620.93,0.61
+AA32,Neustrelitz,Reinigung Monique Jörn,55.61,804.6,-0.92
+AA32,Neustrelitz,Leerstand stpfl.,855.08,0,0
+AA32,Neustrelitz,Apotheke Fabian Petznick,161.18,2550.46,0
+AA32,Neustrelitz,Woolworth GmbH,839.32,7973.54,0
+AA32,Neustrelitz,Leerstand stfr.,120.89,0,0
+AA32,Neustrelitz,Dr. Terstegge Klaus /Eisenach Constanze Ergotherapie-Praxis,137.48,856.38,0.5
+AA32,Neustrelitz,KDW Technical Help GmbH Callcenter,1037.31,5219.64,-0.42
+AA48,Himmelpforten,Emilija Chochlow,50,441.17,0.25
+AA48,Himmelpforten,Ibrahim Halil Yildiz,99,590.97,2.41
+AA48,Himmelpforten,Kai Dobrig,40,315.99,0.25
+AA48,Himmelpforten,Ayss Yildiz,134,680,1
+AA48,Himmelpforten,Martin Herkner Christian Herkner,60,489.61,0.25
+AA48,Himmelpforten,Mac Hair,140,1105.57,2.41
+AA49,Husum,EDEKA Handelsgesellschaft Nord mbH,1928,21118.54,4.33
+AA58,Brandenburg an der Havel,Netto Marken-Discount Stiftung & Co. KG,1068.98,15412.23,10.25
+AA32,Neustrelitz,Blischke/Kruse GbR Büro für heilpädagog. Praxis,48.61,348.37,0.25
+AA59,Esens,Netto Marken-Discount Stiftung & Co. KG,1251.65,17200,11
+AA39,Berlin,Kaufland Vertrieb 294 GmbH & Co. KG,6311.48,78515.99,7.25
+AA39,Berlin,SCHWARZ-Außenwerbung GmbH,0,650,2.25
+AA39,Berlin,Ströer Media Deutschland GmbH Niederlassung Berlin,0,291.67,4.75
+AA32,Neustrelitz,Imbiss Do Thi Hang und Singh Do Thi Hang und Kashmir Singh,76.38,844.37,1.25
+AA41,Lübbenau,SCHWARZ-Außenwerbung GmbH,0,650,2.25
+AA41,Lübbenau,toom Baumarkt GmbH,5479,33035.74,4.83
+AA41,Lübbenau,Kaufland Vertrieb 76 GmbH & Co. KG,8229.24,85005.69,5.25
+AA60,Gera,Netto Marken-Discount Stiftung & Co. KG,1143.38,15519.76,8.25
+AA42,Rödermark,Kaufland Vertrieb EPSILON GmbH & Co. KG,5376.27,68572.61,3.33
+AA42,Rödermark,OBI GmbH,11688.86,58526.38,3.67
+AA32,Neustrelitz,Fürstenseer-Frisch-Hähnchen-Grill GmbH Cornelia Rose,0,1100,1.67
+AA32,Neustrelitz,Jens Wendland Fischräucherei- und Handel,0,133.33,0.08
+AA32,Neustrelitz,Media GmbH Gesellschaft für Außenwerbung Gräfenhainichen,0,60.85,0.29
+AA53,Wolfsburg,FB Lifestyle GmbH & Co. KG,114,2506.86,2.25
+AA32,Neustrelitz,SCHWARZ-Außenwerbung GmbH,0,262.5,-0.34
+AA54,Überherrn,REWE Markt GmbH Zweigniederlassung Südwest,1687.21,25575.19,5.25
+AA32,Neustrelitz,DFMG Deutsche Funkturm GmbH,0,509.89,8.75
+AA55,Saarlouis,REWE Markt GmbH Zweigniederlassung Südwest,2078,27036.75,7.99
+AA39,Berlin,SB Möbel Boss Handels GmbH Berlin Köpenick,9867.41,36700,3.33
+AA42,Rödermark,Takko Holding GmbH,736.85,10137.63,4.42
+AA42,Rödermark,dm-drogerie markt GmbH + Co. KG,702.9,8932.85,6.41
+AA39,None,EnBW mobility+ AG & Co. KG,0,125,9.67
+AA42,Rödermark,JYSK SE,1426.24,8613.69,1.92
+AA42,Rödermark,Deichmann SE,495.41,6380.28,3.4
+AA42,Rödermark,DPW Deutsche Plakat-Werbung GmbH & Co. KG,0,283.33,1.25
+AA39,Berlin,Ronald Geisler Bettengeisler - mobile Bettenreinigung,0,80,0.08
+AA43,Rudolstadt,Kaufland Vertrieb 78 GmbH & Co. KG,7720.89,83987.25,5.25
+AA43,Rudolstadt,S.O.B.I.G. Baumarkt Saaletal GmbH & Co. KG,5747.45,29082.69,2.75
+AA40,Chemnitz,REPO-Markt Süd Rest-und Sonderposten GmbH,6040,10000,6.08
+AA43,Rudolstadt,SCHWARZ-Außenwerbung GmbH,0,541.67,2.25
+AA47,Braunschweig,Leerstand stpfl.,739.09,0,0
+AA40,None,EnBW mobility+ AG & Co. KG,0,125,0
+AA61,Groß Denkte,Netto Marken-Discount Stiftung & Co. KG,1417.85,17040.68,8.25
+AA61,Groß Denkte,Volz GmbH,0,50,-0.08
+AA62,Niederndodeleben,Netto Marken-Discount Stiftung & Co. KG,1191.46,14239.41,10.25
+AA66,Wriezen,Netto Marken-Discount Stiftung & Co. KG,1348.11,16963.92,10.25
+AA41,None,EnBW mobility+ AG & Co. KG,0,125,9.73
+AA66,Wriezen,Klaus-Dieter Repke,170,2325.13,1.83
+AA42,None,EnBW mobility+ AG & Co. KG,0,125,10.67
+AA118,Glauchau,Kaufland Vertrieb 418 GmbH & Co. KG,7271.54,51657.67,5
+AA118,Glauchau,MEDIMAX Zentrale Electronic SE c/o ADH,1564.69,10945.98,-0.4
+AA118,Glauchau,mister*lady GmbH,336,4095.17,1.33
 AA118,Glauchau,Leerstand stpfl.,769.82,0,0
-AA118,Glauchau,BRL Center GmbH,175,6564.03,2.92
-AA118,Glauchau,Reiseland GmbH & Co. KG,66.75,2026.9,2.33
-AA118,Glauchau,Klier Hair Group GmbH,78.18,2691.34,0.08
-AA118,Glauchau,Apache Jeans,150.13,2251.95,4.33
-AA118,Glauchau,AWG Allgemeine Warenvertriebs-GmbH,781.67,7278.09,6.33
-AA118,Glauchau,Apollo-Optik Holding GmbH & Co. KG,124.95,1704.88,3.17
-AA118,Glauchau,Simone Kurt,24,770.77,3.67
-AA118,Glauchau,Quoc Dung Tran,24,1201.8,3.83
-AA118,Glauchau,Fleischerei Richter GmbH & Co. KG,81.8,3200,0.58
-AA118,Glauchau,Convenience Concept GmbH,28.95,942.85,2.33
-AA118,Glauchau,Floribunda GmbH,58,1748.96,2.58
-AA118,Glauchau,SCHWARZ Außenwerbung GmbH,0,433.33,1.33
-AA118,Glauchau,Sparkasse Chemnitz c/o SIBV Immobilienbetriebs- und vermarktungsgesellschaft mH,4,460.89,0.58
-AA118,Glauchau,Circle K Deutschland GmbH,1139,1770.44,2.83
-AA118,Glauchau,TEDi GmbH & Co. KG,978.57,8500,2.54
-AA118,Glauchau,René Geitner,72.5,1241,4.17
-AA118,Glauchau,Bäckerei Förster GmbH & Co. KG,78.5,3120,4.42
-AA118,Glauchau,EnBW mobility+ AG & Co. KG,0,250,25.5
-AA118,Glauchau,Aktiv-Apotheke Thomas Bielig e.K.,14.43,75,2.92
-AA119,Hainichen,Lidl-Vertriebs GmbH & Co. KG,1558,18239.88,9.43
-AA12,Müncheberg,Netto Marken-Discount Stiftung & Co. KG,1468.55,16276.86,10.33
-AA120,Chemnitz,FRISTO SE,570,4817.4,3.33
-AA121,Freiberg,ALDI SE & Co. KG,1337.73,16667.29,6.17
-AA122,Oschatz,Netto Marken-Discount Stiftung & Co. KG,1274,15660.45,8.22
-AA123,Dresden,Netto Marken-Discount Stiftung & Co. KG,1492.5,24590.03,8.15
-AA124,Zittau,Netto Marken-Discount Stiftung & Co. KG,1452.62,18407.64,9.24
-AA125,Bautzen,Penny-Markt GmbH,988,10543.1,5.25
-AA125,Bautzen,Fleischerei Richter GmbH & Co. KG,112.79,2469.97,4.54
-AA127,Bad Camberg,KiK Textilien und Non-Food GmbH,500,4712.4,1.33
+AA44,None,EnBW mobility+ AG & Co. KG,0,125,10.67
+AA128,Unterwellenborn,Kaufland Vertrieb KDSE GmbH & Co. KG,9384,79606.89,5.25
+AA127,Bad Camberg,KiK Textilien und Non-Food GmbH,500,4712.4,1.25
 AA127,Bad Camberg,Leerstand stpfl.,1100,0,0
-AA127,Bad Camberg,REWE Markt GmbH Zweigniederlassung Mitte,1211.35,14747.05,9.08
-AA127,Bad Camberg,TEDI GmbH & CO. KG c/o Abteilung Mietwesen,902,8000,6.08
-AA128,Unterwellenborn,Kaufland Vertrieb KDSE GmbH & Co. KG,9384,79606.89,5.33
-AA128,Unterwellenborn,EnBW mobility+ AG & Co. KG,0,125,25.76
-AA129,Grimma,EDEKA Grundstücksgesellschaft Nordbayern- Sachsen-Thüringen mbH,2070.23,20541.19,6
-AA13,Schwarzenfeld,Netto Marken-Discount Stiftung & Co. KG,1469,19132.74,10.33
-AA130,Döbeln,Netto Marken-Discount Stiftung & Co. KG,1506,19708.34,14.22
-AA131,Greifswald,Netto Marken-Discount Stiftung & Co. KG,1328,18364.56,9.75
-AA132,Limbach-Oberfrohna,Penny-Markt GmbH Immobilienabteilung,1028.28,7437.52,9.83
-AA133,Magdeburg,Penny-Markt GmbH,931,13640.85,0.63
-AA134,Bautzen,Netto Marken-Discount Stiftung & Co. KG,1260.07,14318.4,9.21
-AA135,Dresden,Penny-Markt GmbH,956.93,10378.37,12.08
-AA135,Dresden,Bäckerei Raddatz GmbH,60,1969.44,0.54
-AA135,Dresden,Fleischerei Richter GmbH & Co. KG,80,1883.2,0.25
-AA135,Dresden,Humana Kleidersammlung GmbH,0,10,0.33
-AA136,Ellwangen,toom Baumarkt GmbH,6250,36667,7.83
-AA136,Ellwangen,Kaufland Vertrieb 35 GmbH & Co. KG,12165.11,136310.04,10.34
-AA136,Ellwangen,Adler Modemärkte AG,3060.27,37047.59,1.75
-AA136,Ellwangen,Deichmann SE,635.92,10337.32,1.33
-AA136,Ellwangen,KiK Textilien und Non-Food GmbH,1089.67,7630.71,2.67
-AA136,Ellwangen,DFH Musterhäuser GmbH,1020,3397.25,1.83
+AA130,Döbeln,Netto Marken-Discount Stiftung & Co. KG,1506,19708.34,14.14
+AA131,Greifswald,Netto Marken-Discount Stiftung & Co. KG,1328,18364.56,9.67
+AA45,None,EnBW mobility+ AG & Co. KG,0,125,25.67
+AA132,Limbach-Oberfrohna,Penny-Markt GmbH Immobilienabteilung,1028.28,7437.52,9.75
+AA173,Berlin,Netto Marken-Discount Stiftung & Co. KG,1427,23684.14,6.51
+AA47,Braunschweig,"Nguyen, Thanh Quyet",51,789.48,2.75
+AA47,Braunschweig,Adalet Cin,56,1233.56,4.42
+AA111,Bergtheim,EDEKA Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,1617.85,21602.2,3.42
+AA112,Döbeln,Lidl Vertriebs-GmbH & Co. KG,1498,15186.15,5.83
+AA113,Herdorf,Lidl Vertriebs-GmbH & Co.KG,1027,10757.28,1.25
+AA133,Magdeburg,Penny-Markt GmbH,931,13640.85,0.55
+AA48,Himmelpforten,Patrick Fritze,47,500,4.75
+AA129,Grimma,EDEKA Grundstücksgesellschaft Nordbayern- Sachsen-Thüringen mbH,2070.23,20541.19,5.92
+AA124,Zittau,Netto Marken-Discount Stiftung & Co. KG,1452.62,18407.64,9.16
+AA65,Wilster,1. BEMA Beteiligungs GmbH,0,0,15.25
+AA48,Himmelpforten,"Al Khazrek, Amjad",35.84,305,0.25
+AA48,Himmelpforten,Westfa-Werbung Modersohn GmbH & Co. KG,0,125,0.52
+AA119,Hainichen,Lidl-Vertriebs GmbH & Co. KG,1558,18239.88,9.35
+AA123,Dresden,Netto Marken-Discount Stiftung & Co. KG,1492.5,24590.03,8.07
+AA49,Husum,Leerstand stfr.,215,0,0
+AA134,Bautzen,Netto Marken-Discount Stiftung & Co. KG,1260.07,14318.4,9.13
+AA49,Husum,Leerstand stpfl.,200,0,0
+AA125,Bautzen,Penny-Markt GmbH,988,10543.1,5.17
+AA125,Bautzen,Fleischerei Richter GmbH & Co. KG,112.79,2469.97,4.46
+AA52,Schmelz-Limbach,PENNY Markt GmbH,1207.38,12000,14.91
+AA55,Saarlouis,Leerstand stpfl.,401.12,0,0
+AA56,Bischofsheim,Leerstand stpfl.,488,0,0
+AA56,Bischofsheim,Rauch Grundstücksverwaltung c/o Eulenhof 1843,0,166.66,5.25
+AA55,Rüdesheim,Rauch Grundstücksverwaltung c/o Eulenhof 1843,0,83.33,5.25
+AA115,Mittelangeln,Netto Marken-Discount Stiftung & Co. KG,1308,7862.66,8.09
+AA116,Schweinfurt,FISHBULL Franz Fischer SE & Co. KG,1224,4843.35,6.75
+AA79,Waltershausen,Netto Marken-Discount Stiftung & Co. KG,1084,11323.68,10.15
+AA79,Waltershausen,Kienast Schuhhandels GmbH & Co. KG Kienast Verwaltungs GmbH,400,4775.38,3.5
+AA79,Waltershausen,Ernsting’s family GmbH & Co. KG,180,1995.6,1.41
+AA79,Waltershausen,NKD Deutschland GmbH,382,3913.72,5.41
+AA79,Waltershausen,Dirk Rossmann GmbH,731.9,7235.43,1.41
+AA79,Waltershausen,KiK Textilien und Non-Food GmbH,561,5445,4.5
+AA80,Welsleben,Netto Marken-Discount Stiftung & Co. KG,1044,9930.05,10.74
+AA110,Schöningen,Lidl Vertriebs-GmbH & Co. KG,1032,14789.98,2.17
+AA81,Dahme (Mark),Netto Marken-Discount Stiftung & Co. KG,1089,10178.45,10.72
+AA82,Diemelsee,Netto Marken-Discount Stiftung & Co. KG,1086,10150.41,10.71
+AA83,Dorndorf,Netto Marken-Discount Stiftung & Co. KG,1045,9767.2,10.19
+AA118,Glauchau,BRL Center GmbH,175,6564.03,2.83
+AA84,Greussen,Netto Marken-Discount Stiftung & Co. KG,1086,10687.78,10.8
+AA118,Glauchau,Reiseland GmbH & Co. KG,66.75,2026.9,2.25
+AA118,Glauchau,Klier Hair Group GmbH,78.18,2691.34,0.08
+AA85,Herzebrock-Clarholz,Netto Marken-Discount Stiftung & Co. KG,1044,12685.21,10.74
+AA118,Glauchau,Apache Jeans,150.13,2251.95,4.25
+AA118,Glauchau,AWG Allgemeine Warenvertriebs-GmbH,781.67,7278.09,6.25
+AA86,Rudolstadt,ALDI GmbH & Co. KG,1266.78,13246.21,1.33
+AA86,Rudolstadt,Sagasser Vertriebs GmbH,650,5862.58,3.33
+AA118,Glauchau,Apollo-Optik Holding GmbH & Co. KG,124.95,1704.88,3.08
+AA86,Rudolstadt,Stadtmühlenbäckerei Bielert GmbH,90,2298.8,1.33
+AA86,Rudolstadt,"Naturfleisch GmbH ""Rennsteig"" Oberweißbach",110,1666.63,1.33
+AA118,Glauchau,Simone Kurt,24,770.77,3.58
+AA86,Rudolstadt,Sirko Grudzielski,51.26,920.12,1.79
+AA87,Demmin,Netto Marken-Discount Stiftung & Co. KG,1130,11019.76,10.2
+AA122,Oschatz,Netto Marken-Discount Stiftung & Co. KG,1274,15660.45,8.13
+AA127,Bad Camberg,REWE Markt GmbH Zweigniederlassung Mitte,1211.35,14747.05,9
+AA88,Sonneberg,Netto Marken-Discount Stiftung & Co. KG,1156.38,13037.51,15.65
+AA67,Zwickau,Netto Marken-Discount Stiftung & Co. KG,1512,20034.31,10.25
+AA67,Zwickau,TEDi GmbH & Co. KG c/o TEDi Verwaltungs- und Beteiligungs-GmbH,836.93,6433.34,0.27
+AA89,Zwönitz,ALDI SE & Co KG,1334.75,13013.81,5.96
+AA89,Zwönitz,Getränke Hoffmann Süd GmbH,267.48,2400,1.06
+AA61,Groß Denkte,Peter Holzberg,0,234.04,0.25
+AA90,Chemnitz,Netto Marken-Discount Stiftung & Co. KG,1044,10791.03,9.88
+AA91,Schwedt,Netto Marken-Discount Stiftung & Co. KG,1047,9670.76,9.17
+AA92,Weidhausen,FISHBULL Franz Fischer SE & Co. KG,1057,4280,6.67
+AA92,Weidhausen,Leerstand stpfl.,201,0,0
+AA93,Weißenstadt,Leerstand stpfl.,1059,0,0
+AA94,Halle-Silberhöhe,Netto Marken-Discount Stiftung & Co. KG,1044,10916.28,10.16
+AA95,Meerane,Netto Marken-Discount Stiftung & Co. KG,1086,10687.78,9.84
+AA96,Zwickau,Netto Marken-Discount Stiftung & Co. KG,1156,10308.93,14.78
+AA97,Völklingen,EDEKA Südwest Stiftung & Co. KG,1983.79,21421.29,9.18
+AA114,Lathen,Lidl Vertriebs-GmbH & Co.KG,1410,11447.89,1.58
+AA98,Mügeln,Netto Marken-Discount Stiftung & Co. KG,1045,9709.74,10.11
+AA118,Glauchau,Quoc Dung Tran,24,1201.8,3.75
+AA118,Glauchau,Fleischerei Richter GmbH & Co. KG,81.8,3200,0.5
+AA99,Steinach,Netto Marken-Discount Stiftung & Co. KG,1044,9757.85,10.16
+AA100,Buttstädt,Netto Marken-Discount Stiftung & Co. KG,1086,9374.2,17.13
+AA101,Edemissen,Netto Marken-Discount Stiftung & Co. KG,1046,9546.51,10.17
+AA102,Eilenburg,Netto Marken-Discount Stiftung & Co. KG,1580.35,16505,14.73
+AA103,Eschelbronn,Netto Marken-Discount Stiftung & Co. KG,1045,12300,10.16
+AA104,Perl,REWE Markt GmbH Zweigniederlassung Südwest,2654,30675.13,10.25
+AA105,Bad Wünneberg,Netto Marken-Discount Stiftung & Co. KG,1046,9489,17.13
+AA106,Kefenrod,Netto Marken-Discount Stiftung & Co. KG,1086,9792.16,10.13
+AA109,Bonn-Dransdorf,Lidl Vertriebs-GmbH & Co. KG,1333,15190.61,3.25
+AA117,Wolmirstedt,Lidl Vertriebs- GmbH & Co.KG,1170,9805.86,-0.5
+AA107,Küps,Netto Marken-Discount Stiftung & Co. KG,1169,11183.26,10.44
+AA107,Küps,Leerstand stpfl.,300,0,0
+AA108,Eberswalde,Netto Marken-Discount Stiftung & Co. KG,1045,10910.85,11.16
+AA118,Glauchau,Convenience Concept GmbH,28.95,942.85,2.25
+AA118,Glauchau,Floribunda GmbH,58,1748.96,2.5
+AA1,Amberg,Netto Marken-Discount Stiftung & Co. KG,1507.73,17666.66,10.25
+AA2,Diepholz,Netto Marken-Discount Stiftung & Co. KG,1213.33,15206.88,10.25
+AA2,Diepholz,Röhe/Heemeier GbR,0,99,5.25
+AA3,Duisburg,Netto Marken-Discount Stiftung & Co. KG,1102.89,17475.75,10.25
+AA120,Chemnitz,FRISTO SE,570,4817.4,3.25
+AA4,Ebeleben,Netto Marken-Discount Stiftung & Co. KG,1367.72,16087.05,10.25
+AA118,Glauchau,SCHWARZ Außenwerbung GmbH,0,433.33,1.25
+AA5,Gera,Netto Marken-Discount Stiftung & Co. KG,1179,15107.98,10.25
+AA118,Glauchau,Sparkasse Chemnitz c/o SIBV Immobilienbetriebs- und vermarktungsgesellschaft mH,4,460.89,0.5
+AA118,Glauchau,Circle K Deutschland GmbH,1139,1770.44,2.75
+AA6,Halle,Netto Marken-Discount Stiftung & Co. KG,1058,11458.01,10.25
+AA136,Ellwangen,toom Baumarkt GmbH,6250,36667,7.75
+AA7,Kabelsketal,Netto Marken-Discount Stiftung & Co. KG,1263.5,14691.64,10.25
+AA176,Frankfurt (Oder),Bäckerei Dreißig GmbH & Co. KG,45.34,2720,7.25
+AA176,Frankfurt (Oder),"Lidl Vertriebs-GmbH & Co. KG Ahornstr. 6, 15537 Grünheide-Freienbrink",1051.32,15207.18,4.17
+AA8,Kerpen,Netto Marken-Discount Stiftung & Co. KG,1052.08,15443.55,10.25
+AA8,Kerpen,Slate Mobility GmbH & Co. KG,0,281.35,23.74
+AA9,Kröpelin,Netto Marken-Discount Stiftung & Co. KG,1296.11,16476.15,10.25
+AA137,Jena,BRL Center GmbH,178.43,5932.94,7.83
+AA137,Jena,Reiseland GmbH & Co. KG,47.51,1634.51,1
+AA10,Lübbecke,Netto Marken-Discount Stiftung & Co. KG,1162,12028.69,10.25
+AA137,Jena,Kaufland Vertrieb KDSN GmbH & Co. KG,6973.14,69223.05,6.42
+AA137,Jena,KiK Textilien und Non-Food GmbH,985.53,9610.66,2.17
+AA11,Mülheim an der Ruhr,Netto Marken-Discount Stiftung & Co. KG,1110.06,16495.82,10.25
+AA12,Müncheberg,Netto Marken-Discount Stiftung & Co. KG,1468.55,16276.86,10.25
+AA13,Schwarzenfeld,Netto Marken-Discount Stiftung & Co. KG,1469,19132.74,10.25
+AA14,Teutschenthal-Langenbogen,Netto Marken-Discount Stiftung & Co. KG,1368.84,15989.49,10.25
+AA15,Thale,Netto Marken-Discount Stiftung & Co. KG,1246.42,14572.22,10.25
+AA16,Uelzen,Netto Marken-Discount Stiftung & Co. KG,1278.05,15658.12,10.25
+AA17,Drebkau,Netto Marken-Discount Stiftung & Co. KG,1435.52,18794.41,10.25
+AA17,Drebkau,Petra Suchandt,64,500,0.25
+AA17,Drebkau,Leerstand stpfl.,926,0,0
+AA61,Groß Denkte,Leerstand stpfl.,0,0,0
+AA136,Ellwangen,Kaufland Vertrieb 35 GmbH & Co. KG,12165.11,136310.04,10.26
+AA175,Leipzig,"Lidl Vertriebs-GmbH & Co. KG Claude-Breda-Straße 7, 06406 Bernburg",1106.51,11550.27,6.17
+AA18,Eberswalde,Netto Marken-Discount Stiftung & Co. KG,1241.3,14792.27,10.25
+AA140,Leipzig,Netto Marken-Discount Stiftung & Co. KG,1060,12853.74,5.25
+AA177,Wörth am Rhein,Netto Marken-Discount Stiftung & Co. KG,1028,14229.7,4.25
+AA19,Emlichheim,Netto Marken-Discount Stiftung & Co. KG,1057.18,13205.41,10.25
+AA136,Ellwangen,Adler Modemärkte AG,3060.27,37047.59,1.67
+AA20,Mühlhausen,Netto Marken-Discount Stiftung & Co. KG,1298.42,16639.06,10.25
+AA21,Neuruppin,Netto Marken-Discount Stiftung & Co. KG,1518.99,19176.46,10.25
+AA22,Oberhausen,Netto Marken-Discount Stiftung & Co. KG,1117.34,17303.29,10.25
+AA136,Ellwangen,Deichmann SE,635.92,10337.32,1.25
+AA178,Moritzburg,Netto Marken-Discount Stiftung & Co. KG,1324.8,17854.17,12.91
+AA23,Penzlin,Netto Marken-Discount Stiftung & Co. KG,1483,18168.93,10.25
+AA136,Ellwangen,KiK Textilien und Non-Food GmbH,1089.67,7630.71,2.58
+AA24,Radebeul,Netto Marken-Discount Stiftung & Co. KG,1376,15040.98,10.25
+AA147,Dresden,KONSUM DRESDEN eG,1012.37,11988.79,1.01
+AA136,Ellwangen,DFH Musterhäuser GmbH,1020,3397.25,1.75
+AA25,Seifhennersdorf,Netto Marken-Discount Stiftung & Co. KG,1407.21,17189.04,10.25
 AA136,Ellwangen,Stengel GmbH,2047,1468.77,0.25
-AA136,Ellwangen,"Gebreloel, Asma",1180,1335.07,0.58
-AA136,Ellwangen,mister*lady GmbH,604,10298.2,4.58
-AA136,Ellwangen,TopFit Ellwangen Dr. Adolf-Schneider-Straße GmbH,1401.52,8446.93,4.83
+AA26,Wassenberg,Netto Marken-Discount Stiftung & Co. KG,1073,16347.22,10.25
+AA136,Ellwangen,"Gebreloel, Asma",1180,1335.07,0.5
+AA27,Werdau,Netto Marken-Discount Stiftung & Co. KG,1214.36,14984.91,10.25
+AA28,Wettin-Löbejün,Netto Marken-Discount Stiftung & Co. KG,1073,12260.96,10.25
+AA29,Wiesenburg,Netto Marken-Discount Stiftung & Co. KG,1322.93,16638.01,10.25
+AA30,Wolfsburg-Sülfeld,Netto Marken-Discount Stiftung & Co. KG,1338,15443.47,10.25
+AA31,Zahna,Netto Marken-Discount Stiftung & Co. KG,1549.41,15707.31,10.25
+AA136,Ellwangen,mister*lady GmbH,604,10298.2,4.5
+AA136,Ellwangen,TopFit Ellwangen Dr. Adolf-Schneider-Straße GmbH,1401.52,8446.93,4.75
+AA137,Jena,Schlüsseldienst Dröschler,206.14,1338.27,1.42
+AA181,Halle,Rewe Markt GmbH Zweigniederlassung Ost,1063.4,12445.09,1.58
+AA156,Twistringen,K+K Klaas & Kock B.V. & Co. KG,1340,11803.97,5.92
+AA66,Wriezen,Leerstand stfr.,149,0,0
+AA135,Dresden,Penny-Markt GmbH,956.93,10378.37,12
+AA135,Dresden,Bäckerei Raddatz GmbH,60,1969.44,0.46
+AA135,Dresden,Fleischerei Richter GmbH & Co. KG,80,1883.2,0.25
+AA137,Jena,MÄC GEIZ Handelsgesellschaft mbH,415.06,6721.04,1
+AA68,Biedenkopf,REWE Markt GmbH,2193.99,25583.14,9.25
+AA137,Jena,TEDi GmbH & Co. KG,529.49,5850.66,4.31
 AA136,Ellwangen,Leerstand stpfl.,1629.26,0,0
-AA136,Ellwangen,Autohandel Fitim & Faruk vertreten durch Mirvete Osmani,920,1840,0.83
-AA136,Ellwangen,Frip Service uG,0,30,0.42
-AA136,Ellwangen,DPW Deutsche Plakat-Werbung GmbH & Co. KG,0,758.33,1.33
-AA136,Ellwangen,Woolworth GmbH,690.03,0,6.25
-AA136,Ellwangen,Doan Ramizovski,394,1694.2,0.83
-AA136,Ellwangen,Action Deutschland GmbH,1632.21,12432,8.37
-AA136,Ellwangen,EnBW mobility+ AG & Co. KG,0,125,10.76
-AA137,Jena,BRL Center GmbH,178.43,5932.94,7.92
-AA137,Jena,Reiseland GmbH & Co. KG,47.51,1634.51,1.08
-AA137,Jena,Kaufland Vertrieb KDSN GmbH & Co. KG,6973.14,69223.05,6.5
-AA137,Jena,KiK Textilien und Non-Food GmbH,985.53,9610.66,2.25
-AA137,Jena,Schlüsseldienst Dröschler,206.14,1338.27,1.5
-AA137,Jena,MÄC GEIZ Handelsgesellschaft mbH,415.06,6721.04,1.08
-AA137,Jena,TEDi GmbH & Co. KG,529.49,5850.66,4.39
-AA137,Jena,Convenience Concept GmbH,101.76,2296.75,3.33
-AA137,Jena,ACTIVA Heimtierprodukte GmbH & Co. KG,441.09,4694.3,4
+AA69,Norderstedt,Penny-Markt GmbH,890,11378.17,1.39
+AA69,Norderstedt,Sven Jürisch,1000,1050.42,3.25
+AA70,Heideck,Netto Marken-Discount Stiftung & Co. KG,1340,13827.17,3.6
+AA70,Heideck,Hasim Senkaya,164.98,1326,3.83
+AA70,Heideck,Leerstand stpfl.,476.08,0,0
+AA70,Heideck,Gesellschaft für Außenwerbung GmbH,0,100,0.95
+AA71,Leingarten,REWE Markt GmbH Zweigniederlassung Südwest,1834.09,25475.64,11.67
+AA71,Leingarten,ALDI SE & Co. KG Murr,1416,19614.97,11.25
+AA121,Freiberg,ALDI SE & Co. KG,1337.73,16667.29,6.09
+AA72,Maxhütte,REWE Markt GmbH Zweigniederlassung Süd,1895.67,22843.76,2.33
+AA72,Maxhütte,Allianz Agentur Vertretung Oliver Leißne,120,1100,0.25
+AA72,Maxhütte,Kerstin Muhl,118,1286.5,6.17
+AA72,Maxhütte,Leerstand stpfl.,225,0,0
+AA72,Maxhütte,Kerstin Muhl und Knut Heinrich,115,1012.75,0.25
+AA73,Nabburg,Leerstand stpfl.,1702.33,0,0
+AA74,Willebadessen,REWE Markt GmbH Zweigniederlassung Nord,1921.5,19217.5,6.33
+AA159,Freiberg,Penny-Markt GmbH,926.03,8281.21,5.17
+AA159,Freiberg,Fleischerei Richter GmbH & Co. KG,89.8,2160,1.11
+AA118,Glauchau,TEDi GmbH & Co. KG,978.57,8500,2.46
+AA159,Freiberg,Bäckerei - Konditorei Selbmann GbR,67.32,1556.43,-0.89
+AA118,Glauchau,René Geitner,72.5,1241,4.08
+AA118,Glauchau,Bäckerei Förster GmbH & Co. KG,78.5,3120,4.33
+AA137,Jena,Convenience Concept GmbH,101.76,2296.75,3.25
+AA137,Jena,ACTIVA Heimtierprodukte GmbH & Co. KG,441.09,4694.3,3.92
+AA136,Ellwangen,Autohandel Fitim & Faruk vertreten durch Mirvete Osmani,920,1840,0.75
+AA136,Ellwangen,Frip Service uG,0,30,0.33
 AA137,Jena,Leerstand stpfl.,792.92,0,0
-AA137,Jena,Sternenbäck Thüringen GmbH & Co. KG,72.28,5094.43,4.33
-AA137,Jena,Domino´s Pizza Deutschland GmbH,102,1331.13,6.67
-AA137,Jena,ME Group Germany GmbH,0,0,1.25
-AA137,Jena,SCHWARZ-Außenwerbung GmbH,0,650,1.33
-AA137,Jena,Furat Kacar,0,917.22,0
-AA137,Jena,Ngoc Duc Tran,300,3600,7.75
-AA137,Jena,Zahnärzte Martin Kraft & Sandra Trinks,153.3,1508.24,5.58
-AA137,Jena,Kerstin Gniwotta,131.45,1167.52,7.58
-AA137,Jena,Dr.med. Sabine Lippert,131.62,1370.11,0.25
-AA137,Jena,Dr.med. Anna Wende,174.64,1330.34,1.33
-AA137,Jena,Deutsche Bank AG c/o CBRE GmbH,41.5,659.88,1
-AA137,Jena,HELIOS Versorgungszentren GmbH,176.54,1340.63,0.75
-AA137,Jena,Deutsche Paracelsus Schulen für Naturheilverfahren GmbH,272.06,3592.55,3.71
-AA137,Jena,Phan Than Thien,82.78,2184.79,6.17
-AA137,Jena,Schnittpunkt GmbH,0,90,0
-AA138,Dresden,ALDI SE & Co. KG,1070.91,11113.7,2.19
-AA139,Dresden,KONSUM DRESDEN eG,1045.03,12413.86,2.5
-AA14,Teutschenthal-Langenbogen,Netto Marken-Discount Stiftung & Co. KG,1368.84,15989.49,10.33
-AA140,Leipzig,Netto Marken-Discount Stiftung & Co. KG,1060,12853.74,5.33
-AA141,Erfurt,NORMA Lebensmittelhandels Stiftung & Co. KG c/o NORMA LZM GmbH & Co. KG,1049.74,11752.78,8.23
-AA142,Chemnitz,Netto Marken-Discount Stiftung & Co. KG,1028,10958.07,2.25
-AA143,Dresden,Ernsting's family GmbH & Co. KG,225,1394.83,1.58
-AA143,Dresden,Fahrschule Torsten Böhme,92.16,671.06,0
-AA143,Dresden,Thi Triet Anh Nguyen + Phan Linh Nguyen ,171.28,1526.2,-0.5
-AA143,Dresden,Aslan Gül,149.25,1525.35,0.75
-AA143,Dresden,Bäckerei Möbius GmbH & Co. KG,178.66,2979.46,0.25
-AA143,Dresden,Ostsächsische Sparkasse Dresden,776.74,14758.06,1.75
-AA143,Dresden,Leerstand stpfl.,660.63,0,0
-AA143,Dresden,KiK Textilien und Non-Food GmbH,567.93,3262.47,0.71
-AA143,Dresden,Leopold & Weißenborn GbR (Domino´s Pizza) Peter Leopold& Kim M. Leopold,151,2265,2.83
-AA144,Dresden,Dirk Rossmann GmbH,858.44,12154.58,1.58
+AA136,Ellwangen,DPW Deutsche Plakat-Werbung GmbH & Co. KG,0,758.33,1.25
+AA143,Dresden,Ernsting's family GmbH & Co. KG,225,1394.83,1.5
+AA146,Wanzleben,KiK Textilien und Non-Food GmbH,684.87,5700.66,0.89
+AA148,Hemer,Lidl Vertriebs-GmbH & Co. KG,1437.4,20303.41,6
+AA145,Dresden,KONSUM DRESDEN eG,2126.95,31767.58,4.67
+AA145,Dresden,Dirk Rossmann GmbH,611.52,8830.23,0.67
+AA179,Magdeburg,ALDI GmbH & Co. KG Barleben c/o ALDI Immobilienverwaltung GmbH & Co. KG,989,9257.42,2.44
+AA172,Dresden,Netto Marken-Discount Stiftung & Co. KG,1117,13098.53,5.25
+AA170,Sömmerda,Netto Marken-Discount Stiftung & Co. KG,1042,11597.46,2.93
+AA169,Rehna,Lidl Vertriebs-GmbH & Co. KG,1154,11514.98,-1.08
+AA168,Hartmannsdorf,Penny-Markt GmbH,931,5833.96,4.08
+AA168,Hartmannsdorf,Beethoven-Apotheke,230.93,2419.56,2.08
+AA168,Hartmannsdorf,Gretenkord GmbH & Co. KG,111.32,1568.59,1.17
+AA168,Hartmannsdorf,Bäckerei Liebig,65.59,1000.65,1.17
+AA136,None,Woolworth GmbH,690.03,0,6.17
+AA186,Dresden,Leerstand stpfl.,56.37,0,0
+AA167,Sulingen,Kienast Schuhhandels GmbH Co. KG c/o Kienast Verwaltungs GmbH,460,5297.39,1.5
+AA167,Sulingen,Wilhelm Ranck KG,75.8,2164.55,0.52
+AA136,None,Doan Ramizovski,394,1694.2,0.75
+AA143,Dresden,Fahrschule Torsten Böhme,92.16,671.06,-0.08
+AA143,Dresden,Thi Triet Anh Nguyen + Phan Linh Nguyen ,171.28,1526.2,-0.58
+AA143,Dresden,Aslan Gül,149.25,1525.35,0.67
+AA127,Bad Camberg,TEDI GmbH & CO. KG c/o Abteilung Mietwesen,902,8000,6
+AA158,Ludwigsfelde,Penny-Markt GmbH,1015,12962.46,5.67
+AA153,Chemnitz,Matratzen Concord GmbH,247,2698.03,2.76
+AA182,Gera,Netto Marken-Discount Stiftung & Co. KG,926.27,10368.3,2.19
+AA144,Dresden,Dirk Rossmann GmbH,858.44,12154.58,1.5
+AA161,Bernburg,Penny-Markt GmbH,1005,10711.13,8.52
+AA139,Dresden,KONSUM DRESDEN eG,1045.03,12413.86,2.42
+AA141,Erfurt,NORMA Lebensmittelhandels Stiftung & Co. KG c/o NORMA LZM GmbH & Co. KG,1049.74,11752.78,8.15
+AA154,Dresden,Netto Marken-Discount Stiftung & Co. KG,1322.12,15791.47,1.25
 AA144,Dresden,Jochen Weselek,65,650,0.08
-AA144,Dresden,Marcus Scheller,362.21,3945.42,4.42
+AA144,Dresden,Marcus Scheller,362.21,3945.42,4.33
 AA144,Dresden,Volker Friese,37.63,340,0.33
-AA144,Dresden,Apollo-Optik Holding GmbH & Co. KG,183,4305.63,2.83
-AA144,Dresden,Takko Holding GmbH,555,4791.25,5.58
+AA138,Dresden,ALDI SE & Co. KG,1070.91,11113.7,2.1
+AA144,Dresden,Apollo-Optik Holding GmbH & Co. KG,183,4305.63,2.75
+AA144,Dresden,Takko Holding GmbH,555,4791.25,5.5
+AA164,Dresden,Jana Dalla Libera YoFit,274,1657.7,0.5
 AA144,Dresden,Leerstand stpfl.,966.7,0,0
-AA144,Dresden,Unternehmensgruppe Dr. Eckert GmbH,60,1637.08,3.83
-AA144,Dresden,Silke Noack-Schubert,43,307.4,7
-AA144,Dresden,Jürgen Thäle Apotheke im Sachsen Forum,183,5627.42,0.83
-AA144,Dresden,MEDIA WELT,160,2690,3.92
-AA144,Dresden,Christina Nowotnick,43,920.95,1.83
-AA144,Dresden,MÄC GEIZ Handelsgesellschaft mbH,335,1900,2.33
+AA160,Taucha,Lidl Vertriebs-GmbH & Co. KG,1535,17280,10.78
+AA184,Chemnitz,Lidl Vertriebs-GmbH & Co. KG,1319,13991.04,1.12
+AA184,Chemnitz,Fressnapf Immobilien- und Vermögens- verwaltungs GmbH,600,5342.49,2.08
+AA184,Chemnitz,Leerstand stpfl.,56.93,0,0
+AA157,Mallersdorf-Pfaffenberg,KiK Textilien und Non-Food GmbH,499.83,4832.04,0.01
+AA157,Mallersdorf-Pfaffenberg,Penny-Markt GmbH,988.6,9851.81,4.18
+AA183,Holzminden,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,987,11902.16,2.45
+AA136,Ellwangen,Action Deutschland GmbH,1632.21,12432,8.29
+AA137,Jena,ME Group Germany GmbH,0,0,1.17
+AA137,Jena,SCHWARZ-Außenwerbung GmbH,0,650,1.25
+AA137,Jena,Furat Kacar,0,917.22,0
+AA146,Wanzleben,WVG Getränkefachgroßhandel GmbH,803,3400,2.25
+AA146,Wanzleben,"Lidl Vertriebs-GmbH & Co. KG Claude-Breda-Straße 7, 06406 Bernburg",1321.38,13083.52,1.17
+AA146,Wanzleben,Backshop Beims GmbH Herrn Sven Probst,65.22,1354.73,0.92
+AA146,Wanzleben,DLC Wanzleben GmbH Herrn Marco Bartsch,140,490,1.5
+AA136,None,EnBW mobility+ AG & Co. KG,0,125,10.67
+AA182,Gera,Fleischerei Stölzner GmbH,87.01,1563.93,0.17
+AA164,Dresden,Netto Marken-Discount Stiftung & Co. KG,1034,13363.49,5.67
+AA137,Jena,Sternenbäck Thüringen GmbH & Co. KG,72.28,5094.43,4.25
+AA137,Jena,Domino´s Pizza Deutschland GmbH,102,1331.13,6.58
+AA143,Dresden,Bäckerei Möbius GmbH & Co. KG,178.66,2979.46,0.17
+AA143,Dresden,Ostsächsische Sparkasse Dresden,776.74,14758.06,1.67
+AA167,Sulingen,Landbäckerei Niemeyer KG,76.62,5195.92,1.25
+AA167,Sulingen,Takko Holding GmbH,442,5552.91,0.25
+AA137,Jena,Ngoc Duc Tran,300,3600,7.67
+AA155,Ludwigsfelde,SCHWARZ-Außenwerbung GmbH,0,595.83,0.5
+AA144,Dresden,Unternehmensgruppe Dr. Eckert GmbH,60,1637.08,3.75
+AA144,Dresden,Silke Noack-Schubert,43,307.4,6.92
+AA144,Dresden,Jürgen Thäle Apotheke im Sachsen Forum,183,5627.42,0.75
+AA185,Halle,Netto Marken-Discount Stiftung & Co. KG,1035.77,10431.23,3.4
+AA171,Suhl,Penny-Markt GmbH,1016.9,11658.83,2
+AA171,Suhl,TEDi GmbH & Co. KG,1025.89,11443.54,-0.02
+AA171,Suhl,SAGASSER Fachmarkt Nord GmbH & Co. KG,280.82,1327.84,0.17
+AA167,Sulingen,K+K Klaas & Kock B.V. & Co. KG,1400,11450.52,9.52
+AA158,Ludwigsfelde,MÄC GEIZ Handelsgesellschaft mbH,420,5242.8,1.58
+AA158,Ludwigsfelde,Bäckerei Dreißig GmbH & Co. KG,247,4617.42,-0.33
+AA158,Ludwigsfelde,Dirk Rossmann GmbH,720.76,9823.36,3.59
+AA158,Ludwigsfelde,Le Quynh Su,35,1119.37,4.67
+AA158,Ludwigsfelde,ACTIVA Heimtierprodukte GmbH & Co. KG,446.71,4762.86,4.08
+AA146,Wanzleben,Ernsting's family GmbH & Co. KG,90,768.41,1.25
+AA144,Dresden,MEDIA WELT,160,2690,3.83
+AA144,Dresden,Christina Nowotnick,43,920.95,1.75
+AA142,Chemnitz,Netto Marken-Discount Stiftung & Co. KG,1028,10958.07,2.17
+AA144,Dresden,MÄC GEIZ Handelsgesellschaft mbH,335,1900,2.25
+AA155,Ludwigsfelde,Kaufland Vertrieb 64 GmbH & Co. KG,11885.48,77157.97,17
 AA144,Dresden,Klier Hair Group GmbH,83,2291.09,0.5
-AA144,Dresden,Frank Haeger,127,1079.5,0.67
-AA144,Dresden,EDEKA Grundstücksgesellschaft Nordbayer-Sachsen-Thüringen mbH,3067.85,36800,13.58
+AA144,Dresden,Frank Haeger,127,1079.5,0.58
+AA143,Dresden,Leerstand stpfl.,660.63,0,0
+AA143,Dresden,KiK Textilien und Non-Food GmbH,567.93,3262.47,0.63
+AA179,Magdeburg,FRISTO GETRÄNKEMARKT GmbH,400,3402.61,0.5
+AA179,Magdeburg,Fressnapf Immobilien- und Vermögens- verwaltungs GmbH,906,7933.39,0.44
+AA179,Magdeburg,Leerstand stpfl.,507.87,0,0
+AA143,Dresden,Leopold & Weißenborn GbR (Domino´s Pizza) Peter Leopold& Kim M. Leopold,151,2265,2.75
+AA180,Chemnitz,Netto Marken-Discount Stiftung & Co. KG,1278,19161.39,13.95
+AA164,Dresden,Bürogemeinschaft Dr. Braun & Barth Freie Architekten Dresden,179,1851.84,1.67
+AA144,Dresden,EDEKA Grundstücksgesellschaft Nordbayer-Sachsen-Thüringen mbH,3067.85,36800,13.5
+AA152,Chemnitz,Penny-Markt GmbH,1060,13229.51,2.17
+AA166,Pyrbaum,EB Fitness GmbH,246.57,1837.32,-0.33
 AA144,Dresden,Jürgen Thäle,32,116.5,0.08
+AA166,Pyrbaum,Gesellschaft für Außenwerbung GmbH,0,110.8,1.68
+AA162,Dresden,Netto Marken-Discount Stiftung & Co. KG,990.34,10995.33,10.25
+AA186,Dresden,Netto Marken-Discount Stiftung & Co. KG,974.41,12077.77,5.67
+AA186,Dresden,Fleischerei Richter GmbH & Co. KG,71.27,1970.19,1.25
 AA144,Dresden,Jens Grünberger,51.73,571.79,0.25
-AA144,Dresden,Penny-Markt GmbH,1278,0,14.91
-AA144,Dresden,Musikschule Fröhlich,58.61,293.08,0.92
+AA144,Dresden,Penny-Markt GmbH,1278,17800,14.83
+AA144,Dresden,Musikschule Fröhlich,58.61,293.08,0.83
 AA144,Dresden,Leerstand stfr.,299.62,0,0
-AA144,Dresden,Christine Antje Moder,57.99,448.25,1.83
+AA144,Dresden,Christine Antje Moder,57.99,448.25,1.75
 AA144,Dresden,Robert Wehrmann,0,30,0
 AA144,Dresden,Bence Toth,0,30,0.25
 AA144,Dresden,Fahrschule Torsten Böhme,21.76,80,0.08
-AA144,Dresden,Ströer Media Deutschland GmbH & Co. KG,0,174.7,1.17
-AA144,Dresden,EWG Eisenbahner-Wohnungsbau- genossenschaft Dresden eG,0,153.39,0.33
-AA144,Dresden,Dresdner Druck- und Verlagshaus GmbH & C,0,50,1.33
+AA144,Dresden,Ströer Media Deutschland GmbH & Co. KG,0,174.7,1.08
+AA144,Dresden,EWG Eisenbahner-Wohnungsbau- genossenschaft Dresden eG,0,153.39,0.25
+AA144,Dresden,Dresdner Druck- und Verlagshaus GmbH & C,0,50,1.25
 AA144,Dresden,Mambo Plak GmbH,0,26,0.25
-AA144,Dresden,Landeshauptstadt Dresden Amt für Hochbau u. Immobilienverw.  / Abt. Immobilienverw.,293.5,2397.26,1.75
-AA144,Dresden,Deutsche Bank AG c/o CBRE GmbH,25,530.76,3.58
-AA144,Dresden,TEDi GmbH & Co. KG,651,7486.5,2.58
-AA144,Dresden,Dresdner Pflege- und Betreuungsverein e.,594.49,5713.94,1.33
-AA144,Dresden,Kinderarztpraxis Sachsenforum GbR Fr. Dr. med. Klemm & Fr. Dr. med. Wanske,195.15,1170.9,10.58
+AA146,Wanzleben,Leerstand stpfl.,91,0,0
+AA165,Ense-Bremen,Michael Brücken Kaufpark GmbH & Co OHG,1238,10000,2.75
+AA183,Holzminden,Getränke Fachmarkt Waldhoff GmbH Höxter-,1050,5666.67,1.5
+AA182,Gera,Leerstand stpfl.,68.31,0,0
+AA182,Gera,POLIS Objekt Gera GmbH & Co. KG c/o POLIS Immobilien AG,0,1468.78,20.25
+AA163,Neukirchen,EDEKA Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,1226.75,12256.36,4.43
+AA155,Ludwigsfelde,Ibrahim Abobaker Hussein Madarati,51.64,1030,2.68
+AA155,Ludwigsfelde,Leerstand stpfl.,535.52,0,0
+AA155,Ludwigsfelde,Sven Anders,75.37,750,4.39
+AA156,None,EnBW mobility+ AG & Co. KG,0,62.5,11
+AA183,Holzminden,Leerstand stpfl.,44,0,0
+AA158,None,Ströer Media Deutschland GmbH,0,183.33,0.5
+AA185,Halle,Berufliches Bildungswerk e.V. Halle-Saalkreis,88.87,1006.15,3.92
+AA164,Dresden,Bona Vertriebsgesellschaft mbH Deutschland,332.5,4036.73,1
+AA166,Pyrbaum,Nahkauf Häber,1270,0,11.75
+AA166,Pyrbaum,Manfred Zander,203,515.11,3.42
+AA187,Aarbergen,Netto Marken-Discount Stiftung & Co. KG,1072,12838.73,12.08
+U1,Aken,PENNY Markt GmbH,975.19,7500,5.08
+U2,Bad Brückenau,Netto Marken-Discount Stiftung & Co. KG,1086,11186.53,0.07
+U2,Bad Brückenau,Slate Mobility GmbH & Co. KG (Climova),0,833.33,7.42
+U2,Bad Brückenau,SCHWARZ-Außenwerbung GmbH,0,75,5
+U3,Brotterode,EDEKA Handelsgesellschaft Hessenring mbH,1293,11049.16,1.42
+U5,Schönbrunn,tegut... gute Lebensmittel GmbH & Co. KG,742.39,4899,5.25
+U5,Schönbrunn,Salon Schnipp-Schnapp,39.18,641.5,1.67
+U4,Seehausen,PENNY Markt GmbH,1025.07,7807.72,2.67
+U4,Seehausen,Fleischerei Kiebach,129.01,819.55,5.5
+T15,Hambühren,Lidl Vertriebs-GmbH & Co. KG,1497,21883.89,4.83
+T20,Eisingen,EDEKA Südwest Stiftung & Co. KG,1353,14819.35,5.33
+T5,Bardowick,REWE Markt GmbH Zweigniederlassung Nord,1996,23865.58,5.25
+T6,Bardowick,PENNY Markt GmbH Zweigniederlassung Nord,1190.34,15900,18.1
+T7,Bautzen,Lidl Vertriebs-GmbH & Co. KG,1276.83,13370.5,4.08
+T8,Berching,REWE Markt GmbH Zweigniederlassung Süd,2599.1,26416.51,3.33
+T8,Berching,Stadt Apotheke Benjamin Kleinsteuber,161,1955.67,14
+T9,Berlin,Netto Marken-Discount Stiftung & Co. KG,1430.55,19848,9.08
+T22,Gräfenhainichen,PENNY Markt GmbH Region Ost,935.9,8100,1.17
+T22,Gräfenhainichen,WVG Getränkefachgroßhandel GmbH,414,3415.34,1.17
+T22,Gräfenhainichen,Feine Fleisch- u. Wurstwaren Rainer Böttge,35,752.5,1.17
+T23,Heide,Takko Holding GmbH,655.2,7575.06,2.25
+T23,Heide,Kienast Schuhhandels GmbH & Co. KG,443.03,3100,0.5
+T23,Heide,Lidl Vertriebs-GmbH & Co. KG,1703,14834.5,4.25
+T26,Lemgo,Schäfer´s Brot & Kuchen Spezialitäten GmbH,65,1754.88,1.58
+T26,Lemgo,Netto Marken-Discount Stiftung & Co. KG,1017,13100,11.61
+T26,Lemgo,Slate Mobility GmbH & Co. KG,0,266.41,23.17
+T27,Burbach,PETZ REWE GmbH,2684.17,30611.69,5.5
+T27,Burbach,dm-drogerie markt GmbH & Co. KG,753,7380.76,5.25
+T32,Rockenhausen,PENNY Markt GmbH,1018.35,11467.05,3.25
+T32,Rockenhausen,KiK Textilien und Non-Food GmbH,600,5734.79,5.25
+T38,Waltershausen,Nancy Wetzstein,1372,9200,3.25
+T38,Waltershausen,Apotheke Ibenhain Dieter Dazert,125.38,1659.56,1.25
+T38,Waltershausen,Adrian Weiß,206.1,1500,10.51
+T38,Waltershausen,Friseursalon Doreen Pilz,82.15,720,3.25
+T39,Bitterfeld-Wolfen,Fleisch- u. Wurstwarenmanufaktur Reinsdorfer GmbH,98.3,1281.64,0
+T39,Bitterfeld-Wolfen,KIK Textilien und Non-Food GmbH,441.29,4036.48,5.25
+T39,Bitterfeld-Wolfen,Lidl Vertriebs-GmbH & Co. KG,1328.32,15068.58,8.39
+T39,Bitterfeld-Wolfen,Slate Mobility GmbH & Co. KG,0,416.67,0
+B13,Kassel-Waldau,Bäckerei Ehmer,28,880.05,0
+B13,Kassel-Waldau,PENNY Markt GmbH,931,7000,0
+B13,Kassel-Waldau,Eugen Grass,25,586.25,8.92
+B14,Laubach,REWE Markt GmbH Zweigniederlassung Mitte,1985.26,25629.04,3.25
+B14,Laubach,Kienast Schuhhandels GmbH & Co. KG vertreten durch die Kienast Verwaltungs GmbH,333.44,2334.08,2.83
+B14,Laubach,Takko Holding GmbH,433.01,4162.57,5.25
+B14,Laubach,LEOX AG,222.23,2111.19,2.92
+B15,Löbau,Netto Marken-Discount Stiftung & Co. KG,1037,9472.33,6.5
+B16,Mellrichstadt,Lidl Vertriebs-GmbH & Co. KG,1464.23,14999.98,0
+B18,Niederaula,Fleischerei Schäfer OHG,275.96,3091.23,8.25
+B18,Niederaula,Heurich GmbH & Co. KG Getränke Fachgroßhandel,376.12,3000,2.25
+B23,Sehma,Netto Marken-Discount Stiftung & Co. KG,1204,10850.77,5.08
+B7,Grimma,Aldi GmbH & Co. Beucha KG,1477,14900,10.13
+B7,Grimma,Lars Moldenhauer,110,450.12,0.25
+B7,Grimma,Marina Mönig,113,480,0.25
+B8,Hartenstein,Netto Marken-Discount Stiftung & Co. KG,1406,16755,10.12
+F10,Meiningen,MW Handelsges. für Fleisch- und Wurstspezialitäten mbH,49.76,646.88,1.25
+F12,Pressig,NORMA Lebensmittelhandels Stiftung & Co. KG,1187,8900,5.5
+F2,Chemnitz,Schäfers Backstube GmbH,48.5,1608.57,0.5
+F2,Chemnitz,FRISTO SE,570,4481.62,2.25
+F2,Chemnitz,Gretenkord GmbH,92.5,1865.93,1.64
+F2,Chemnitz,PENNY Markt GmbH,976,12679.67,2.25
+F3,Burhave,Netto Marken-Discount Stiftung & Co. KG,1294,16541.67,0
+F5,Elbingerode (Harz),Netto Marken-Discount Stiftung & Co. KG,1382.61,16777.2,10.13
+F7,Hillerse,Netto Marken-Discount Stiftung & Co. KG,1037,0,-0.16
+F9,Lützen,Netto Marken-Discount Stiftung & Co. KG,1352,19060,14.17
+G15,Bad Gottleuba-Berggießhübel,EDEKA Grundstücksgesellschaft N-S-T mbH,956.2,8462.32,3.08
+G17,Jessen (Elster),Netto Marken-Discount Stiftung & Co. KG,1046,10753.86,4.83
+G2,Kreischa,Bäckerei Hiekel Inh. Grit Großmann e.K.,106,2191.66,2.92
+G2,Kreischa,EDEKA Grundstücksgesellschaft N-S-T mbH,870,7000,2.92
+S1,Zwickau,EDEKA Grundstücksgesellschaft N-S-T mbH,1559,16185.32,1.83
+A1,Annaberg-Buchholz,PENNY Markt GmbH,1077.93,10899.92,4.83
+A2,Barby,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1081,9716.89,0.76
+A6,Görlitz,PENNY Markt GmbH,1045.42,10760,7.67
+K13,Waldsassen,NORMA Lebensmittelhandels Stiftung & Co. KG,968,7875,0
+K13,Waldsassen,Dirk Rossmann GmbH,480.12,5173.24,2.17
+K13,Waldsassen,KIK Textilien und Non-Food GmbH,574.6,4944.45,0
+K13,Waldsassen,TEDi GmbH & Co. KG,359.63,2747.76,0
+K14,Ziesar,Netto Marken-Discount Stiftung & Co. KG,1088,11161.12,0
+K16,Berlin,NORMA Lebensmittelhandels Stiftung & Co. KG,954.61,8615.07,0.5
+K16,Berlin,Kockazi Zeynep,59.76,1463.5,0
+K16,Berlin,Getränke Hoffmann GmbH,457.2,4977.67,0
+K16,Berlin,Manfred Tanski Reifen Tanski,533.02,6275.79,0
+M3,Königs Wusterhausen,Bäckerei Konditorei Wahl GmbH,58,1584.54,0
+C16,Holzwickede,Slate Mobility GmbH & Co. KG (Climova),0,375,22.58
+A11,Pirna,Leerstand stpfl.,145.02,0,0
+C17,Bad Oeynhausen,Leerstand stpfl.,206,0,0
+A7,Großröhrsdorf,Netto Marken-Discount Stiftung & Co. KG,1056,10970.93,4.75
+K7,Leipzig,Netto Marken-Discount Stiftung & Co. KG,1122,14286.37,4.61
+A5,Frauenstein,"Wolf GmbH ""Schinkenpeter""",75,1600,2.25
+K7,Leipzig,TEDi GmbH & Co. KG,377,3595.49,2.62
+A8,Meiningen,PENNY Markt GmbH,1020.91,12358.97,9.08
+K7,Leipzig,Ly Duc Thuy,59,1022.54,0.61
+A8,Meiningen,SAGASSER Fachmarkt Nord GmbH & Co. KG,643.13,3507,1
+K7,Leipzig,Ben Hadia Taoufik,25,577.7,1.61
+A10,Pausa/Vogtland,Edeka Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,905,7816.31,3.25
+A11,Pirna,Netto Marken-Discount Stiftung & Co. KG,993.93,10678.04,-0.15
+A15,Weißwasser/Oberlausitz,Netto Marken-Discount Stiftung & Co. KG,1157,7322.28,2.33
+A5,Frauenstein,Leerstand stpfl.,66,0,0
+S2,Oberwesel,Lidl Vertriebs-GmbH & Co. KG,1636,16400.12,4.25
+S3,Waldfeucht,REWE Markt GmbH,1971,17155.58,5.08
+S4,Velbert,EDEKA Rhein-Ruhr Stiftung & Co. KG,2044,16251,10.56
+S5,Hamm,PENNY Markt GmbH Immobilienmanagement,1237,15767.89,10.17
+S5,Hamm,Gebr. Schürmann GmbH & Co KG,595,3281.13,2
+S7,Karlshagen,EDEKA Handelsgesellschaft Nord mbH,1690,0,9.03
+A1,Annaberg-Buchholz,Fleischerei Richter GmbH & Co. KG,200,650,0.08
+D1,Dahme/Mark,Lidl Vertriebs-GmbH & Co. KG,1143,10275.57,0.75
+D10,Bad Eilsen,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1034,9461.5,2.08
+D11,Langenhagen,Netto Marken-Discount Stiftung & Co. KG,1048,11183,2.09
+P1,Oyten,PENNY Markt GmbH,1390,13000,0.5
+D12,Gronau (Leine),Lidl Vertriebs-GmbH & Co. KG,1360,16958.24,3.25
+P1,Oyten,Leerstand stpfl.,310,0,0
+D12,Gronau (Leine),Getränke Service Inh. Heike Poppinga e.K.,650,1617.34,3.33
+C11,Klostermansfeld,EDEKA-MIHA Immobilien-Service GmbH,1080,12143,1.25
+D12,Gronau (Leine),KIK Textilien und Non-Food GmbH,550,5115.35,5.25
+C8,Rochlitz,PENNY Markt GmbH Zweigniederlassung Berlin,931,7640.21,0
+D12,Gronau (Leine),Ernsting´s family GmbH & Co. KG,300,3359.27,2.25
+C12,Husum,PENNY Markt GmbH,1045,14025.07,1.25
+C15,Angermünde,Netto Marken-Discount Stiftung & Co. KG,1394,20584.33,10.45
+C15,Angermünde,KiK Textilien und Non-Food GmbH,867,6878.2,0.25
+C16,Holzwickede,Netto Marken-Discount Stiftung & Co. KG,1486,23898.29,10.42
+C16,Holzwickede,Dirk Rossmann GmbH,598,7671.56,1.67
+D12,Gronau (Leine),Slate Mobility GmbH & Co. KG (Amperio),0,300,0
+C16,Holzwickede,Orhan Öztürk,68.3,1333.55,14.25
+C17,Bad Oeynhausen,PENNY Markt GmbH,967,13046.23,1.86
+D4,Blankenfelde-Mahlow,REWE Markt GmbH Zweigniederlassung Ost,1825,16696.77,2.08
+C17,Bad Oeynhausen,Getränkewelt GmbH,610,4954.9,7.25
+D4,Blankenfelde-Mahlow,Leerstand stpfl.,388,0,0
+E3,Steinen,PENNY Markt GmbH,986,14196.6,6.25
+D4,Blankenfelde-Mahlow,Yvonne Veit,70.82,914.75,0.67
+E3,Steinen,EFM Discothekenbetriebs GmbH,900,4050,4.25
+E10,Herrenberg,Netto Marken-Discount Stiftung & Co. KG,1466,22295.83,12.1
+D6,Crottendorf,Netto Marken-Discount Stiftung & Co. KG,1362,16228.31,11.08
+E11,Dauchingen,Netto Marken-Discount Stiftung & Co. KG,1349.87,18009.25,0.5
+I3,Kirchberg,Netto Marken-Discount Stiftung & Co. KG,1093,12632.38,0
+D7,Rheinberg,EDEKA Handelsgesellschaft Rhein-Ruhr Stiftung & Co. KG,1100,11036.47,5.17
+I5,Nabburg,Netto Marken-Discount Stiftung & Co. KG,1114,12367.02,0
+D9,Hartenstein,PENNY Markt GmbH,979,5384.84,6
+I5,Nabburg,TABA - PRESS Handelsgesellschaft mit Tabak- u. Presseartikeln mbH,174,1679.95,0
+D9,Hartenstein,Leerstand stpfl.,917,0,0
+D9,Hartenstein,Xuan Thanh Pham,70,280,1.5
+D9,Hartenstein,"Neidhardt, Jessica",67,301.81,1.83
+E1,Kappel-Grafenhausen,EDEKA Südwest Stiftung & Co. KG,1744.24,27154.54,13.17
+P2,Jerichow,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH - Objektmanagement Netto Bln.,1116,10380.99,7.17
+E13,March,Netto Marken-Discount Stiftung & Co. KG,1314,7700,9.17
+E13,March,Leerstand stpfl.,190,0,0
+E7,Affing,Netto Marken-Discount Stiftung & Co. KG,1688,20538.7,10.45
+M1,Aurich,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,880,8100,0
+M2,Friesack,NORMA Lebensmittelhandels Stiftung & Co. KG,1113,6195,1.08
+M3,Königs Wusterhausen,Netto Marken-Discount Stiftung & Co. KG,1056,12920.11,0
+M3,Königs Wusterhausen,Getränke Hoffmann GmbH,500,5491.74,5.25
+M3,Königs Wusterhausen,Knuth Sabelus,230,3851.5,0
+M3,Königs Wusterhausen,Fleischerei Schulz Inh. M. Friedrich,72,1848.32,0
+M3,Königs Wusterhausen,Asia Today,18,625.38,1.17
+M3,Königs Wusterhausen,Slate Mobility GmbH & Co. KG (Amperio),0,400,0
+M3,Königs Wusterhausen,Slate Mobility GmbH & Co. KG (Climova),0,375,0
+I10,Pulsnitz,ATC Germany Munich GmbH,20,310.46,5.25
+A3,Biederitz,Netto Marken-Discount Stiftung & Co. KG,1357,9812.53,1.09
+A4,Breitungen/Werra,Netto Marken-Discount Stiftung & Co. KG,1058,10104.53,6.5
+A5,Frauenstein,PENNY Markt GmbH,885.37,6357.6,4.92
+C3,Beeskow,Leerstand stfr.,224,0,0
+C3,Beeskow,Roland und Roswitha Ache,113.86,613.01,0
+C1,Petershagen,Lidl Vertriebs-GmbH & Co. KG,1515.97,12537.33,4.17
+C3,Beeskow,Alessandro Wöhler,112,570.16,0
+C1,Petershagen,KiK Textilien und Non-Food GmbH,544.33,4858.15,0.08
+C3,Beeskow,Carolin Mey,113,680.27,0
+C3,Beeskow,Sebastian Schaar,112.61,470,0
+N4,Eisenberg (Pfalz),PENNY Markt GmbH,956.42,8927.55,3.25
+I9,Meißen,GDS Getänkemärkte Inhaber Jens Dietrich,218,1340.86,0.25
+I9,Meißen,"Chad, Som",100,1100,0.83
+I10,Pulsnitz,Netto Marken-Discount Stiftung & Co. KG,883,9212.34,1.17
+C15,Angermünde,Slate Mobility GmbH & Co. KG (Climova),0,222.09,23.56
+I10,Pulsnitz,FRISTO SE,450,3545.31,3.17
+I10,Pulsnitz,"Singh, Gurpreet",121,662.34,-0.46
+C8,Rochlitz,Bäckerei Stötzel GmbH,70,1345.8,0
+C16,Holzwickede,Slate Mobility GmbH & Co. KG (Amperio),0,800,0
+C2,Bad Harzburg,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1117,13699.32,3.82
+C3,Beeskow,PENNY Markt GmbH,1274,10678,0
+P1,Oyten,Slate Mobility GmbH & Co. KG (Amperio),2,200,0
+C4,Dessau-Roßlau,NORMA Lebensmittelhandels Stiftung & Co. KG,1047,7090.51,2.13
+C4,Dessau-Roßlau,Bäckerei-Konditorei Meiling,31,673.92,0
+C6,Steinberg,Netto Marken-Discount Stiftung & Co. KG,1330.62,18278.19,8.47
+C7,Aschersleben,PENNY Markt GmbH,1167,10500,7.33
+I10,Pulsnitz,Leerstand stpfl.,112,0,0
+I3,Kirchberg,Leerstand stfr.,382,0,0
+I6,Eitorf,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1038,14556,1.42
+I9,Meißen,Lidl Vertriebs-GmbH & Co. KG,1510,14378.08,4.08
+I9,Meißen,Leerstand stpfl.,204,0,0
+B25,Würzburg,REWE Markt GmbH Zweigniederlassung Süd,2496.74,32632.5,6.25
+G3,Demitz-Thumitz,EDEKA Grundstücksgesellschaft N-S-T mbH,1067,10951,2.66
+T29,Neukirch/Lausitz,Lidl Vertriebs-GmbH & Co. KG,2124.13,21900,11.32
+T29,Neukirch/Lausitz,Fleischerei Richter GmbH & Co. KG,164.36,2100,8.77
+T29,Neukirch/Lausitz,Bäckerei-Konditorei-Café Marx Dieter Marx,133.43,1600,8.77
+T29,Neukirch/Lausitz,Dirk Rossmann GmbH,1013.07,8500,8.64
+Z3,Sankt Johann,Netto Marken-Discount Stiftung & Co. KG,1322,10200.09,5.08
+Z3,Sankt Johann,Fa. Bayer & Raach,0,225,0
+B20,Raunheim,REWE Markt GmbH,1791,21771,9.5
+F1,Bad Kleinen,EDEKA Handelsgesellschaft Nord mbH,1442.35,8233.21,3.08
+F1,Bad Kleinen,Erdal Tas,270,1200,9.5
+G9,Stendal,PENNY Markt GmbH Region Ost,980.66,8464.22,0
+F16,Tessin,Netto Marken-Discount Stiftung & Co. KG,970,9119.1,5.25
+G19,Sömmerda,EDEKA Grundstücksgesellschaft N-S-T mbH,1040,10483.69,4.17
+G1,Halberstadt,EDEKA MIHA Immobilien-Service GmbH,1000,4640.63,1.71
+C15,Angermünde,Slate Mobility GmbH & Co. KG (Amperio),0,307.5,19.56
+T10,Pressath,Bäckerei Brunner KG,61.61,1272.22,1
+T10,Pressath,Metzgerei Hausner & Peugler GmbH & Co.KG,87.76,1249.5,1
+T10,Pressath,REWE Markt GmbH Zweigniederlassung Süd,2207.34,17830.98,4.25
+T40,Wölfersheim,PENNY Markt GmbH,1178.04,9793,6.25
+T40,Wölfersheim,tegut.. gute Lebensmittel GmbH & Co. KG,1903.11,20643.77,8.75
+T40,Wölfersheim,Lust auf Haus GmbH,93,753.35,0.77
+T14,Budenheim,REWE Markt GmbH Vertragswesen VS,1178.44,17787.57,3.75
+G14,Quedlinburg,EDEKA MIHA Immobilien-Service GmbH,929.5,3173.92,1.92
+G14,Quedlinburg,VSQ Verwaltungs- u. Service- GmbH Quedlinburg,22.5,15,0
+B4,Bünde,Netto Marken-Discount Stiftung & Co. KG,1389,13300,12.97
+B4,Bünde,Slate Mobility GmbH & Co. KG,0,444.09,22.67
+F15,Tarmstedt,REWE Markt GmbH Zweigniederlassung Nord,1522.5,19271.33,3.75
+F19,Wittmund,Slate Mobility GmbH & Co. KG,0,224.44,13.17
+K11,Storkow (Mark),Netto Marken-Discount Stiftung & Co. KG,1046,9880,0
+K11,Storkow (Mark),KIK Textilien und Non-Food GmbH,534.26,4643.79,0
+K6,Leipzig,Netto Marken-Discount Stiftung & Co. KG,1062,10360.11,5.09
+K6,Leipzig,TEDi GmbH & Co. KG,473.59,4310.06,4.1
+K6,Leipzig,FLEX Fund Photovoltaik 1 GmbH & Co. KG,0,54,0
+K6,Leipzig,Karola Wiederhold,175.6,2591.13,8.25
+K6,Leipzig,Engin Arslan,59,877.63,0.26
+T4,Bad Lippspringe,KIK Textilien und Non-Food GmbH,493.35,3922,4.17
+G13,Dargun,Netto Marken-Discount Stiftung & Co. KG,1046,9675.5,0
+T4,Bad Lippspringe,PENNY Markt GmbH,1313.36,13131.3,6.75
+K18,Annaberg-Buchholz,Getränkewelt GmbH,800,5420.12,0
+F11,Obermaßfeld-Grimmenthal,NORMA Lebensmittelhandels Stiftung & Co. KG,996,6754.43,4.58
+F11,Obermaßfeld-Grimmenthal,MW Handelsges. für Fleisch- und Wurstspezialitäten mbH,116,1730.05,0
+B10,Herford,PENNY Markt GmbH Discount Nord,929,11466.64,1.17
+B10,Herford,Hensel GmbH Bäckerei und Konditorei,55,1182.57,0.5
+B10,Herford,Getränkewelt GmbH,500,3840.18,6.75
+G16,Gebesee,Netto Marken-Discount Stiftung & Co. KG,996,9490.01,2.58
+B9,Helmbrechts,Netto Marken-Discount Stiftung & Co. KG,1121,12435.49,6.5
+K17,Zeitz,NKD Deutschland GmbH,375,3110.38,1.25
+K17,Zeitz,Deichmann SE,500,5587.8,5.25
+K17,Zeitz,TEDi GmbH & Co. KG,531,4859.05,0.5
+K17,Zeitz,KIK Textilien und Non-Food GmbH,632,5586.56,0.5
+K17,Zeitz,Christian Röschke,100,754.41,1.33
+K17,Zeitz,BF Fichtelmann GmbH,450,6359.7,5.25
+K17,Zeitz,Ernsting´s family GmbH & Co. KG,200,2179.4,3.25
+K17,Zeitz,Fressnapf Immobilien- und Vermögensverwaltung GmbH,450,3898.8,5.67
+K17,Zeitz,Ihre Friseur und Kosmetik GmbH,62.25,472.1,0.25
+K17,Zeitz,Lidl Vertriebs-GmbH & Co. KG,499,13700,0
+K17,Zeitz,Maxi-Media Zeitz GmbH,1300,10560.84,0.5
+K17,Zeitz,Birgit Weber,105,1175.05,0.25
+K17,Zeitz,Yvonne Münx-Hillig,62.5,674.1,0
+K17,Zeitz,Abdullah Kurt,130,1100,7.71
+K17,Zeitz,JYSK SE,1000,6500,9.17
+K17,Zeitz,dm-drogerie markt GmbH & Co. KG,690,7203.08,3.25
+K17,Zeitz,Schwarz-Aussenwerbung GmbH,0,41.67,0
+K17,Zeitz,Takko Holding GmbH,499.29,4944.93,0.5
+B17,Mörfelden-Walldorf,Dirk Rossmann GmbH,1167,12000,7.54
+B17,Mörfelden-Walldorf,tegut.. gute Lebensmittel GmbH & Co. KG,1754,23104.12,4.92
+T1,Alsfeld,PENNY Markt GmbH kfm. Immobilienverwaltung,1022.1,12381.82,3.25
+T1,Alsfeld,TEDi GmbH & Co. KG c/o TEDi Verwaltungs-und Beteiligungs-GmbH,525,5426.99,4.67
+F13,Sarstedt,Netto Marken-Discount Stiftung & Co. KG,1062,11004.27,5.08
+G7,Magdeburg,PENNY Markt GmbH Region Ost,1090,4500,1.12
+G7,Magdeburg,Bayram Aggül,15,166.31,7.25
+G7,Magdeburg,Backshop Beims GmbH,42,1193.45,0
+T33,Satrup,EDEKA Handelsgesellschaft Nord mbH,2659.91,19725,15.16
+T33,Satrup,Massagepraxis Markus Beskidt,132.92,1454.61,1.91
+T33,Satrup,Katja Gamst,151.44,1654.59,2.42
+T33,Satrup,Angelner Autohuus Simon Dreesen,156.97,1127.03,0.58
+T33,Satrup,Slate Mobility GmbH & Co. KG,0,521.65,24.25
+T33,Satrup,Dirk Rossmann GmbH,776.37,7355.99,0.83
+T13,Bruchköbel,Heurich GmbH & Co. KG Getränke Fachgroßhandel,473.16,3583.72,1.15
+T13,Bruchköbel,tegut.. gute Lebensmittel GmbH & Co. KG,1383.59,11627.29,3.17
+G8,Pulsnitz,Netto Marken-Discount Stiftung & Co. KG,1037,10542.7,2.25
+B18,Niederaula,Lidl Vertriebs-GmbH & Co. KG,1490,16345.03,10.79
+P1,Oyten,Ibrahim Orke,60,750,4.89
+A6,Görlitz,Leerstand stpfl.,55.48,0,0
+T3,Bad Laer,Irene Gerhardt,225.08,1125.4,1.17
+T37,Walsrode,Kreissparkasse Fallingbostel,0,250,0.25
+B16,Mellrichstadt,None,97.22,0,0
+B7,Grimma,None,712.18,0,0
+F10,Meiningen,NORMA Lebensmittelhandels Stiftung & Co. KG,862,7162.22,4.58
+C8,Rochlitz,None,110,0,0
+K13,Waldsassen,Stadtbäckerei Schaller GmbH,107.5,1511.17,1.12
+T39,Bitterfeld-Wolfen,Leerstand stpfl.,288.84,0,0
+K17,Zeitz,HUSTER GmbH & Co. Getränkegroßhandels KG Zwickau,450.7,3375,6.67
+G7,Magdeburg,Leerstand stpfl.,370,0,0
+A11,Pirna,Slate Mobility GmbH & CO. KG (Climova),0,418.13,23.62
+C1,None,Slate Mobility GmbH & Co. KG,0,200,20.06
+K6,Leipzig,Slate Mobility GmbH & Co. KG (Amperio),0,200,20.11
+K16,Berlin,Slate Mobility GmbH & Co. KG (Amperio),0,200,0
+AB6,Hemer,REWE DORTMUND Vertriebsgesellschaft mbH sowie Michael Brücken Kaufpark GmbH & Co. OHG,2322.7,26926.46,1.25
+AB5,Meinersen,REWE Markt GmbH,2710,30939.35,8.25
+AB7,Heide,Aldi SE & Co. KG,1949.63,22932,0.75
+AB7,Heide,KiK Textilien und Non-Food GmbH,873.43,8000,5.42
+AB7,Heide,TEDI GmbH & Co. KG,810.13,7493.7,5.5
+AB7,Heide,FISHBULL Franz Fischer SE & Co. KG Zentralverwaltung,1048,5687.38,5
+AB7,Heide,SUNPOINT AG & Co. KG,196.31,3600.18,-0.08
+AB7,Heide,Imbiss Mozaik,164,3043.2,10.7
+AB7,Heide,EWE Go GmbH,0,333.34,0
+AB8,Möhnsee,REWE DORTMUND Vertriebsgesellschaft mbH sowie Michael Brücken Kaufpark GmbH & Co. OHG,1726.12,19521.48,0.33
+AB9,Neustadt,REWE Markt GmbH Zweigniederlassung Mitte,5516,64920,13.51
+AB9,Neustadt,Thomas Philipps GmbH & Co. KG,4474,18000,8.08
+AB9,Neustadt,Aldi SE & Co. KG,1982.62,19099.14,2.17
+AB9,Neustadt,TEDi GmbH & Co. KG,1844,17057,5.5
+AB9,Neustadt,FISHBULL Franz Fischer SE & Co. KG,3388,16400,8.92
+AB9,Neustadt,KiK Textilien und Non-Food GmbH,2040,5600,5.42
+AB9,Neustadt,EWE Go GmbH,0,666.68,0
+AB4,Marienheide,REWE DORTMUND Vertriebsgesellschaft mbH sowie Michael Brücken Kaufpark GmbH & Co. OHG,1793.16,20835.81,1.25
+AB4,Marienheide,Heike Mutzenbach,120,370.68,0.25
+AB3,Lüdscheid,REWE DORTMUND Vertriebsgesellschaft mbH,1726.27,19874.22,5
+AB2,Cuxhaven,Netto Marken-Discount Stiftung & Co. KG,936,13578.57,2.57
+AB2,Cuxhaven,KiK Textilien und Non-Food GmbH,643.24,5751.95,2.25
+AB1,Hemer,EDEKA Rhein-Ruhr Stiftung & Co. KG,4500,50995,6.33
+E13,March,None,125,0,0
+AB1,Hemer,Dirk Rossmann GmbH,873.67,9500,7.75
+AB1,Hemer,KiK Textilien und Non-Food GmbH,694,5700,4.05
+AB1,Hemer,Kaltenbach GmbH Außenwerbung,0,165,3.75
+AB1,Hemer,None,284,0,0
+AB1,Hemer,Frau Helen Börger und Herr Cristoph Kaiser,56,493,0.25
+AB1,Hemer,Frau Denise Mandy Simpson und Herr Tobias Oliver Probst,87,784.5,0.25
+AB1,Hemer,Frau Bahr Sert und Herr Eray Sert,88,760,0.25
+AB1,Hemer,Sören Götz,76,650,0.25
+AB1,Hemer,Hatice Ceylan,77,482.79,0.25
+AB1,Hemer,Melanie Timm,80,585,0.25
+AB1,Hemer,Christian Weil,80,545,0.25
+AB1,Hemer,Fröndenberger Naturstrom GbR Carsten und Gunter Krippendorf,0,564.79,16.5
+AB1,Hemer,Iserlohner Fitness & Sportpark GmbH,280,1500,0.25
+AB10,Frankfurt am Main,Werk 2 Sportwagen UG,412,2266,3.75
+AB10,Frankfurt am Main,Bärbel Grässlin,538.26,2260.92,0.75
+AB10,Frankfurt am Main,NeuWerbung Dietmar Neu,0,125,0.5
+B21,Regensburg-Tegernheim,Slate Mobility GmbH & Co. KG,0,501.98,0
+B17,Mörfelden-Walldorf,Slate Mobility GmbH & Co. KG (Climova),0,208.33,24.18
+F19,Wittmund,Netto Marken-Discount Stiftung & Co. KG,1257.06,15900,13.14
+F10,Meiningen,Leerstand stpfl.,26.52,0,0
+F12,Pressig,Leerstand stpfl.,69,0,0
+B10,Herford,JET Tankstellen DEUTSCHLAND GmbH,1730,4600,1.75
+B18,Niederaula,NKD Deutschland GmbH,310,1984.89,4.75
+B2,Auma-Weidatal,PENNY Markt GmbH,1606.27,17700,13.52
+T35,Silberstedt,EDEKA Handelsgesellschaft Nord mbH,2000,21895,10.09
+T3,Bad Laer,Patrick Mentrup,706.95,3227.16,5.25
+T3,Bad Laer,Lidl Vertriebs-GmbH & Co. KG,1440,15901.24,6.17
+Z1,Kümmersbruck,EDEKA Grundstücksgesellschaft N-S-T mbH,1100,5200,0.58
+T36,Straßberg,Netto Marken-Discount Stiftung & Co. KG,1117,11664.25,1.82
+B21,Regensburg-Tegernheim,Netto Marken-Discount Stiftung & Co. KG,1758.14,18050,11.16
+K2,Dinkelsbühl,NORMA Lebensmittelhandels Stiftung & Co. KG,1498.86,11928,0
+K2,Dinkelsbühl,Baues und Gerlach Solar eGbR,1,63.66,0
+K2,Dinkelsbühl,AWG Allgemeine Warenvertriebs GmbH,949,8637.33,3.1
+T37,Walsrode,PENNY Markt GmbH,1403,12755.91,1.35
+T37,Walsrode,Dirk Rossmann GmbH,750.45,8743.96,1.08
+G11,Sülzetal,EDEKA MIHA Immobilien-Service GmbH,1012.65,11289,5
+K8,Lindern (Oldenburg),EDEKA-MIHA Immobilien- Service GmbH,960.96,10234.05,0
+K8,Lindern (Oldenburg),Tahseen Khaled,70.04,717.82,5.25
+T21,Glückstadt,Aldi SE & Co. KG,1715.25,20240,10.81
+G12,Gera,PENNY Markt GmbH Region Ost,1016.81,11643.35,3
+S6,Lengenfeld,EDEKA Grundstücksgesellschaft N-S-T mbH,1587,16077.51,2
+AB10,Frankfurt am Main,Lidl Vertriebs-GmbH & Co. KG,1641,33678.92,1.42
+AB10,Frankfurt am Main,WEWO Tiernahrungsmarkt Frankfurt GmbH,615,7813,12.17
+AB10,Frankfurt am Main,Heurich GmbH & Co. KG vertreten durch die Heurich Beteiligungs GmbH,947,4939.7,1
+AB10,Frankfurt am Main,NKD Deutschland GmbH,386,5018,1.5
+G18,Altenburg,Lidl Vertriebs-GmbH & Co. KG,1235,12181.93,0.75
+I10,None,Slate Mobility GmbH & Co. KG (Amperio),0,300,0
+A11,Pirna,Slate Mobility GmbH & Co. KG (Amperio),0,306,0
+I10,None,Slate Mobility GmbH & Co. KG (Climova),0,170.83,0
+D12,None,Amazon Deutschland Transport GmbH,0,0,2.57
+AA46,Braunschweig,"Praxisgemeinschaft Kohnke, Bauer, Caesar",160,1549.36,4.83
+AA46,Braunschweig,Joachim Klima,130,1411.85,0.67
+AA46,Braunschweig,Lagune Ambulante Pflege GmbH,291,2779.56,2.25
+AA46,Braunschweig,Ursula Kersten,0,780,0.08
+AA32,Neustrelitz,Kaufland Vertrieb 294 GmbH & Co.KG,4686.44,51649.38,6.58
+AA32,Neustrelitz,Kaufland Warenhandel Berlin GmbH & Co.KG,0,450,4.58
+AA48,Himmelpforten,VGH Versicherungsbüro,128,817.43,0.25
+AA48,Himmelpforten,Elke Eggeling Vorsitzende DRK OV Himmelpforten ,45.37,150,0.25
+AA49,Husum,Itzehoer Versicherung Brandgilde von 1691 Versicherungsverein a.G.,133,1838.68,2.25
+AA49,Husum,Nord-Ostsee Sparkasse c/o BUD GmbH,395,5551.71,6.58
+AA108,Eberswalde,Rettungsdienst Landkreis Barnim GmbH,709.19,4861.07,4.33
+AA17,Drebkau,Viva Physio,102,545.81,1.25
+AA66,Wriezen,Kreissparkasse Märkisch-Oderland,210.37,2985.64,4.17
+AA66,Wriezen,1. BEMA Beteiligungs GmbH,0,0,14.25
+AA118,None,EnBW mobility+ AG & Co. KG,0,250,25.42
+AA118,None,Aktiv-Apotheke Thomas Bielig e.K.,14.43,75,2.83
+AA128,None,EnBW mobility+ AG & Co. KG,0,125,25.67
+AA135,Dresden,Humana Kleidersammlung GmbH,0,10,0.25
+AA137,Jena,Deutsche Bank AG c/o CBRE GmbH,41.5,659.88,1
+AA137,Jena,Zahnärzte Martin Kraft & Sandra Trinks,153.3,1508.24,5.5
+AA137,Jena,Kerstin Gniwotta,131.45,1167.52,7.5
+AA137,Jena,Dr.med. Sabine Lippert,131.62,1370.11,0.25
+AA137,Jena,Dr.med. Anna Wende,174.64,1330.34,1.25
+AA137,Jena,HELIOS Versorgungszentren GmbH,176.54,1340.63,0.67
+AA137,Jena,Deutsche Paracelsus Schulen für Naturheilverfahren GmbH,272.06,3592.55,3.63
+AA137,Jena,Phan Than Thien,82.78,2184.79,6.08
+AA137,Jena,Schnittpunkt GmbH,0,90,0
+AA144,Dresden,Landeshauptstadt Dresden Amt für Hochbau u. Immobilienverw.  / Abt. Immobilienverw.,293.5,2397.26,1.67
+AA144,Dresden,Deutsche Bank AG c/o CBRE GmbH,25,530.76,3.5
+AA144,Dresden,TEDi GmbH & Co. KG,651,7486.5,2.5
+AA144,Dresden,Dresdner Pflege- und Betreuungsverein e.,594.49,5713.94,1.25
+AA144,Dresden,Kinderarztpraxis Sachsenforum GbR Fr. Dr. med. Klemm & Fr. Dr. med. Wanske,195.15,1170.9,10.5
 AA144,Dresden,MVZ Management Ostsachsen GmbH,184,1104,1
-AA144,Dresden,Annett Niebuhr,62,372,0.33
-AA144,Dresden,Katrin Butzek-Ozeir,82.91,700.28,3
-AA144,Dresden,Katrin Bachmann,136,1074.4,-0.67
-AA144,Dresden,Christian Blümel,124.98,1402.28,0
-AA144,Dresden,Irina Rublev,166,1328,0.33
-AA144,Dresden,Dr. Sebastian Fotescu,207.37,2457.45,7.42
+AA144,Dresden,Annett Niebuhr,62,372,0.25
+AA144,Dresden,Katrin Butzek-Ozeir,82.91,714.29,2.92
+AA144,Dresden,Katrin Bachmann,136,1074.4,-0.75
+AA144,Dresden,Christian Blümel,124.98,1402.28,-0.08
+AA144,Dresden,Irina Rublev,166,1328,0.5
+AA144,Dresden,Dr. Sebastian Fotescu,207.37,2457.45,7.33
 AA144,Dresden,Gerd Wehrmann,0,30,0.25
 AA144,Dresden,Wilfried Thurau,0,25.56,0.25
 AA144,Dresden,Volkhardt Becker,0,25.56,0.25
@@ -235,654 +925,175 @@ AA144,Dresden,Ullrich Richter,0,25.56,0.08
 AA144,Dresden,Edward Müller,0,25.56,0.08
 AA144,Dresden,Melanie Eichhorn,0,30,0.17
 AA144,Dresden,Klaus-Dieter Gebauer,0,25.56,0.08
-AA145,Dresden,KONSUM DRESDEN eG,2126.95,31767.58,4.75
-AA145,Dresden,Dirk Rossmann GmbH,611.52,8830.23,0.75
-AA146,Wanzleben,KiK Textilien und Non-Food GmbH,684.87,5700.66,0.97
-AA146,Wanzleben,WVG Getränkefachgroßhandel GmbH,803,3400,2.33
-AA146,Wanzleben,"Lidl Vertriebs-GmbH & Co. KG Claude-Breda-Straße 7, 06406 Bernburg",1321.38,13083.52,1.25
-AA146,Wanzleben,Backshop Beims GmbH Herrn Sven Probst,65.22,1354.73,1
-AA146,Wanzleben,DLC Wanzleben GmbH Herrn Marco Bartsch,140,490,0.58
-AA146,Wanzleben,Ernsting's family GmbH & Co. KG,90,768.41,1.33
-AA146,Wanzleben,Leerstand stpfl.,91,0,0
-AA146,Wanzleben,Abdulaziz Dyab,40,400,3.95
-AA147,Dresden,KONSUM DRESDEN eG,1012.37,11988.79,1.09
-AA148,Hemer,Lidl Vertriebs-GmbH & Co. KG,1437.4,20303.41,1.08
-AA15,Thale,Netto Marken-Discount Stiftung & Co. KG,1246.42,14572.22,10.33
-AA152,Chemnitz,Penny-Markt GmbH,1060,13229.51,2.25
-AA153,Chemnitz,Matratzen Concord GmbH,247,2698.03,2.84
-AA154,Dresden,Netto Marken-Discount Stiftung & Co. KG,1322.12,15791.47,1.33
-AA155,Ludwigsfelde,Leerstand stpfl.,1925.78,0,0
-AA155,Ludwigsfelde,Apollo-Optik Holding GmbH & Co. KG,116.85,3420.78,1.75
-AA155,Ludwigsfelde,Convenience Concept GmbH,45.06,1000,0.11
-AA155,Ludwigsfelde,"Volkan Özyurt Saime Cetinkaya, Özan Cetinkaya",35.61,959.03,1.58
-AA155,Ludwigsfelde,Klier Hair Group GmbH,63.78,2186.69,0.5
-AA155,Ludwigsfelde,Filiz Ulus Besim Ulus,44.44,1430.98,3.08
-AA155,Ludwigsfelde,ZEBRA Spielothek Gastronomie und Automat,167.16,3229.46,2.12
-AA155,Ludwigsfelde,Salih Ciftci,50.84,1430,6.33
-AA155,Ludwigsfelde,Tran Anh Nguyet,55.38,765.85,2.08
-AA155,Ludwigsfelde,HAARMEX.DE - Norhan Mohammad,125,1497.95,3.33
-AA155,Ludwigsfelde,iFitnessClub Ludwigsfelde GmbH,1106.52,8392.24,3.08
-AA155,Ludwigsfelde,ME Group Germany GmbH,0,0,0.33
-AA155,Ludwigsfelde,SCHWARZ-Außenwerbung GmbH,0,595.83,0.5
-AA155,Ludwigsfelde,Andreas Wendorff,173.23,5244,4.67
-AA155,Ludwigsfelde,Kaufland Vertrieb 64 GmbH & Co. KG,5939.73,38122.11,2.08
-AA155,Ludwigsfelde,Leerstand stfr.,417.23,0,0
-AA155,Ludwigsfelde,Bäckerei Konditorei Wahl GmbH Bestensee,72.37,1500,0.5
-AA155,Ludwigsfelde,Ibrahim Abobaker Hussein Madarati,51.64,1030,2.76
-AA155,Ludwigsfelde,Sven Anders,75.37,750,4.47
-AA155,Ludwigsfelde,ERGO Beratung und Vertrieb AG,50.99,1239.04,3.67
-AA155,Ludwigsfelde,Stadt Ludwigsfelde,2031.03,4543.98,2.06
-AA155,Ludwigsfelde,transact Elektronische Zahlungssysteme G,0,147.2,-0.67
-AA156,Twistringen,K+K Klaas & Kock B.V. & Co. KG,1340,11803.97,6
-AA156,Twistringen,EnBW mobility+ AG & Co. KG,0,62.5,11.08
-AA157,Mallersdorf-Pfaffenbegr,KiK Textilien und Non-Food GmbH,499.83,4832.04,0.09
-AA157,Mallersdorf-Pfaffenbegr,Penny-Markt GmbH,988.6,9851.81,4.26
-AA158,Ludwigsfelde,Penny-Markt GmbH,1015,12962.46,5.75
-AA158,Ludwigsfelde,MÄC GEIZ Handelsgesellschaft mbH,420,5242.8,1.66
-AA158,Ludwigsfelde,Bäckerei Dreißig GmbH & Co. KG,247,4617.42,-0.25
-AA158,Ludwigsfelde,Dirk Rossmann GmbH,720.76,9823.36,3.67
-AA158,Ludwigsfelde,Le Quynh Su,35,1119.37,4.75
-AA158,Ludwigsfelde,ACTIVA Heimtierprodukte GmbH & Co. KG,446.71,4762.86,4.17
-AA158,Ludwigsfelde,Ströer Media Deutschland GmbH,0,183.33,0.58
-AA159,Freiberg,Penny-Markt GmbH,926.03,8281.21,5.25
-AA159,Freiberg,Fleischerei Richter GmbH & Co. KG,89.8,2160,1.19
-AA159,Freiberg,Bäckerei - Konditorei Selbmann GbR,67.32,1556.43,-0.81
-AA16,Uelzen,Netto Marken-Discount Stiftung & Co. KG,1278.05,15658.12,10.33
-AA160,Taucha,Lidl Vertriebs-GmbH & Co. KG,1535,17280,10.86
-AA161,Bernburg,Penny-Markt GmbH,1005,10711.13,8.6
-AA162,Dresden,Netto Marken-Discount Stiftung & Co. KG,990.34,10995.33,10.33
-AA163,Neukirchen,EDEKA Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,1226.75,12256.36,4.51
-AA164,Dresden,Jana Dalla Libera YoFit,274,1657.7,0.58
-AA164,Dresden,Netto Marken-Discount Stiftung & Co. KG,1034,13363.49,5.75
-AA164,Dresden,Bürogemeinschaft Dr. Braun & Barth Freie Architekten Dresden,179,1851.84,1.75
-AA164,Dresden,Bona Vertriebsgesellschaft mbH Deutschland,332.5,4036.73,1.08
-AA165,Ense-Bremen,Michael Brücken Kaufpark GmbH & Co OHG,1238,10000,2.83
-AA166,Pyrbaum,EB Fitness GmbH,246.57,1837.32,-0.25
-AA166,Pyrbaum,Gesellschaft für Außenwerbung GmbH,0,110.8,1.76
-AA166,Pyrbaum,Nahkauf Häber,1270,0,11.83
-AA166,Pyrbaum,Manfred Zander,203,515.11,3.5
-AA167,Sulingen,Kienast Schuhhandels GmbH Co. KG c/o Kienast Verwaltungs GmbH,460,5297.39,1.58
-AA167,Sulingen,Wilhelm Ranck KG,75.8,2164.55,0.6
-AA167,Sulingen,Landbäckerei Niemeyer KG,76.62,5195.92,1.33
-AA167,Sulingen,Takko Holding GmbH,442,5552.91,0.33
-AA167,Sulingen,K+K Klaas & Kock B.V. & Co. KG,1400,11450.52,9.6
-AA168,Hartmannsdorf,Penny-Markt GmbH,931,5833.96,4.17
-AA168,Hartmannsdorf,Beethoven-Apotheke,230.93,2419.56,2.17
-AA168,Hartmannsdorf,Gretenkord GmbH & Co. KG,111.32,1568.59,1.25
-AA168,Hartmannsdorf,Bäckerei Liebig,65.59,1000.65,1.25
-AA169,Rehna,Lidl Vertriebs-GmbH & Co. KG,1154,11514.98,-1
-AA17,Drebkau,Netto Marken-Discount Stiftung & Co. KG,1435.52,18794.41,10.33
-AA17,Drebkau,Petra Suchandt,64,500,0.33
-AA17,Drebkau,Leerstand stpfl.,926,0,0
-AA17,Drebkau,Viva Physio,102,545.81,1.33
-AA170,Sömmerda,Netto Marken-Discount Stiftung & Co. KG,1042,11597.46,3.01
-AA171,Suhl,Penny-Markt GmbH,1016.9,11658.83,2.08
-AA171,Suhl,PFENNIGPFEIFFER Handelsgesellschaft mbH,1025.89,11443.54,0.06
-AA171,Suhl,SAGASSER Fachmarkt Nord GmbH & Co. KG,280.82,1327.84,0.17
+AA146,Wanzleben,Abdulaziz Dyab,40,408.8,3.87
 AA171,Suhl,grundtreu,0,200,0.08
-AA172,Dresden,Netto Marken-Discount Stiftung & Co. KG,1117,13098.53,5.33
-AA173,Berlin,Netto Marken-Discount Stiftung & Co. KG,1427,23684.14,6.59
-AA175,Leipzig,"Lidl Vertriebs-GmbH & Co. KG Claude-Breda-Straße 7, 06406 Bernburg",1106.51,11550.27,6.25
-AA176,Frankfurt (Oder),Bäckerei Dreißig GmbH & Co. KG,45.34,2720,7.33
-AA176,Frankfurt (Oder),"Lidl Vertriebs-GmbH & Co. KG Ahornstr. 6, 15537 Grünheide-Freienbrink",1051.32,15207.18,4.25
-AA177,Wörth am Rhein,Netto Marken-Discount Stiftung & Co. KG,1028,14229.7,4.33
-AA178,Moritzburg,Netto Marken-Discount Stiftung & Co. KG,1324.8,17854.17,12.99
-AA179,Magdeburg,ALDI GmbH & Co. KG Barleben,989,9257.42,2.52
-AA179,Magdeburg,FRISTO GETRÄNKEMARKT GmbH,400,3402.61,0.5
-AA179,Magdeburg,Fressnapf Immobilien- und Vermögens- verwaltungs GmbH,906,7933.39,0.52
-AA179,Magdeburg,Leerstand stpfl.,507.87,0,0
-AA18,Eberswalde,Netto Marken-Discount Stiftung & Co. KG,1241.3,14792.27,10.33
-AA180,Chemnitz,Netto Marken-Discount Stiftung & Co. KG,1278,19161.39,14.03
-AA181,Halle,Rewe Markt GmbH Zweigniederlassung Ost,1063.4,12445.09,1.67
-AA182,Gera,Netto Marken-Discount Stiftung & Co. KG,926.27,10368.3,2.27
-AA182,Gera,Fleischerei Stölzner GmbH,87.01,1563.93,0.25
-AA182,Gera,Leerstand stpfl.,68.31,0,0
-AA182,Gera,POLIS Objekt Gera GmbH & Co. KG c/o POLIS Immobilien AG,0,1468.78,20.33
-AA183,Holzminden,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,987,11902.16,2.53
-AA183,Holzminden,Getränke Fachmarkt Waldhoff GmbH Höxter-,1050,5666.67,1.58
-AA183,Holzminden,Leerstand stpfl.,44,0,0
-AA184,Chemnitz,Lidl Vertriebs-GmbH & Co. KG,1319,13991.04,1.2
-AA184,Chemnitz,Fressnapf Immobilien- und Vermögens- verwaltungs GmbH,600,5342.49,2.17
-AA184,Chemnitz,Leerstand stpfl.,56.93,0,0
-AA185,Halle,Netto Marken-Discount Stiftung & Co. KG,1035.77,10431.23,3.48
-AA185,Halle,Berufliches Bildungswerk e.V. Halle-Saalkreis,88.87,1006.15,4
-AA186,Dresden,Leerstand stpfl.,56.37,0,0
-AA186,Dresden,Netto Marken-Discount Stiftung & Co. KG,974.41,12077.77,5.75
-AA186,Dresden,Fleischerei Richter GmbH & Co. KG,71.27,1970.19,1.33
-AA187,Aarbergen,Netto Marken-Discount Stiftung & Co. KG,1072,12838.73,12.17
-AA19,Emlichheim,Netto Marken-Discount Stiftung & Co. KG,1057.18,13205.41,10.33
-AA2,Diepholz,Netto Marken-Discount Stiftung & Co. KG,1213.33,15206.88,10.33
-AA2,Diepholz,Röhe/Heemeier GbR,0,99,5.33
-AA20,Mühlhausen,Netto Marken-Discount Stiftung & Co. KG,1298.42,16639.06,10.33
-AA21,Neuruppin,Netto Marken-Discount Stiftung & Co. KG,1518.99,19176.46,10.33
-AA22,Oberhausen,Netto Marken-Discount Stiftung & Co. KG,1117.34,17303.29,10.33
-AA23,Penzlin,Netto Marken-Discount Stiftung & Co. KG,1483,18168.93,10.33
-AA24,Radebeul,Netto Marken-Discount Stiftung & Co. KG,1376,15040.98,10.33
-AA25,Seifhennersdorf,Netto Marken-Discount Stiftung & Co. KG,1407.21,17189.04,10.33
-AA26,Wassenberg,Netto Marken-Discount Stiftung & Co. KG,1073,16347.22,10.33
-AA27,Werdau,Netto Marken-Discount Stiftung & Co. KG,1214.36,14984.91,10.33
-AA28,Wettin-Löbejün,Netto Marken-Discount Stiftung & Co. KG,1073,12260.96,10.33
-AA29,Wiesenburg,Netto Marken-Discount Stiftung & Co. KG,1322.93,16638.01,10.33
-AA3,Duisburg,Netto Marken-Discount Stiftung & Co. KG,1102.89,17475.75,10.33
-AA30,Wolfsburg-Sülfeld,Netto Marken-Discount Stiftung & Co. KG,1338,15443.47,10.33
-AA31,Zahna,Netto Marken-Discount Stiftung & Co. KG,1549.41,15707.31,10.33
-AA32,Neustrelitz,Danh Ngo Tran,84.56,1255.2,7.75
-AA32,Neustrelitz,Blumen Schwisow GmbH & Co.KG,84.01,2351.09,1.33
-AA32,Neustrelitz,Augenoptik Radloff Elke Radloff,133.02,1518.97,-1.67
-AA32,Neustrelitz,freenet Shop GmbH,115.42,2424.99,2.53
-AA32,Neustrelitz,Apotheke Frau Dana Weinberg,161.18,2550.46,0
-AA32,Neustrelitz,ACTIVA Heimtierprodukte GmbH & Co. KG,394.79,4917.64,2.77
-AA32,Neustrelitz,Spiel & Spaß NZ GmbH,182.92,1620.93,0.69
-AA32,Neustrelitz,Reinigung Monique Jörn,55.61,804.6,-0.84
-AA32,Neustrelitz,Leerstand stpfl.,855.08,0,0
-AA32,Neustrelitz,Woolworth GmbH,839.32,7973.54,0
-AA32,Neustrelitz,Leerstand stfr.,120.89,0,0
-AA32,Neustrelitz,Dr. Terstegge Klaus /Eisenach Constanze Ergotherapie-Praxis,137.48,856.38,0.58
-AA32,Neustrelitz,KDW Technical Help GmbH Callcenter,1037.31,5219.64,-0.33
-AA32,Neustrelitz,Blischke/Kruse GbR Büro für heilpädagog. Praxis,48.61,348.37,0.25
-AA32,Neustrelitz,Imbiss Do Thi Hang und Singh Do Thi Hang und Kashmir Singh,76.38,844.37,1.33
-AA32,Neustrelitz,Fürstenseer-Frisch-Hähnchen-Grill GmbH Cornelia Rose,0,1100,1.75
-AA32,Neustrelitz,Jens Wendland Fischräucherei- und Handel,0,133.33,0.08
-AA32,Neustrelitz,Media GmbH Gesellschaft für Außenwerbung Gräfenhainichen,0,60.85,0.37
-AA32,Neustrelitz,SCHWARZ-Außenwerbung GmbH,0,262.5,-0.26
-AA32,Neustrelitz,DFMG Deutsche Funkturm GmbH,0,509.89,8.83
-AA32,Neustrelitz,Kaufland Vertrieb 294 GmbH & Co.KG,4686.44,52099.38,6.65
-AA33,Adenau,Leerstand stpfl.,1050,0,0
-AA33,Adenau,Leerstand stfr.,0,0,0
-AA34,Ketsch,Lidl Vertriebs-GmbH & Co. KG Gesellschaft Speyer,1005,19079.94,10.33
-AA35,Lübbenau,Lidl Vertriebs-GmbH & Co. KG Gesellschaft Freienbrink,1236,8790.33,0.33
-AA36,Nagold,Lidl Vertriebs-GmbH & Co. KG,1000,14088.17,10.33
-AA37,Schorfheide-Finowfurt,Lidl Vertriebs-GmbH & Co. KG Gesellschaft Kremmen,1268,11908.35,0.33
-AA38,Wendelstein,Lidl Vertriebs-GmbH & Co. KG Westfranken Gesellschaft Eggolsheim,1155,11367.59,1.33
-AA39,Berlin,Kaufland Vertrieb 294 GmbH & Co. KG,6311.48,78515.99,7.33
-AA39,Berlin,SCHWARZ-Außenwerbung GmbH,0,650,2.33
-AA39,Berlin,Ströer Media Deutschland GmbH Niederlassung Berlin,0,291.67,4.83
-AA39,Berlin,SB Möbel Boss Handels GmbH Berlin Köpenick,9867.41,36700,3.42
-AA39,Berlin,EnBW mobility+ AG & Co. KG,0,125,9.76
-AA39,Berlin,Ronald Geisler Bettengeisler - mobile Bettenreinigung,0,80,0.08
-AA4,Ebeleben,Netto Marken-Discount Stiftung & Co. KG,1367.72,16087.05,10.33
-AA40,Chemnitz,SCHWARZ-Außenwerbung GmbH,0,650,3.33
-AA40,Chemnitz,Kaufland-Center GmbH & Co. KG,10259.36,113113.15,5.33
-AA40,Chemnitz,REPO-Markt Süd Rest-und Sonderposten GmbH,6040,10000,6.17
-AA40,Chemnitz,EnBW mobility+ AG & Co. KG,0,125,0
-AA41,Lübbenau,SCHWARZ-Außenwerbung GmbH,0,650,2.33
-AA41,Lübbenau,toom Baumarkt GmbH,5479,33035.74,4.92
-AA41,Lübbenau,Kaufland Vertrieb 76 GmbH & Co. KG,8229.24,85005.69,5.33
-AA41,Lübbenau,EnBW mobility+ AG & Co. KG,0,125,9.81
-AA42,Rödermark,Kaufland Vertrieb EPSILON GmbH & Co. KG,5376.27,68572.61,3.42
-AA42,Rödermark,OBI GmbH,11688.86,58526.38,3.75
-AA42,Rödermark,Takko Holding GmbH,736.85,10137.63,4.5
-AA42,Rödermark,dm-drogerie markt GmbH + Co. KG,702.9,8932.85,6.49
-AA42,Rödermark,JYSK SE,1426.24,8613.69,2
-AA42,Rödermark,Deichmann SE,495.41,6380.28,3.48
-AA42,Rödermark,DPW Deutsche Plakat-Werbung GmbH & Co. KG,0,283.33,1.33
-AA42,Rödermark,EnBW mobility+ AG & Co. KG,0,125,10.76
-AA43,Rudolstadt,Kaufland Vertrieb 78 GmbH & Co. KG,7720.89,83987.25,5.33
-AA43,Rudolstadt,S.O.B.I.G. Baumarkt Saaletal GmbH & Co. KG,5747.45,29082.69,2.83
-AA43,Rudolstadt,SCHWARZ-Außenwerbung GmbH,0,541.67,2.33
-AA44,Staßfurt,Kaufland Vertrieb 40 GmbH & Co. KG,6265.78,68158.69,5.33
-AA44,Staßfurt,toom Baumarkt GmbH,5430,12664.08,2.92
-AA44,Staßfurt,KiK Textilien und Non-Food GmbH,600.37,5557.29,5.25
-AA44,Staßfurt,SCHWARZ-Außenwerbung GmbH,0,487.5,2.33
-AA44,Staßfurt,EnBW mobility+ AG & Co. KG,0,125,10.76
-AA45,Wurzen,Leerstand stpfl.,7880,0,0
-AA45,Wurzen,Kaufland Vertrieb KDSN GmbH & Co. KG,6178.62,67861.23,3.42
-AA45,Wurzen,AWG Allgemeine Warenvertriebs-GmbH,1009,9500,6
-AA45,Wurzen,SCHWARZ-Außenwerbung GmbH,0,108.33,2.33
-AA45,Wurzen,EnBW mobility+ AG & Co. KG,0,125,25.76
-AA46,Braunschweig,REWE Markt GmbH Zweigniederladdung Nord,4220,50206.9,3.83
-AA46,Braunschweig,Fahrschule Weber GmbH,35,928.1,1.33
-AA46,Braunschweig,FB Friseurbetrieb GmbH & Co. KG,72,1828.11,2.33
-AA46,Braunschweig,Aldi GmbH & Co. KG,1281.46,14945.23,8
-AA46,Braunschweig,Ernsting's family GmbH & Co. KG,232,3754.8,1.33
-AA46,Braunschweig,Dirk Rossmann GmbH,899,16724.31,2.17
-AA46,Braunschweig,Ludmila Kleister,103.5,1743.65,1.33
-AA46,Braunschweig,Ullrich und Iwona Just oHG TUI Reise Center,74,1949.66,1
-AA46,Braunschweig,Monika Övüc Zeki Övüc,168,1758.1,5.33
-AA46,Braunschweig,Zahnwerk GmbH,300,2883.36,1.33
-AA46,Braunschweig,Löwenbäckerei Schaper e.K.,141,4551.02,0.33
-AA46,Braunschweig,Fleischerei und Partyservice Neubauer GmbH und Co. KG,71,1768.61,5.67
-AA46,Braunschweig,Ahmad Alkhalid Ewelina Alkhalid,191,3554.05,2.67
-AA46,Braunschweig,Melanie Döhrmann,124,2108,7.33
-AA46,Braunschweig,Mert Erer,37,1250,5.33
-AA46,Braunschweig,Leerstand stpfl.,51,0,0
-AA46,Braunschweig,Sani Erdogan,101,1717,8.92
-AA46,Braunschweig,WISAG Gebäudetechnik Nord GmbH & Co. KG,35,1,0.08
-AA46,Braunschweig,WOBtalk GmbH,73,1606,1.92
-AA46,Braunschweig,Nguyen Thi Huong,34,800,1.08
-AA46,Braunschweig,Park & Control PAC GmbH,0,835,-1
-AA46,Braunschweig,Dt. Plakat Werbung GmbH,0,200,1.33
-AA46,Braunschweig,Ströer Dt. Städte Medien GmbH,0,50.08,0.99
-AA46,Braunschweig,"Praxisgemeinschaft Kohnke, Bauer, Caesar",160,1549.36,4.92
-AA46,Braunschweig,Joachim Klima,130,1411.85,0.75
-AA46,Braunschweig,Lagune Ambulante Pflege GmbH,291,2779.56,2.33
-AA46,Braunschweig,Ursula Kersten,0,780,0.08
-AA47,Braunschweig,Aldi GmbH & Co. KG,1180,17000,8.33
-AA47,Braunschweig,Casino Merkur Spielothek GmbH,234,2132.71,2.58
-AA47,Braunschweig,Heidberg Apotheke,238.49,6150,7.33
-AA47,Braunschweig,Hörgeräte Berger e.K.,45.12,1000,3.33
-AA47,Braunschweig,Karl-Heinz Schirm Reformhaus Schirm,161.39,2537.36,0.33
-AA47,Braunschweig,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1124.11,14121.83,8.64
-AA47,Braunschweig,Fleischerei und Partyservice Neubauer GmbH und Co. KG,142.24,3362.85,4.5
-AA47,Braunschweig,Sanitätshaus Enge GmbH,58,1260,5.33
-AA47,Braunschweig,Leerstand stpfl.,739.09,0,0
-AA47,Braunschweig,"Nguyen, Thanh Quyet",51,789.48,2.83
-AA47,Braunschweig,Adalet Cin,56,1233.56,4.5
-AA48,Himmelpforten,REWE Markt GmbH Zweigniederlassung Nord,2485.32,26772.93,11.17
-AA48,Himmelpforten,Silvia Hinz,43,290.42,0.25
-AA48,Himmelpforten,Luisa-Particia Vidal-Guedes Dirk Doogs,60,457.28,0.25
-AA48,Himmelpforten,Leerstand stfr.,102,0,0
-AA48,Himmelpforten,Leerstand stpfl.,369.35,0,0
-AA48,Himmelpforten,Emilija Chochlow,50,441.17,0.25
-AA48,Himmelpforten,Ibrahim Halil Yildiz,99,590.97,2.49
-AA48,Himmelpforten,Kai Dobrig,40,315.99,0.25
-AA48,Himmelpforten,Ayss Yildiz,134,680,1
-AA48,Himmelpforten,Martin Herkner Christian Herkner,60,489.61,0.25
-AA48,Himmelpforten,Mac Hair,140,1105.57,2.49
-AA48,Himmelpforten,Patrick Fritze,47,500,4.83
-AA48,Himmelpforten,"Al Khazrek, Amjad",35.84,305,0.25
-AA48,Himmelpforten,Westfa-Werbung Modersohn GmbH & Co. KG,0,125,0.6
-AA48,Himmelpforten,VGH Versicherungsbüro,128,817.43,0.25
-AA48,Himmelpforten,Elke Eggeling Vorsitzende DRK OV Himmelpforten ,45.37,150,0.25
-AA49,Husum,DPW Deusche Plakat-Werbung GmbH & Co.KG,0,75,3.83
-AA49,Husum,Elham Jungherr,65,980.74,1.17
-AA49,Husum,Stückwerk,136,1591.21,5.33
-AA49,Husum,Garburg Knoche-Lenz GbR,200.43,2418.22,1.33
-AA49,Husum,Monika Seuthe,69,991.83,-1.67
-AA49,Husum,ReiseService Schleswig-Holstein GmbH,64,996.24,-0.92
-AA49,Husum,Dirk Rossmann GmbH,750,8164.21,4.71
-AA49,Husum,Aldi GmbH & Co. KG,1539.17,18343.94,7.87
-AA49,Husum,EDEKA Handelsgesellschaft Nord mbH,1928,21118.54,4.42
-AA49,Husum,Leerstand stfr.,215,0,0
-AA49,Husum,Leerstand stpfl.,200,0,0
-AA49,Husum,Itzehoer Versicherung Brandgilde von 1691 Versicherungsverein a.G.,133,1838.68,2.33
-AA49,Husum,Nord-Ostsee Sparkasse c/o BUD GmbH,395,5551.71,6.67
-AA5,Gera,Netto Marken-Discount Stiftung & Co. KG,1179,15107.98,10.33
-AA50,Kell am See,REWE Markt GmbH Zweigniederlassung West,1345.87,21753.04,6.33
-AA51,Nalbach,REWE Markt GmbH Zweigniederlassung SüdWest,1534.23,25358.39,3.33
-AA52,Schmelz-Limbach,PENNY Markt GmbH,1207.38,12000,14.99
-AA53,Wolfsburg,Thomas Trenkner,44.65,1073.62,1.58
-AA53,Wolfsburg,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1027.25,12200.06,7.55
-AA53,Wolfsburg,FB Lifestyle GmbH & Co. KG,114,2506.86,2.33
-AA54,Übernherrn,REWE Markt GmbH Zweigniederlassung Südwest,1687.21,25575.19,5.33
-AA55,Saarlooouis,REWE Markt GmbH Zweigniederlassung Mitte,892.8,10588.55,4.75
-AA55,Saarlooouis,Penny Markt GmbH,1037.49,15593.02,4.75
-AA55,Saarlooouis,REWE Markt GmbH Zweigniederlassung Südwest,2078,27036.75,8.07
-AA55,Saarlooouis,Leerstand stpfl.,401.12,0,0
-AA55,Saarlooouis,Rauch Grundstücksverwaltung c/o Eulenhof 1843,0,83.33,5.33
-AA56,Bischofsheim,REWE Markt GmbH Zweigniederlassung Mitte,2053.09,28882.5,5
-AA56,Bischofsheim,Haar 2O,96.74,1852.95,2
-AA56,Bischofsheim,Leerstand stpfl.,488,0,0
-AA56,Bischofsheim,Rauch Grundstücksverwaltung c/o Eulenhof 1843,0,166.66,5.33
-AA58,Brandenburg an der Havel,Netto Marken-Discount Stiftung & Co. KG,1068.98,15412.23,10.33
-AA59,Esens,Netto Marken-Discount Stiftung & Co. KG,1251.65,17200,11.08
-AA6,Halle,Netto Marken-Discount Stiftung & Co. KG,1058,11458.01,10.33
-AA60,Gera,Netto Marken-Discount Stiftung & Co. KG,1143.38,15519.76,8.33
-AA61,Groß Denkte,Netto Marken-Discount Stiftung & Co. KG,1417.85,17040.68,8.33
-AA61,Groß Denkte,Volz GmbH,0,50,0
-AA61,Groß Denkte,Peter Holzberg,0,234.04,0.25
-AA61,Groß Denkte,Leerstand stpfl.,0,0,0
-AA62,Niederndodeleben,Netto Marken-Discount Stiftung & Co. KG,1191.46,14239.41,10.33
-AA63,Schwedt Oder,Netto Marken-Discount Stiftung & Co. KG,1396.15,20036.54,10.33
-AA64,Triptis,Netto Marken-Discount Stiftung & Co. KG,1304.82,16663.25,10.33
-AA65,Wilster,Netto Marken-Discount Stiftung & Co. KG,1137.38,16331.91,8.33
-AA65,Wilster,1. BEMA Beteiligungs GmbH,0,0,15.33
-AA66,Wriezen,Eberswalder Brot- und Feinbackwaren GmbH,50,1624.16,0.75
-AA66,Wriezen,Erwin Kaminski,110,1519.63,-0.58
-AA66,Wriezen,Quyet Nguyen Van,160,1485.94,6.33
-AA66,Wriezen,Netto Marken-Discount Stiftung & Co. KG,1348.11,16963.92,10.33
-AA66,Wriezen,Klaus-Dieter Repke,170,2325.13,1.92
-AA66,Wriezen,Leerstand stfr.,149,0,0
-AA66,Wriezen,Kreissparkasse Märkisch-Oderland,210.37,2985.64,4.25
-AA66,Wriezen,1. BEMA Beteiligungs GmbH,0,0,14.33
-AA67,Zwickau,Netto Marken-Discount Stiftung & Co. KG,1512,20034.31,10.33
-AA67,Zwickau,TEDi GmbH & Co. KG c/o TEDi Verwaltungs- und Beteiligungs-GmbH,836.93,6433.34,0.35
-AA68,Biedenkopf,REWE Markt GmbH,2193.99,25583.14,9.33
-AA69,Norderstedt,Penny-Markt GmbH,890,11378.17,1.47
-AA69,Norderstedt,Sven Jürisch,1000,1050.42,3.33
-AA7,Kabelsketal,Netto Marken-Discount Stiftung & Co. KG,1263.5,14691.64,10.33
-AA70,Heideck,Netto Marken-Discount Stiftung & Co. KG,1340,13827.17,3.68
-AA70,Heideck,Hasim Senkaya,164.98,1326,3.92
-AA70,Heideck,Leerstand stpfl.,476.08,0,0
-AA70,Heideck,Gesellschaft für Außenwerbung GmbH,0,100,1.03
-AA71,Leingarten,REWE Markt GmbH Zweigniederlassung Südwest,1834.09,25475.64,11.75
-AA71,Leingarten,ALDI SE & Co. KG Murr,1416,19614.97,11.33
-AA72,Maxhütte,REWE Markt GmbH Zweigniederlassung Süd,1895.67,22843.76,2.42
-AA72,Maxhütte,Allianz Agentur Vertretung Oliver Leißne,120,1100,0.33
-AA72,Maxhütte,Kerstin Muhl,118,1286.5,6.25
-AA72,Maxhütte,Leerstand stpfl.,225,0,0
-AA72,Maxhütte,Kerstin Muhl und Knut Heinrich,115,1012.75,0.25
-AA73,Nabburg,Leerstand stpfl.,1702.33,0,0
-AA74,Willebadessen,REWE Markt GmbH Zweigniederlassung Nord,1921.5,19217.5,6.42
-AA75,Magdeburg,Netto Marken-Discount Stiftung & Co. KG,1142,12105.2,11.94
-AA75,Magdeburg,Leerstand stpfl.,342,0,0
-AA75,Magdeburg,Leerstand stfr.,97.27,0,0
-AA75,Magdeburg,Thomas Bunge,14.74,263,0.08
-AA75,Magdeburg,Ronald Gebauer,15.21,271,0.08
-AA75,Magdeburg,Manuela Gradtke,34.2,509.5,0.08
-AA75,Magdeburg,Stefan Köhler,14.74,249,0.08
-AA75,Magdeburg,None,35.57,694,0.08
-AA75,Magdeburg,Lutz Kühne,14.74,249,0.08
-AA75,Magdeburg,Cathleen Kraus,15.21,289,0.08
-AA75,Magdeburg,Brigitte Aggour,15.1,260,0.08
-AA75,Magdeburg,Lars Oswald,14.74,265,0.08
-AA75,Magdeburg,Anja Apel,16.02,305,0
-AA75,Magdeburg,Dentz,19.68,263,0.08
-AA75,Magdeburg,Ingo Zurek,19.98,390,0.08
-AA75,Magdeburg,Ströer Media Deutschland GmbH,0,72.43,-0.17
-AA76,Halle,Netto Marken-Discount Stiftung & Co. KG,1046,9546.51,11.03
-AA77,Hohenlockstedt,Netto Marken-Discount Stiftung & Co. KG,1088,11724.38,10.85
-AA78,Holzminden,Netto Marken-Discount Stiftung & Co. KG,1146,11026.24,17.82
-AA79,Waltershausen,Netto Marken-Discount Stiftung & Co. KG,1084,11323.68,10.23
-AA79,Waltershausen,Kienast Schuhhandels GmbH & Co. KG Kienast Verwaltungs GmbH,400,4775.38,3.58
-AA79,Waltershausen,Ernsting’s family GmbH & Co. KG,180,1995.6,1.49
-AA79,Waltershausen,NKD Deutschland GmbH,382,3913.72,5.49
-AA79,Waltershausen,Dirk Rossmann GmbH,731.9,7235.43,1.49
-AA79,Waltershausen,KiK Textilien und Non-Food GmbH,561,5445,4.58
-AA8,Kerpen,Netto Marken-Discount Stiftung & Co. KG,1052.08,15443.55,10.33
-AA8,Kerpen,Slate Mobility GmbH & Co. KG,0,281.35,23.82
-AA80,Welsleben,Netto Marken-Discount Stiftung & Co. KG,1044,9930.05,10.83
-AA81,Dahme (Mark),Netto Marken-Discount Stiftung & Co. KG,1089,10178.45,10.8
-AA82,Diemelsee,Netto Marken-Discount Stiftung & Co. KG,1086,10150.41,10.79
-AA83,Dorndorf,Netto Marken-Discount Stiftung & Co. KG,1045,9767.2,10.27
-AA84,Greussen,Netto Marken-Discount Stiftung & Co. KG,1086,10687.78,10.88
-AA85,Herzebrock-Clarholz,Netto Marken-Discount Stiftung & Co. KG,1044,12685.21,10.83
-AA86,Rudolstadt,ALDI GmbH & Co. KG,1266.78,13246.21,1.42
-AA86,Rudolstadt,Sagasser Vertriebs GmbH,650,5862.58,3.42
-AA86,Rudolstadt,Stadtmühlenbäckerei Bielert GmbH,90,2298.8,1.42
-AA86,Rudolstadt,"Naturfleisch GmbH ""Rennsteig"" Oberweißbach",110,1666.63,1.42
-AA86,Rudolstadt,Sirko Grudzielski,51.26,920.12,4.87
-AA87,Demmin,Netto Marken-Discount Stiftung & Co. KG,1130,11019.76,10.28
-AA88,Sonneberg,Netto Marken-Discount Stiftung & Co. KG,1156.38,13037.51,15.73
-AA89,Zwönitz,ALDI SE & Co KG,1334.75,13013.81,6.04
-AA89,Zwönitz,Getränke Hoffmann Süd GmbH,267.48,2400,1.14
-AA9,Kröpelin,Netto Marken-Discount Stiftung & Co. KG,1296.11,16476.15,10.33
-AA90,Chemnitz,Netto Marken-Discount Stiftung & Co. KG,1044,10791.03,9.96
-AA91,Schwedt,Netto Marken-Discount Stiftung & Co. KG,1047,9670.76,9.25
-AA92,Weidhausen,FISHBULL Franz Fischer SE & Co. KG,1057,4280,6.75
-AA92,Weidhausen,Leerstand stpfl.,201,0,0
-AA93,Weißenstadt,Leerstand stpfl.,1059,0,0
-AA94,Halle-Silberhöhe,Netto Marken-Discount Stiftung & Co. KG,1044,10916.28,10.24
-AA95,Meerane,Netto Marken-Discount Stiftung & Co. KG,1086,10687.78,9.92
-AA96,Zwickau,Netto Marken-Discount Stiftung & Co. KG,1156,10308.93,14.87
-AA97,Völklingen,EDEKA Südwest Stiftung & Co. KG,1983.79,21421.29,9.26
-AA98,Mügeln,Netto Marken-Discount Stiftung & Co. KG,1045,9709.74,10.19
-AA99,Steinach,Netto Marken-Discount Stiftung & Co. KG,1044,9757.85,10.24
-AB1,Hemer,EDEKA Rhein-Ruhr Stiftung & Co. KG,4500,50995,6.42
-AB1,Hemer,Dirk Rossmann GmbH,873.67,9500,7.83
-AB1,Hemer,KiK Textilien und Non-Food GmbH,694,5700,4.13
-AB1,Hemer,Kaltenbach GmbH Außenwerbung,0,165,3.83
-AB1,Hemer,None,284,0,0
-AB1,Hemer,Frau Helen Börger und Herr Cristoph Kaiser,56,493,0.25
-AB1,Hemer,Frau Denise Mandy Simpson und Herr Tobias Oliver Probst,87,784.5,0.25
-AB1,Hemer,Frau Bahr Sert und Herr Eray Sert,88,760,0.25
-AB1,Hemer,Sören Götz,76,650,0.25
-AB1,Hemer,Hatice Ceylan,77,482.79,0.25
-AB1,Hemer,Melanie Timm,80,585,0.25
-AB1,Hemer,Christian Weil,80,545,0.25
-AB1,Hemer,Fröndenberger Naturstrom GbR Carsten und Gunter Krippendorf,0,564.79,16.58
-AB1,Hemer,Iserlohner Fitness & Sportpark GmbH,280,1500,0.33
-AB1,Hemer,Stadt Hemer,3.25,0,0.42
-AB10,Frankfurt am Main,Werk 2 Sportwagen UG,412,2266,3.83
-AB10,Frankfurt am Main,Bärbel Grässlin,538.26,2260.92,0.83
-AB10,Frankfurt am Main,NeuWerbung Dietmar Neu,0,125,0.5
-AB10,Frankfurt am Main,Lidl Vertriebs-GmbH & Co. KG,1641,33678.92,1.5
-AB10,Frankfurt am Main,WEWO Tiernahrungsmarkt Frankfurt GmbH,615,7813,12.25
-AB10,Frankfurt am Main,Heurich GmbH & Co. KG vertreten durch die Heurich Beteiligungs GmbH,947,4939.7,1
-AB10,Frankfurt am Main,NKD Deutschland GmbH,386,5018,1.58
-AB10,Frankfurt am Main,Grundstücksgesellschaft am Bahnhof Frankfurt am Main Rödelheim GmbH & Co. KG,0,10208.26,5.75
-AB2,Cuxhaven,Netto Marken-Discount Stiftung & Co. KG,936,13578.57,2.65
-AB2,Cuxhaven,KiK Textilien und Non-Food GmbH,643.24,5751.95,2.33
-AB3,Lüdenscheid,REWE DORTMUND Vertriebsgesellschaft mbH,1726.27,19874.22,5.08
-AB4,Marienheide,REWE DORTMUND Vertriebsgesellschaft mbH sowie Michael Brücken Kaufpark GmbH & Co. OHG,1793.16,20835.81,1.33
-AB4,Marienheide,Heike Mutzenbach,120,370.68,0.25
-AB5,Meinersen,REWE Markt GmbH,2710,30939.35,8.33
-AB6,Hemer,REWE DORTMUND Vertriebsgesellschaft mbH sowie Michael Brücken Kaufpark GmbH & Co. OHG,2322.7,26926.46,1.33
-AB7,Heide,Aldi SE & Co. KG,1949.63,22932,0.83
-AB7,Heide,KiK Textilien und Non-Food GmbH,873.43,8000,5.5
-AB7,Heide,TEDI GmbH & Co. KG,810.13,7493.7,5.58
-AB7,Heide,FISHBULL Franz Fischer SE & Co. KG Zentralverwaltung,1048,5687.38,5.08
-AB7,Heide,SUNPOINT AG & Co. KG,196.31,3600.18,0
-AB7,Heide,Imbiss Mozaik,164,3043.2,10.78
-AB7,Heide,EWE Go GmbH,0,333.34,0
-AB8,Möhnesee,REWE DORTMUND Vertriebsgesellschaft mbH sowie Michael Brücken Kaufpark GmbH & Co. OHG,1726.12,19521.48,0.41
-AB9,Neustadt,REWE Markt GmbH Zweigniederlassung Mitte,5516,64920,13.59
-AB9,Neustadt,Thomas Philipps GmbH & Co. KG,4474,18000,8.17
-AB9,Neustadt,Aldi SE & Co. KG,1982.62,19099.14,2.25
-AB9,Neustadt,TEDi GmbH & Co. KG,1844,17057,5.58
-AB9,Neustadt,FISHBULL Franz Fischer SE & Co. KG,3388,16400,9
-AB9,Neustadt,KiK Textilien und Non-Food GmbH,2040,5600,5.5
-AB9,Neustadt,EWE Go GmbH,0,666.68,0
-B10,Herford,PENNY Markt GmbH Discount Nord,929,11466.64,1.25
-B10,Herford,Hensel GmbH Bäckerei und Konditorei,55,1182.57,0.5
-B10,Herford,Getränkewelt GmbH,500,3840.18,6.83
-B10,Herford,JET Tankstellen DEUTSCHLAND GmbH,1730,4600,1.83
-B13,Kassel-Waldau,Bäckerei Ehmer,28,880.05,0
-B13,Kassel-Waldau,PENNY Markt GmbH,931,7000,0
-B13,Kassel-Waldau,Eugen Grass,25,586.25,9
-B13,Kassel-Waldau,Slate Mobility GmbH & Co. KG (Amperio),0,300,20.19
-B14,Laubach,REWE Markt GmbH Zweigniederlassung Mitte,1985.26,25629.04,3.33
-B14,Laubach,Kienast Schuhhandels GmbH & Co. KG vertreten durch die Kienast Verwaltungs GmbH,333.44,2334.08,2.92
-B14,Laubach,Takko Holding GmbH,433.01,4162.57,5.33
-B14,Laubach,LEOX AG,222.23,2111.19,3
-B15,Löbau,Netto Marken-Discount Stiftung & Co. KG,1037,9472.33,6.58
-B16,Mellrichstadt,Lidl Vertriebs-GmbH & Co. KG,1464.23,14999.98,0
-B16,Mellrichstadt,None,97.22,0,0
-B17,Mörfelden-Walldorf,Dirk Rossmann GmbH,1167,12000,7.62
-B17,Mörfelden-Walldorf,tegut.. gute Lebensmittel GmbH & Co. KG,1754,23104.12,5
-B17,Mörfelden-Walldorf,Slate Mobility GmbH & Co. KG (Climova),0,208.33,24.26
-B18,Niederaula,Fleischerei Schäfer OHG,275.96,3045.55,8.33
-B18,Niederaula,Heurich GmbH & Co. KG Getränke Fachgroßhandel,376.12,3000,2.33
-B18,Niederaula,Lidl Vertriebs-GmbH & Co. KG,1490,16345.03,10.87
-B18,Niederaula,NKD Deutschland GmbH,310,1984.89,4.83
+T38,Waltershausen,MED ON THUERINGEN GMBH,128.51,1489.53,7.25
+T38,Waltershausen,Monika Burkhardt,120,1147.36,2.25
+T38,Waltershausen,Physiotherapie Claudia Gerlach,126.61,1445.02,4.25
+T39,Bitterfeld-Wolfen,Beelitzer Spargel Frank Ebert,0,0,0
+B13,Kassel-Waldau,Slate Mobility GmbH & Co. KG (Amperio),0,300,20.11
 B18,Niederaula,SKC Textilrecycling KG,0,62.5,0.08
-B2,Auma-Weidatal,PENNY Markt GmbH,1606.27,17700,13.6
-B20,Raunheim,REWE Markt GmbH,1791,21771,9.58
-B21,Regensburg-Tegernheim,Slate Mobility GmbH & Co. KG,0,501.98,0
-B21,Regensburg-Tegernheim,Netto Marken-Discount Stiftung & Co. KG,1758.14,18050,11.24
-B23,Sehma,Netto Marken-Discount Stiftung & Co. KG,1204,10850.77,5.17
-B25,Würzburg,REWE Markt GmbH Zweigniederlassung Süd,2496.74,32632.5,6.33
-B4,Bünde,Netto Marken-Discount Stiftung & Co. KG,1389,13300,13.05
-B4,Bünde,Slate Mobility GmbH & Co. KG,0,444.09,22.75
-B7,Grimma,Aldi GmbH & Co. Beucha KG,1477,14900,10.21
-B7,Grimma,Lars Moldenhauer,110,450.12,0.25
-B7,Grimma,Marina Mönig,113,480,0.25
-B7,Grimma,None,712.18,0,0
-B7,Grimma,DEBEKA Krankenversicherungsverein a.G.,184,1920.53,2.92
-B7,Grimma,Daniela Metzner,129,1067.5,5.33
-B8,Hartenstein,Netto Marken-Discount Stiftung & Co. KG,1406,16755,10.2
-B9,Helmbrechts,Netto Marken-Discount Stiftung & Co. KG,1121,12435.49,6.58
-C1,Petershagen,Lidl Vertriebs-GmbH & Co. KG,1515.97,12537.33,4.25
-C1,Petershagen,KiK Textilien und Non-Food GmbH,544.33,4858.15,0.08
-C1,Petershagen,Slate Mobility GmbH & Co. KG,0,200,20.14
-C10,Gernrode,EDEKA-MIHA Immobilien-Service GmbH,1300,13818.71,1.83
-C11,Klostermansfeld,EDEKA-MIHA Immobilien-Service GmbH,1080,12143,1.33
-C12,Husum,PENNY Markt GmbH,1045,14025.07,1.33
-C14,Bützow,Lidl Vertriebs-GmbH & Co. KG,1557,15578.11,13.75
-C15,Angermünde,Netto Marken-Discount Stiftung & Co. KG,1394,20584.33,10.53
-C15,Angermünde,KiK Textilien und Non-Food GmbH,867,6878.2,0.25
-C15,Angermünde,Slate Mobility GmbH & Co. KG (Climova),0,222.09,23.64
-C15,Angermünde,Slate Mobility GmbH & Co. KG (Amperio),0,307.5,19.64
-C16,Holzwickede,Slate Mobility GmbH & Co. KG (Climova),0,375,22.67
-C16,Holzwickede,Netto Marken-Discount Stiftung & Co. KG,1486,23898.29,10.5
-C16,Holzwickede,Dirk Rossmann GmbH,598,7671.56,1.75
-C16,Holzwickede,Orhan Öztürk,68.3,1333.55,14.33
-C16,Holzwickede,Slate Mobility GmbH & Co. KG (Amperio),0,800,0
-C17,Bad Oeynhausen,Leerstand stpfl.,206,0,0
-C17,Bad Oeynhausen,PENNY Markt GmbH,967,13046.23,1.94
-C17,Bad Oeynhausen,Getränkewelt GmbH,610,4954.9,7.33
-C18,Vilshofen an der Donau,dm-drogerie markt GmbH & Co. KG,1013,14000,9.85
-C18,Vilshofen an der Donau,TEDi GmbH & Co. KG c/o TEDi Verwaltungs-und Beteiligungs-GmbH,798.3,6800,6.45
-C18,Vilshofen an der Donau,Takko Holding GmbH,604,6757.31,5.33
-C18,Vilshofen an der Donau,Fussl Deutschland GmbH,589,5880,1.42
-C18,Vilshofen an der Donau,Löwen Play GmbH,550,8229.57,2.26
-C18,Vilshofen an der Donau,Sleep - die Traumfabrik Inh. Daniel Eckert,367,6000,0
-C2,Bad Harzburg,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1117,13699.32,3.9
-C3,Beeskow,Leerstand stfr.,224,0,0
-C3,Beeskow,Roland und Roswitha Ache,113.86,0,0
-C3,Beeskow,Alessandro Wöhler,112,579.28,0
-C3,Beeskow,Carolin Mey,113,680.27,0
-C3,Beeskow,Sebastian Schaar,112.61,470,0
-C3,Beeskow,PENNY Markt GmbH,1274,10678,0
-C4,Dessau-Roßlau,NORMA Lebensmittelhandels Stiftung & Co. KG,1047,7090.51,2.21
-C4,Dessau-Roßlau,Bäckerei-Konditorei Meiling,31,673.92,0
-C5,Bitterfeld-Wolfen,PENNY Markt GmbH Zweigniederlassung Berlin,941.47,10388.18,0.69
-C5,Bitterfeld-Wolfen,FRISTO SE,604,3408.93,2.33
-C5,Bitterfeld-Wolfen,Leerstand stpfl.,40,0,0
-C6,Steinberg,Netto Marken-Discount Stiftung & Co. KG,1330.62,18278.19,8.55
-C7,Aschersleben,PENNY Markt GmbH,1167,10500,7.42
-C8,Rochlitz,PENNY Markt GmbH Zweigniederlassung Berlin,931,7640.21,0
-C8,Rochlitz,Bäckerei Stötzel GmbH,70,1345.8,0
-C8,Rochlitz,None,110,0,0
-D1,Dahme/Mark,Lidl Vertriebs-GmbH & Co. KG,1143,10275.57,0.83
-D10,Heeßen,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1034,9461.5,2.17
-D11,Langenhagen,Netto Marken-Discount Stiftung & Co. KG,1048,11183,2.17
-D12,Gronau (Leine),Lidl Vertriebs-GmbH & Co. KG,1360,16958.24,3.33
-D12,Gronau (Leine),Getränke Service Inh. Heike Poppinga e.K.,650,1617.34,3.42
-D12,Gronau (Leine),KIK Textilien und Non-Food GmbH,550,5447.85,5.33
-D12,Gronau (Leine),Ernsting´s family GmbH & Co. KG,300,3359.27,2.33
-D12,Gronau (Leine),Slate Mobility GmbH & Co. KG (Amperio),0,300,0
-D12,Gronau (Leine),Amazon Deutschland Transport GmbH,0,0,2.65
-D12,Gronau (Leine),Sparkasse Hildesheim,0,682.17,0.29
-D4,Blankenfelde-Mahlow,REWE Markt GmbH Zweigniederlassung Ost,1825,16696.77,2.17
-D4,Blankenfelde-Mahlow,Leerstand stpfl.,388,0,0
-D4,Blankenfelde-Mahlow,Yvonne Veit,70.82,914.75,0.75
-D4,Blankenfelde-Mahlow,Heike Grygier,149,1211.28,5.33
-D6,Crottendorf,Netto Marken-Discount Stiftung & Co. KG,1362,16228.31,11.16
-D7,Rheinberg,EDEKA Handelsgesellschaft Rhein-Ruhr Stiftung & Co. KG,1100,11036.47,5.25
-D9,Hartenstein,PENNY Markt GmbH,979,5384.84,6.08
-D9,Hartenstein,Leerstand stpfl.,917,0,0
-D9,Hartenstein,Xuan Thanh Pham,70,280,0.58
-D9,Hartenstein,"Neidhardt, Jessica",67,301.81,1.92
-E1,Kappel-Grafenhausen,EDEKA Südwest Stiftung & Co. KG,1744.24,27154.54,13.25
-E10,Herrenberg,Netto Marken-Discount Stiftung & Co. KG,1466,22295.83,12.19
-E11,Dauchingen,Netto Marken-Discount Stiftung & Co. KG,1349.87,18009.25,0.5
-E13,March,Netto Marken-Discount Stiftung & Co. KG,1314,7700,9.25
-E13,March,Leerstand stpfl.,190,0,0
-E13,March,None,125,0,0
-E13,March,Land Baden-Württemberg c/o Vermögen und Bau Baden-Württemberg Amt Freiburg,219,1969.98,1.33
-E3,Steinen,PENNY Markt GmbH,986,14196.6,6.33
-E3,Steinen,EFM Discothekenbetriebs GmbH,900,4050,4.33
-E4,Eschenburg,Leerstand stpfl.,612,0,0
-E4,Eschenburg,Adolf ROTH GmbH & Co. KG,0,2213.72,1.33
-E4,Eschenburg,NORMA-Lebensmittelhandels Stiftung & Co. KG,779,4000,2.08
-E5,Wesselburen,Netto Marken-Discount AG & Co. KG,1026,11341.53,2.95
-E6,Großenhain,Netto Marken-Discount Stiftung & Co. KG,1000,9540,7.08
-E7,Affing,Netto Marken-Discount Stiftung & Co. KG,1688,20538.7,10.53
-E8,Karlstein am Main,Leerstand stpfl.,973,0,0
-E9,Bräunlingen,Netto Marken-Discount Stiftung & Co. KG,1035,11047.8,4.63
-F1,Bad Kleinen,EDEKA Handelsgesellschaft Nord mbH,1442.35,8233.21,3.17
-F1,Bad Kleinen,Erdal Tas,270,1200,9.58
-F10,Meiningen,MW Handelsges. für Fleisch- und Wurstspezialitäten mbH,49.76,646.88,1.33
-F10,Meiningen,NORMA Lebensmittelhandels Stiftung & Co. KG,862,7162.22,4.67
-F10,Meiningen,Leerstand stpfl.,26.52,0,0
-F11,Obermaßfeld-Grimmenthal,NORMA Lebensmittelhandels Stiftung & Co. KG,996,6754.43,4.67
-F11,Obermaßfeld-Grimmenthal,MW Handelsges. für Fleisch- und Wurstspezialitäten mbH,116,1730.05,0
-F12,Pressig,NORMA Lebensmittelhandels Stiftung & Co. KG,1187,8900,5.58
-F12,Pressig,Leerstand stpfl.,69,0,0
-F13,Sarstedt,Netto Marken-Discount Stiftung & Co. KG,1062,11004.27,5.17
-F15,Tarmstedt,REWE Markt GmbH Zweigniederlassung Nord,1522.5,19271.33,3.83
-F16,Tessin,Netto Marken-Discount Stiftung & Co. KG,970,9119.1,5.33
-F19,Wittmund,Slate Mobility GmbH & Co. KG,0,218.75,13.25
-F19,Wittmund,Netto Marken-Discount Stiftung & Co. KG,1257.06,15900,13.22
-F2,Chemnitz,Schäfers Backstube GmbH,48.5,1608.57,0.5
-F2,Chemnitz,FRISTO SE,570,4481.62,2.33
-F2,Chemnitz,Gretenkord GmbH,92.5,1865.93,1.72
-F2,Chemnitz,PENNY Markt GmbH,976,12679.67,2.33
-F3,Burhave,Netto Marken-Discount Stiftung & Co. KG,1294,16541.67,0
-F5,Elbingerode (Harz),Netto Marken-Discount Stiftung & Co. KG,1382.61,16777.2,10.21
-F7,Hillerse,Netto Marken-Discount Stiftung & Co. KG,1037,0,-0.08
-F9,Lützen,Netto Marken-Discount Stiftung & Co. KG,1352,19060,14.25
-G1,Halberstadt,EDEKA MIHA Immobilien-Service GmbH,1000,4640.63,1.79
-G11,Sülzetal,EDEKA MIHA Immobilien-Service GmbH,1012.65,11289,5.08
-G12,Gera,PENNY Markt GmbH Region Ost,1016.81,11643.35,3.08
-G13,Dargun,Netto Marken-Discount Stiftung & Co. KG,1046,9675.5,0
-G14,Quedlinburg,EDEKA MIHA Immobilien-Service GmbH,929.5,3173.92,2
-G14,Quedlinburg,VSQ Verwaltungs- u. Service- GmbH Quedlinburg,22.5,15,0
-G15,Bad Gottleuba-Berggießhübel,EDEKA Grundstücksgesellschaft N-S-T mbH,956.2,6769.86,3.17
-G16,Gebesee,Netto Marken-Discount Stiftung & Co. KG,996,9490.01,2.66
-G17,Jessen (Elster),Netto Marken-Discount Stiftung & Co. KG,1046,10753.86,4.91
-G18,Altenburg,Lidl Vertriebs-GmbH & Co. KG,1235,12181.93,0.83
-G19,Sömmerda,EDEKA Grundstücksgesellschaft N-S-T mbH,1040,10483.69,4.25
-G2,Kreischa,Bäckerei Hiekel Inh. Grit Großmann e.K.,106,2191.66,3
-G2,Kreischa,EDEKA Grundstücksgesellschaft N-S-T mbH,870,7000,3
-G3,Demitz-Thumitz,EDEKA Grundstücksgesellschaft N-S-T mbH,1067,10951,2.74
-G7,Magdeburg,PENNY Markt GmbH Region Ost,1090,4500,1.2
-G7,Magdeburg,Bayram Aggül,15,159.15,7.33
-G7,Magdeburg,Backshop Beims GmbH,42,1193.45,0
-G7,Magdeburg,Leerstand stpfl.,370,0,0
-G8,Pulsnitz,Netto Marken-Discount Stiftung & Co. KG,1037,10542.7,2.33
-G9,Stendal,PENNY Markt GmbH Region Ost,980.66,8464.22,0
-I10,Pulsnitz,ATC Germany Munich GmbH,20,310.46,5.33
-I10,Pulsnitz,Netto Marken-Discount Stiftung & Co. KG,883,9212.34,1.25
-I10,Pulsnitz,FRISTO SE,450,3545.31,3.25
-I10,Pulsnitz,"Singh, Gurpreet",121,662.34,-0.38
-I10,Pulsnitz,Leerstand stpfl.,112,0,0
-I10,Pulsnitz,Slate Mobility GmbH & Co. KG (Amperio),0,300,0
-I10,Pulsnitz,Slate Mobility GmbH & Co. KG (Climova),0,170.83,0
-I3,Kirchberg,Netto Marken-Discount Stiftung & Co. KG,1093,12632.38,0
-I3,Kirchberg,Leerstand stfr.,382,0,0
-I4,Buttstädt,EDEKA Handelsgesellschaft Hessenring mbH,1830,14633.33,5.25
-I5,Nabburg,Netto Marken-Discount Stiftung & Co. KG,1114,12367.02,0
-I5,Nabburg,TABA - PRESS Handelsgesellschaft mit Tabak- u. Presseartikeln mbH,174,1679.95,0
-I6,Eitorf,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1038,14556,1.5
-I7,Parchim,Netto Marken-Discount Stiftung & Co. KG,987,12400.2,6.62
-I7,Parchim,Pahnkes Backstube GmbH,45,1581.5,2.92
-I8,Ritterhude,Lidl Vertriebs-GmbH & Co. KG,1150,12392.6,0
-I9,Meißen,GDS Getänkemärkte Inhaber Jens Dietrich,218,1340.86,0.33
-I9,Meißen,"Chad, Som",100,1100,0.92
-I9,Meißen,Lidl Vertriebs-GmbH & Co. KG,1510,14378.08,4.17
-I9,Meißen,Leerstand stpfl.,204,0,0
-J1,Unterbreizbach,tegut... gute Lebensmittel GmbH & Co. KG,630,2800,0
-K1,Bad Wünneberg,Netto Marken-Discount Stiftung & Co. KG,1090,7350,5.17
-K11,Storkow (Mark),Netto Marken-Discount Stiftung & Co. KG,1046,9880,0
-K11,Storkow (Mark),KIK Textilien und Non-Food GmbH,534.26,4643.79,0
-K13,Waldsassen,NORMA Lebensmittelhandels Stiftung & Co. KG,968,7875,0
-K13,Waldsassen,Dirk Rossmann GmbH,480.12,5173.24,2.25
-K13,Waldsassen,KIK Textilien und Non-Food GmbH,574.6,4944.45,0
-K13,Waldsassen,TEDi GmbH & Co. KG,359.63,2747.76,0
-K13,Waldsassen,Stadtbäckerei Schaller GmbH,107.5,1511.17,1.2
-K14,Ziesar,Netto Marken-Discount Stiftung & Co. KG,1088,11161.12,0
-K15,Zwickau,NKD Deutschland GmbH,302,2300,3.9
-K15,Zwickau,Netto Marken-Discount Stiftung & Co. KG,1045,11685.71,0.17
-K15,Zwickau,HUSTER GmbH & Co. Getränkegroßhandels KG Zwickau,448.1,3797.52,7.75
-K15,Zwickau,SAGAFLOR Wachstums- und Bet.-gesellschaft mbH & Co. KG,467.3,3556.94,7.56
-K15,Zwickau,Slate Mobility GmbH & Co. KG,0,362.25,0
-K15,Zwickau,Metin Burulday,0,900.68,17.58
-K16,Berlin,NORMA Lebensmittelhandels Stiftung & Co. KG,954.61,8615.07,0.5
-K16,Berlin,Kockazi Zeynep,59.76,1463.5,0
-K16,Berlin,Getränke Hoffmann GmbH,457.2,4977.67,0
-K16,Berlin,Manfred Tanski Reifen Tanski,533.02,6275.79,0
-K16,Berlin,Slate Mobility GmbH & Co. KG (Amperio),0,200,0
-K17,Zeitz,NKD Deutschland GmbH,375,3110.38,1.33
-K17,Zeitz,Deichmann SE,500,5587.8,5.33
-K17,Zeitz,TEDi GmbH & Co. KG,531,4859.05,0.5
-K17,Zeitz,KIK Textilien und Non-Food GmbH,632,5586.56,0.5
-K17,Zeitz,Christian Röschke,100,754.41,1.42
-K17,Zeitz,BF Fichtelmann GmbH,450,6359.7,5.33
-K17,Zeitz,Ernsting´s family GmbH & Co. KG,200,2179.4,3.33
-K17,Zeitz,Fressnapf Immobilien- und Vermögensverwaltung GmbH,450,3898.8,5.75
-K17,Zeitz,Ihre Friseur und Kosmetik GmbH,62.25,472.1,0.33
-K17,Zeitz,Lidl Vertriebs-GmbH & Co. KG,499,13700,0
-K17,Zeitz,Maxi-Media Zeitz GmbH,1300,10560.84,0.5
-K17,Zeitz,Birgit Weber,105,1175.05,0.33
-K17,Zeitz,Yvonne Münx-Hillig,62.5,674.1,0
-K17,Zeitz,Abdullah Kurt,130,1100,7.79
-K17,Zeitz,JYSK SE,1000,6500,9.25
-K17,Zeitz,dm-drogerie markt GmbH & Co. KG,690,7203.08,3.33
-K17,Zeitz,Schwarz-Aussenwerbung GmbH,0,41.67,0
-K17,Zeitz,Takko Holding GmbH,499.29,4944.93,0.5
-K17,Zeitz,HUSTER GmbH & Co. Getränkegroßhandels KG Zwickau,450.7,3375,6.75
+B7,Grimma,DEBEKA Krankenversicherungsverein a.G.,184,1920.53,2.83
+B7,Grimma,Daniela Metzner,129,1067.5,5.25
 K17,Zeitz,Johann Schneider,0,8.33,0
 K17,Zeitz,Andreas Otto,0,7.73,0
-K18,Annaberg-Buchholz,Getränkewelt GmbH,800,5420.12,0
-K2,Dinkelsbühl,NORMA Lebensmittelhandels Stiftung & Co. KG,1498.86,11200,0
-K2,Dinkelsbühl,Baues und Gerlach Solar eGbR,1,63.66,0
-K2,Dinkelsbühl,AWG Allgemeine Warenvertriebs GmbH,949,8637.33,3.18
-K4,Hohenstein-Ernstthal,FLEX Fund Photovoltaik 1 GmbH & Co. KG,1.85,54,6.33
-K4,Hohenstein-Ernstthal,Lidl Vertriebs-GmbH & Co. KG,1297,10222.34,-2.25
-K4,Hohenstein-Ernstthal,Getränke Hoffmann Süd GmbH,365.39,2700,6.75
-K4,Hohenstein-Ernstthal,Steffen Lehnert,0,126.06,0.33
+K7,Leipzig,Slate Mobility GmbH & Co. KG,0,302.7,19.57
+K8,Lindern (Oldenburg),Landessparkasse zu Oldenburg,159,2028.5,4.72
+D12,Gronau (Leine),Sparkasse Hildesheim,0,682.17,1.21
+D4,Blankenfelde-Mahlow,Heike Grygier,149,1211.28,5.25
+E13,March,Land Baden-Württemberg c/o Vermögen und Bau Baden-Württemberg Amt Freiburg,219,1969.98,1.25
+P1,Oyten,Kreissparkasse Verden,90,1041.86,5.54
+P1,Oyten,AWO Arbeiterwohlfahrt Kreisverband Verden e. V.,180,1013.42,0.25
+AB1,None,Stadt Hemer,3.25,0,0.33
+AB10,Frankfurt am Main,Grundstücksgesellschaft am Bahnhof Frankfurt am Main Rödelheim GmbH & Co. KG,0,10208.26,5.67
+P3,Kamenz,Netto Marken-Discount Stiftung & Co. KG,1028,6500,2.25
+A9,Meißen,Netto Marken-Discount Stiftung & Co. KG,1060,10421.39,0.75
+A9,Meißen,Leerstand stpfl.,205,0,0
+A13,Thum,PENNY Markt GmbH Region Ost,953,9432.87,3.95
+V11,Magdeburg,EDEKA-MIHA Immobilien-Service GmbH,2088,24166.67,8.12
+V11,Magdeburg,Kosmos Apotheke,275,4060.03,1.25
+V11,Magdeburg,Holiday Land Reform,46,800.16,0
+V9,Hannover,Slate Mobility GmbH & Co. KG (Amperio),0,300,0
+V13,Nienburg,Leerstand stpfl.,38,0,0
+E4,Eschenburg,Leerstand stpfl.,612,0,0
+V3,Marktredwitz,Leerstand stpfl.,58,0,0
+E8,Karlstein am Main,Leerstand stpfl.,973,0,0
+V27,Magdeburg,Leerstand stpfl.,535,0,0
+V29,Wallenhorst,Leerstand stpfl.,4673,0,0
+V5,Dortmund,Leerstand stpfl.,38,0,0
+V6,Schwandorf,Leerstand stpfl.,856,0,0
+V4,Dassel,REWE Markt GmbH,1900,26086.2,0
+N5,Ebersbach-Neugersdorf,Netto Marken-Discount Stiftung & Co. KG,931.49,9390.17,-0.99
+N5,Ebersbach-Neugersdorf,Fachfleischerei Thomas Heider,60,1283.09,-1.99
+A13,Thum,Leerstand stpfl.,156,0,0
+A14,Treuen,Netto Marken-Discount Stiftung & Co. KG,1087,9966.7,4.79
+C5,Bitterfeld-Wolfen,PENNY Markt GmbH Zweigniederlassung Berlin,941.47,10388.18,0.61
+C5,Bitterfeld-Wolfen,FRISTO SE,604,3408.93,2.25
+C10,Gernrode,EDEKA-MIHA Immobilien-Service GmbH,1300,13818.71,1.75
+C18,Vilshofen an der Donau,dm-drogerie markt GmbH & Co. KG,1013,14000,9.77
+C18,Vilshofen an der Donau,TEDi GmbH & Co. KG c/o TEDi Verwaltungs-und Beteiligungs-GmbH,798.3,6800,6.37
+C18,Vilshofen an der Donau,Takko Holding GmbH,604,6757.31,5.25
+C18,Vilshofen an der Donau,Fussl Deutschland GmbH,589,5880,1.33
+C18,Vilshofen an der Donau,Löwen Play GmbH,550,8229.57,2.17
+C18,Vilshofen an der Donau,Sleep - die Traumfabrik Inh. Daniel Eckert,367,6000,0
+E4,Eschenburg,Adolf ROTH GmbH & Co. KG,0,2213.72,1.25
+E5,Wesselburen,Netto Marken-Discount AG & Co. KG,1026,11341.53,2.87
+E6,Großenhain,Netto Marken-Discount Stiftung & Co. KG,1000,9540,7
+E9,Bräunlingen,Netto Marken-Discount Stiftung & Co. KG,1035,11047.8,4.55
+C14,Bützow,Lidl Vertriebs-GmbH & Co. KG,1557,15578.11,13.67
+I8,Ritterhude,Lidl Vertriebs-GmbH & Co. KG,1150,12392.6,0
+J1,Unterbreizbach,tegut... gute Lebensmittel GmbH & Co. KG,630,2800,0
+N3,Gronau (Leine),Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,931,11288.79,0
+Q1,Aurich,toom Baumarkt GmbH,9482,43774.5,6.25
+Q2,Celle,toom Baumarkt GmbH,8320,54131.75,6.25
+Q5,Hatten,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1041,7420,4.25
+Q6,Zittau,Edeka Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,1223,8827.55,5.67
+Q7,Ludwigsau,NORMA Lebensmittelhandels Stiftung & Co. KG c/o NORMA LZM GmbH & Co. KG,1414,10494,5.13
+Q8,Wolfsburg,toom Baumarkt GmbH,8525,29251.52,6.5
+Q8,Wolfsburg,Slate Mobility GmbH & Co.KG Amperio,0,200,0
+R3,Lichtenau,Netto Marken-Discount Stiftung & Co. KG,1000,7573.3,0.19
+R5,Wendisch Rietz,EDEKA-MIHA Immobilien-Service GmbH,1044,12944.76,10.13
+V13,Nienburg,PENNY Markt GmbH,1031,10500,5.25
+V14,Oberhausen,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1103,15759.53,0.37
+V16,Recklinghausen,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,936,13987.5,4.25
+V18,Schlitz,Lidl Vertriebs-GmbH & Co. KG,1017.9,11121.86,1.58
+V19,Sonneberg,Lidl Vertriebs-GmbH & Co. KG,1338,13193.35,1
+V19,Sonneberg,KIK Textilien und Non-Food GmbH,602,5376.97,0.75
+V19,Sonneberg,Beiersdorfer Landbrot Inh. Roland Herppich,213,1579.63,1.08
+V2,Bayreuth,Netto Marken-Discount Stiftung & Co. KG,987,14522.83,2.95
+V2,Bayreuth,Landmetzgerei Witt Inh. Karl Witt,65,2239.95,1.25
+V23,Gelsenkirchen,Netto Marken-Discount Stiftung & Co. KG,929.5,14524.43,3.9
+V26,Königswinter,Netto Marken-Discount Stiftung & Co. KG,926,14914.79,3.74
+V26,Königswinter,Slate Mobility GmbH & Co. KG,0,282.15,23.17
+V27,Magdeburg,PENNY Markt GmbH Zweigniederlassung Berlin,1004.1,11466.67,0.37
+V27,Magdeburg,WVG Getränkefachgroßhandel GmbH,675,4470.55,1.75
+V27,Magdeburg,Grill-und Partyservice Marter Inh. Thorsten Marter,30,100,0.25
+V29,Wallenhorst,J. Bünting Beteiligungs AG,3954,33600.85,3.25
+V5,Dortmund,Netto Marken-Discount Stiftung & Co. KG,987,15835.06,3.12
+V6,Schwandorf,NORMA Lebensmittelhandels Stiftung & Co. KG,1036,10137.45,5.25
+V6,Schwandorf,A.T.U Auto-Teile-Unger GmbH & Co. KG,1145,9489.06,4.25
+V6,Schwandorf,Apotheke Prainer,225,3407.7,5.25
+V6,Schwandorf,Selcuk Karakas - Schreibwaren,135,1757.34,8.25
+V6,Schwandorf,Meindl Metzgerei GmbH,148,1500,0.58
+V6,Schwandorf,"Bäckerei Ernst Schmid ""Der Beck"" e.K.",77.02,825,1.25
+V8,Hameln,PENNY Markt GmbH,992.35,14368.65,7.08
+V8,Hameln,Bäckerei Bohne GmbH,70,1902.69,2.12
+V1,Bad Blankenburg,REWE Markt GmbH Zweigniederlassung Ost,2675.03,31524.14,5.97
+V1,Bad Blankenburg,MH Hairdesign,93,421.25,0.92
+V1,Bad Blankenburg,Dentallabor KREATIV-PROTHETIK,88,677.35,-4
+V1,Bad Blankenburg,ASIA IMBISS,32,820,5.58
+V10,Kronach,Netto Marken-Discount Stiftung & Co. KG,1161,18134.82,1
+V10,Kronach,Shell Deutschland Oil GmbH,10,133.1,5.25
+V12,Niederkassel,SuperVista AG,47,688.36,1.5
+V12,Niederkassel,Rebecca´s Feilenzauber,37,438.31,0.75
+V12,Niederkassel,Imbiss Foodbox,80,1600,5.9
+V20,Schneeberg,Netto Marken-Discount Stiftung & Co. KG,1247,14657.39,5.52
+V21,Wuppertal,Netto Marken-Discount AG & Co. KG,988.91,27617.68,1.46
+V21,Wuppertal,Slate Mobility GmbH & Co. KG,0,275,0
+V22,Cottbus,REWE Markt GmbH Zweigniederlassung OST,1504.55,18225.54,4.25
+V22,Cottbus,Cottbusser Hair Team GmbH,100,1599.15,0.92
+V22,Cottbus,Kosmetikstudio Zeißler,104.16,712.03,1.5
+V22,Cottbus,Burger Blumengroßhandel,38.33,641.88,1.25
+V24,Hannover,Netto Marken-Discount Stiftung & Co. KG,1110,18239.32,-5.82
+V28,Berlin,Netto Marken-Discount Stiftung & Co. KG,901,17224.13,0
+V3,Marktredwitz,Netto Marken-Discount Stiftung & Co. KG,987,8621.1,0
+V3,Marktredwitz,Landmetzgerei Witt,111,2094.98,0
+V9,Hannover,Netto Marken-Discount Stiftung & Co. KG,1233,18362.42,0
+V9,Hannover,Takko Holding GmbH,556,6704.95,0
+R2,Aue-Bad Schlema,Netto Marken-Discount Stiftung & Co. KG,1645,18537.75,6.14
+R6,Wendisch Rietz,PB Immobilien Verwaltung GmbH,10,50,-10.42
+Q5,Hatten,Slate Mobility GmbH & Co. KG (Climova),0,491.13,19.03
+I4,Buttstädt,EDEKA Handelsgesellschaft Hessenring mbH,1830,14633.33,5.17
+I7,Parchim,Netto Marken-Discount Stiftung & Co. KG,987,12400.2,6.54
+I7,Parchim,Pahnkes Backstube GmbH,45,1581.5,2.83
+V9,Hannover,Slate Mobility GmbH & Co. KG (Climova),0,260.42,0
+V12,Niederkassel,Slate Mobility GmbH & Co. KG (Amperio),0,200,19.2
+V12,Niederkassel,Slate Mobility GmbH & Co. KG (Climova),0,281.25,23.12
+V12,Niederkassel,Leerstand stpfl.,46,0,0
+N5,Ebersbach-Neugersdorf,Leerstand stpfl.,40,0,0
+V2,Bayreuth,Leerstand stpfl.,45,0,0
+P3,Kamenz,Slate Mobility GmbH & Co. KG (Climova),0,213.33,23.57
+L7,Zwickau,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,10797,50000,11.42
+K15,Zwickau,NKD Deutschland GmbH,302,2300,3.81
+K15,Zwickau,Netto Marken-Discount Stiftung & Co. KG,1045,11685.71,0.09
+V1,Bad Blankenburg,Leerstand stpfl.,146.37,0,0
+K15,Zwickau,HUSTER GmbH & Co. Getränkegroßhandels KG Zwickau,448.1,3797.52,7.67
+K15,Zwickau,SAGAFLOR Wachstums- und Bet.-gesellschaft mbH & Co. KG,467.3,3556.94,7.48
+K15,Zwickau,Slate Mobility GmbH & Co. KG,0,362.25,0
+L4,Halberstadt,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,7053,48496.1,11.42
+R2,Aue-Bad Schlema,Leerstand stpfl.,4316.81,0,0
+L1,Borken,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,5314,47916.67,11.42
+L5,Schmalkalden,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,6647,63568.58,11.42
+L3,Lutherstadt Eisleben,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,6561,36250,11.42
+O1,Donaueschingen,KIK Textilien und Non-Food GmbH,704,4240,2.97
+O1,Donaueschingen,1-2-3 Brille GmbH,83.73,1330.57,5
+O1,Donaueschingen,BCT Schuhhandel GmbH,429.59,3307.84,0
+R6,Wendisch Rietz,Leerstand spfl.,654,0,0
+C5,Bitterfeld-Wolfen,Leerstand stpfl.,40,0,0
+V12,Niederkassel,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,934,21875,13.12
+O1,Donaueschingen,Nadin Lorenz-Schmidt,110,1590,0
+O1,Donaueschingen,Christian Milbrandt,261.57,3065.66,12.25
+O1,Donaueschingen,Müller GmbH & Co. KG,1762,16750,0
+O1,Donaueschingen,Netto Marken-Discount Stiftung & Co. KG,1110,13594.44,1.83
+L6,Stendal,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,7638,70863.33,11.42
+K4,Hohenstein-Ernstthal,FLEX Fund Photovoltaik 1 GmbH & Co. KG,1.85,54,6.25
+K4,Hohenstein-Ernstthal,Lidl Vertriebs-GmbH & Co. KG,1297,10222.34,-2.33
+K9,Lohra,FLEX Fund Photovoltaik 1 GmbH & Co. KG,0,41,-13.75
+K9,Lohra,Netto Marken-Discount Stiftung & Co. KG,1087,12004.13,0.65
+L2,Dorsten,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,8878,75000,11.42
+V6,Schwandorf,Johann Schmalzl,0,140,12
+O1,Donaueschingen,Meisterbäckerei Schneckenburger GmbH & Co. KG,178,4300,0
+E4,Eschenburg,NORMA-Lebensmittelhandels Stiftung & Co. KG,779,4000,2
+Q1,Aurich,Slate Mobility GmbH & Co. KG,0,200,19.61
+V30,Gotha,Sagasser Fachmarkt Nord GmbH & Co KG,1037,0,9.98
+K1,Bad Wünnenberg,Netto Marken-Discount Stiftung & Co. KG,1090,7350,5.08
+V22,Cottbus,VU Gastronomie UG,245,2450,4.25
+O1,Donaueschingen,Leerstand stpfl.,80,0,0
+N3,Gronau (Leine),None,37,0,0
+V30,Gotha,Plakat Ströer,0,66.67,0.25
+K4,Hohenstein-Ernstthal,Getränke Hoffmann Süd GmbH,365.39,2700,6.67
+K15,Zwickau,Metin Burulday,0,900.68,17.5
+K4,Hohenstein-Ernstthal,Steffen Lehnert,0,126.06,0.25
 K4,Hohenstein-Ernstthal,Bernd Pröhl,0,42.02,0
 K4,Hohenstein-Ernstthal,Heinz Stöck,0,42.02,0
 K4,Hohenstein-Ernstthal,Gerd Albani,0,42.02,0
@@ -894,245 +1105,15 @@ K4,Hohenstein-Ernstthal,Christian Müller,0,50,0
 K4,Hohenstein-Ernstthal,Rainer Löser,0,42.02,0
 K4,Hohenstein-Ernstthal,Daniel Thon,0,42.02,0
 K4,Hohenstein-Ernstthal,Helga Meiler,0,42.02,0
-K6,Leipzig,Netto Marken-Discount Stiftung & Co. KG,1062,10360.11,5.17
-K6,Leipzig,TEDi GmbH & Co. KG,473.59,4310.06,4.18
-K6,Leipzig,FLEX Fund Photovoltaik 1 GmbH & Co. KG,0,54,0
-K6,Leipzig,Karola Wiederhold,175.6,2591.13,8.33
-K6,Leipzig,Engin Arslan,59,877.63,0.34
-K6,Leipzig,Slate Mobility GmbH & Co. KG (Amperio),0,200,20.19
-K7,Leipzig,Netto Marken-Discount Stiftung & Co. KG,1122,14286.37,4.69
-K7,Leipzig,TEDi GmbH & Co. KG,377,3595.49,2.7
-K7,Leipzig,Ly Duc Thuy,59,1022.54,0.69
-K7,Leipzig,Ben Hadia Taoufik,25,577.7,1.69
-K7,Leipzig,Slate Mobility GmbH & Co. KG,0,302.7,19.65
-K8,Lindern (Oldenburg),EDEKA-MIHA Immobilien- Service GmbH,960.96,10234.05,0
-K8,Lindern (Oldenburg),Tahseen Khaled,70.04,717.82,5.33
-K8,Lindern (Oldenburg),Landessparkasse zu Oldenburg,159,2028.5,4.8
-K9,Lohra,FLEX Fund Photovoltaik 1 GmbH & Co. KG,0,41,-13.67
-K9,Lohra,Netto Marken-Discount Stiftung & Co. KG,1087,12004.13,0.73
-K9,Lohra,Volksbank Mittelhessen eG,200.07,2538.03,1.33
-L1,Borken,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,5314,47916.67,11.5
-L2,Dorsten,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,8878,75000,11.5
-L3,Lutherstadt Eisleben,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,6561,36250,11.5
-L4,Halberstadt,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,7053,48496.1,11.5
-L5,Schmalkalden,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,6647,63568.58,11.5
-L6,Stendal,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,7638,70863.33,11.5
-L7,Zwickau,HELLWEG Die Profi-Bau- & Gartenmärkte GmbH & Co. KG,10797,50000,11.5
-M1,Aurich,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,880,8100,0
-M2,Friesack,NORMA Lebensmittelhandels Stiftung & Co. KG,1113,6195,1.17
-M3,Königs Wusterhausen,Bäckerei Konditorei Wahl GmbH,58,1584.54,0
-M3,Königs Wusterhausen,Netto Marken-Discount Stiftung & Co. KG,1056,12920.11,0
-M3,Königs Wusterhausen,Getränke Hoffmann GmbH,500,5491.74,5.33
-M3,Königs Wusterhausen,Knuth Sabelus,230,3851.5,0
-M3,Königs Wusterhausen,Fleischerei Schulz Inh. M. Friedrich,72,1848.32,0
-M3,Königs Wusterhausen,Asia Today,18,625.38,1.25
-M3,Königs Wusterhausen,Slate Mobility GmbH & Co. KG (Amperio),0,400,0
-M3,Königs Wusterhausen,Slate Mobility GmbH & Co. KG (Climova),0,375,0
-N3,Gronau (Leine),Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,931,11288.79,0
-N3,Gronau (Leine),None,37,0,0
-N4,Eisenberg (Pfalz),PENNY Markt GmbH,956.42,8927.55,3.33
-N5,Ebersbach-Neugersdorf,Netto Marken-Discount Stiftung & Co. KG,931.49,9390.17,-0.91
-N5,Ebersbach-Neugersdorf,Fachfleischerei Thomas Heider,60,1283.09,-1.91
-N5,Ebersbach-Neugersdorf,Leerstand stpfl.,40,0,0
-O1,Donaueschingen,KIK Textilien und Non-Food GmbH,704,4240,3.05
-O1,Donaueschingen,1-2-3 Brille GmbH,83.73,1330.57,5.08
-O1,Donaueschingen,BCT Schuhhandel GmbH,429.59,3307.84,0
-O1,Donaueschingen,Nadin Lorenz-Schmidt,110,1590,0
-O1,Donaueschingen,Christian Milbrandt,261.57,3065.66,12.33
-O1,Donaueschingen,Müller GmbH & Co. KG,1762,16750,0
-O1,Donaueschingen,Netto (sub-let Norma),1110,13594.44,1.92
-O1,Donaueschingen,Meisterbäckerei Schneckenburger GmbH & Co. KG,178,4300,0
-O1,Donaueschingen,Leerstand stpfl.,80,0,0
-O1,Donaueschingen,Überörtliche BAG Drs. Binder Meyner & Kollegen,227.55,2240.9,8.67
-O1,Donaueschingen,PG Donaueschingen Gesellschaft,391.55,3800,3.58
-O1,Donaueschingen,GP Drs. Löffel Rahn Liebl,236.58,2944.42,10.08
+K9,Lohra,Volksbank Mittelhessen eG,200.07,2538.03,1.25
+O1,Donaueschingen,Überörtliche BAG Drs. Binder Meyner & Kollegen,227.55,2240.9,8.58
+O1,Donaueschingen,PG Donaueschingen Gesellschaft,391.55,3800,3.5
+O1,Donaueschingen,GP Drs. Löffel Rahn Liebl,236.58,2944.42,10
 O1,Donaueschingen,Überörtliche BAG Drs. Fietz/Hertkorn/Steinebrunner,110.9,1109.4,0
-O1,Donaueschingen,BAG Drs. M. Frerk P. Dorner,252.28,2430.05,4
-O1,Donaueschingen,Praxis für Physiotherapie J. Küssner & S. Recel GbR,110.11,1151.1,8.75
-P1,Oyten,PENNY Markt GmbH,1390,13000,0.58
-P1,Oyten,Leerstand stpfl.,310,0,0
-P1,Oyten,Slate Mobility GmbH & Co. KG (Amperio),2,200,0
-P1,Oyten,Ibrahim Orke,60,750,4.97
-P1,Oyten,Kreissparkasse Verden,90,1041.86,5.62
-P1,Oyten,AWO Arbeiterwohlfahrt Kreisverband Verden e. V.,180,1013.42,0.25
-P2,Jerichow,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH - Objektmanagement Netto Bln.,1116,10380.99,7.25
-P3,Kamenz,Netto Marken-Discount Stiftung & Co. KG,1028,6500,2.33
-P3,Kamenz,Slate Mobility GmbH & Co. KG (Climova),0,213.33,23.65
-Q1,Aurich,toom Baumarkt GmbH,9482,43774.5,6.33
-Q1,Aurich,Slate Mobility GmbH & Co. KG,0,200,19.69
-Q2,Celle,toom Baumarkt GmbH,8320,54131.75,6.33
-Q5,Hatten,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1041,7420,4.33
-Q5,Hatten,Slate Mobility GmbH & Co. KG (Climova),0,491.13,19.11
-Q6,Zittau,Edeka Grundstücksgesellschaft Nordbayern-Sachsen-Thüringen mbH,1223,8827.55,5.75
-Q7,Ludwigsau,NORMA Lebensmittelhandels Stiftung & Co. KG c/o NORMA LZM GmbH & Co. KG,1414,10494,5.22
-Q8,Wolfsburg,toom Baumarkt GmbH,8525,29251.52,6.58
-Q8,Wolfsburg,Slate Mobility GmbH & Co.KG Amperio,0,200,0
-R2,Aue-Bad Schlema,Netto Marken-Discount Stiftung & Co. KG,1645,18537.75,6.22
-R2,Aue-Bad Schlema,Leerstand stpfl.,4316.81,0,0
-R3,Lichtenau,Netto Marken-Discount Stiftung & Co. KG,1000,7573.3,0.27
-R5,Wendisch Rietz,EDEKA-MIHA Immobilien-Service GmbH,1044,12944.76,10.21
-R6,Wendisch Rietz,PB Immobilien Verwaltung GmbH,10,50,-10.33
-R6,Wendisch Rietz,Leerstand spfl.,654,0,0
-S1,Zwickau,EDEKA Grundstücksgesellschaft N-S-T mbH,1559,16185.32,1.92
-S2,Oberwesel,Lidl Vertriebs-GmbH & Co. KG,1636,16400.12,4.33
-S3,Waldfeucht,REWE Markt GmbH,1971,17155.58,5.17
-S4,Velbert,EDEKA Rhein-Ruhr Stiftung & Co. KG,2044,16251,10.64
-S5,Hamm,PENNY Markt GmbH Immobilienmanagement,1237,15767.89,10.25
-S5,Hamm,Gebr. Schürmann GmbH & Co KG,595,3281.13,2.08
-S6,Lengenfeld,EDEKA Grundstücksgesellschaft N-S-T mbH,1587,16077.51,2.08
-S7,Karlshagen,EDEKA Handelsgesellschaft Nord mbH,1690,0,9.11
-T1,Alsfeld,PENNY Markt GmbH kfm. Immobilienverwaltung,1022.1,12381.82,3.33
-T1,Alsfeld,TEDi GmbH & Co. KG c/o TEDi Verwaltungs-und Beteiligungs-GmbH,525,5426.99,4.75
-T10,Pressath,Bäckerei Brunner KG,61.61,1272.22,1.08
-T10,Pressath,Metzgerei Hausner & Peugler GmbH & Co.KG,87.76,1249.5,1.08
-T10,Pressath,REWE Markt GmbH Zweigniederlassung Süd,2207.34,17830.98,4.33
-T13,Bruchköbel,Heurich GmbH & Co. KG Getränke Fachgroßhandel,473.16,3583.72,1.23
-T13,Bruchköbel,tegut.. gute Lebensmittel GmbH & Co. KG,1383.59,11627.29,3.25
-T14,Budenheim,REWE Markt GmbH Vertragswesen VS,1178.44,17787.57,3.83
-T15,Hambühren,Lidl Vertriebs-GmbH & Co. KG,1497,21883.89,4.92
-T20,Eisingen,EDEKA Südwest Stiftung & Co. KG,1353,14819.35,5.42
-T21,Glückstadt,Aldi SE & Co. KG,1715.25,20240,10.89
-T22,Gräfenhainichen,PENNY Markt GmbH Region Ost,935.9,8100,1.25
-T22,Gräfenhainichen,WVG Getränkefachgroßhandel GmbH,414,3415.34,1.25
-T22,Gräfenhainichen,Feine Fleisch- u. Wurstwaren Rainer Böttge,35,752.5,1.25
-T23,Heide,Takko Holding GmbH,655.2,7575.06,2.33
-T23,Heide,Kienast Schuhhandels GmbH & Co. KG,443.03,3100,0.5
-T23,Heide,Lidl Vertriebs-GmbH & Co. KG,1703,14834.5,4.33
-T26,Lemgo,Schäfer´s Brot & Kuchen Spezialitäten GmbH,65,1754.88,1.67
-T26,Lemgo,Netto Marken-Discount Stiftung & Co. KG,1017,13100,11.69
-T26,Lemgo,Slate Mobility GmbH & Co. KG,0,266.41,23.25
-T27,Burbach,PETZ REWE GmbH,2684.17,30611.69,5.58
-T27,Burbach,dm-drogerie markt GmbH & Co. KG,753,7380.76,5.33
-T29,Neukirch/Lausitz,Lidl Vertriebs-GmbH & Co. KG,2124.13,21900,11.4
-T29,Neukirch/Lausitz,Fleischerei Richter GmbH & Co. KG,164.36,2100,8.85
-T29,Neukirch/Lausitz,Bäckerei-Konditorei-Café Marx Dieter Marx,133.43,1600,8.85
-T29,Neukirch/Lausitz,Dirk Rossmann GmbH,1013.07,8500,8.72
-T3,Bad Laer,Irene Gerhardt,225.08,1125.4,1.25
-T3,Bad Laer,Patrick Mentrup,706.95,2843.31,5.33
-T3,Bad Laer,Lidl Vertriebs-GmbH & Co. KG,1440,15901.24,6.25
-T32,Rockenhausen,PENNY Markt GmbH,1018.35,11467.05,3.33
-T32,Rockenhausen,KiK Textilien und Non-Food GmbH,600,5734.79,5.33
-T33,Satrup,EDEKA Handelsgesellschaft Nord mbH,2659.91,19725,15.24
-T33,Satrup,Massagepraxis Markus Beskidt,132.92,1454.61,1.99
-T33,Satrup,Katja Gamst,151.44,1654.59,2.5
-T33,Satrup,Angelner Autohuus Simon Dreesen,156.97,1127.03,0.67
-T33,Satrup,Slate Mobility GmbH & Co. KG,0,521.65,24.33
-T33,Satrup,Dirk Rossmann GmbH,776.37,7355.99,0.92
-T35,Silberstedt,EDEKA Handelsgesellschaft Nord mbH,2000,21895,10.17
-T36,Straßberg,Netto Marken-Discount Stiftung & Co. KG,1117,11664.25,1.9
-T37,Walsrode,Kreissparkasse Fallingbostel,0,250,0.25
-T37,Walsrode,PENNY Markt GmbH,1403,12755.91,1.43
-T37,Walsrode,Dirk Rossmann GmbH,750.45,8743.96,1.16
-T38,Waltershausen,Nancy Wetzstein,1372,9200,3.33
-T38,Waltershausen,Apotheke Ibenhain Dieter Dazert,125.38,1659.56,1.33
-T38,Waltershausen,Adrian Weiß,206.1,1500,10.59
-T38,Waltershausen,Friseursalon Doreen Pilz,82.15,720,3.33
-T38,Waltershausen,MED ON THUERINGEN GMBH,128.51,1489.53,7.33
-T38,Waltershausen,Monika Burkhardt,120,1147.36,2.33
-T38,Waltershausen,Physiotherapie Claudia Gerlach,126.61,1445.02,4.33
-T39,Bitterfeld-Wolfen,Fleisch- u. Wurstwarenmanufaktur Reinsdorfer GmbH,98.3,1281.64,0
-T39,Bitterfeld-Wolfen,Wolfener Handelsgesellschaft mbH,205,520,12.85
-T39,Bitterfeld-Wolfen,KIK Textilien und Non-Food GmbH,441.29,4036.48,5.33
-T39,Bitterfeld-Wolfen,Lidl Vertriebs-GmbH & Co. KG,1328.32,15068.58,8.47
-T39,Bitterfeld-Wolfen,Slate Mobility GmbH & Co. KG,0,416.67,0
-T39,Bitterfeld-Wolfen,Leerstand stpfl.,83.84,0,0
-T39,Bitterfeld-Wolfen,Beelitzer Spargel Frank Ebert,0,0,0
-T4,Bad Lippspringe,KIK Textilien und Non-Food GmbH,493.35,3922,4.25
-T4,Bad Lippspringe,PENNY Markt GmbH,1313.36,13131.3,6.83
-T40,Wölfersheim,PENNY Markt GmbH,1178.04,9793,6.33
-T40,Wölfersheim,tegut.. gute Lebensmittel GmbH & Co. KG,1903.11,20643.77,8.83
-T40,Wölfersheim,Lust auf Haus GmbH,93,753.35,0.85
-T5,Bardowick,REWE Markt GmbH Zweigniederlassung Nord,1996,23865.58,5.33
-T6,Bardowick,PENNY Markt GmbH Zweigniederlassung Nord,1190.34,15900,18.18
-T7,Bautzen,Lidl Vertriebs-GmbH & Co. KG,1276.83,13370.5,4.17
-T8,Berching,REWE Markt GmbH Zweigniederlassung Süd,2599.1,26416.51,3.41
-T8,Berching,Stadt Apotheke Benjamin Kleinsteuber,161,1955.67,14.08
-T9,Berlin,Netto Marken-Discount Stiftung & Co. KG,1430.55,19848,9.16
-U1,Aken,PENNY Markt GmbH,975.19,7500,5.17
-U2,Bad Brückenau,Netto Marken-Discount Stiftung & Co. KG,1086,11186.53,0.15
-U2,Bad Brückenau,Slate Mobility GmbH & Co. KG (Climova),0,833.33,7.5
-U2,Bad Brückenau,SCHWARZ-Außenwerbung GmbH,0,75,5.08
-U3,Brotterode,EDEKA Handelsgesellschaft Hessenring mbH,1293,11049.16,1.5
-U4,Seehausen,PENNY Markt GmbH,1025.07,7807.72,2.75
-U4,Seehausen,Fleischerei Kiebach,129.01,819.55,5.58
-U5,Schönbrunn,tegut... gute Lebensmittel GmbH & Co. KG,742.39,4899,5.33
-U5,Schönbrunn,Salon Schnipp-Schnapp,39.18,641.5,1.75
-V1,Bad Blankenburg,REWE Markt GmbH Zweigniederlassung Ost,2675.03,31524.14,6.05
-V1,Bad Blankenburg,MH Hairdesign,93,421.25,1
-V1,Bad Blankenburg,Dentallabor KREATIV-PROTHETIK,88,677.35,-3.92
-V1,Bad Blankenburg,ASIA IMBISS,32,820,5.67
-V1,Bad Blankenburg,Leerstand stpfl.,146.37,0,0
-V1,Bad Blankenburg,Praxis für Ergotherapie,132.28,859.82,1.25
-V10,Kronach,Netto Marken-Discount Stiftung & Co. KG,1161,18134.82,1
-V10,Kronach,Shell Deutschland Oil GmbH,10,133.1,5.33
-V11,Magdeburg,EDEKA-MIHA Immobilien-Service GmbH,2088,24166.67,8.2
-V11,Magdeburg,Kosmos Apotheke,275,4060.03,1.33
-V11,Magdeburg,Holiday Land Reform,46,800.16,0
-V11,Magdeburg,LVM Versicherungsbüro,55,905.5,-0.67
-V12,Niederkassel,SuperVista AG,47,688.36,1.58
-V12,Niederkassel,Rebecca´s Feilenzauber,37,438.31,0.83
-V12,Niederkassel,Imbiss Foodbox,80,1600,5.98
-V12,Niederkassel,Slate Mobility GmbH & Co. KG (Amperio),0,200,19.28
-V12,Niederkassel,Slate Mobility GmbH & Co. KG (Climova),0,281.25,23.2
-V12,Niederkassel,Leerstand stpfl.,46,0,0
-V12,Niederkassel,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,934,21875,13.2
-V12,Niederkassel,Sahin Yagmur,229,2380,5.62
-V13,Nienburg,Leerstand stpfl.,38,0,0
-V13,Nienburg,PENNY Markt GmbH,1031,10500,5.33
-V14,Oberhausen,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,1103,15759.53,0.45
-V16,Recklinghausen,Netto Marken-Discount Stiftung & Co. KG c/o CEV Handelsimmobilien GmbH,936,13987.5,4.33
-V17,Roth,REWE Markt GmbH Zweigniederlassung Süd,1843,23115.62,0
-V17,Roth,Deutsche Post Immobilien GmbH,482,5474.05,0
-V18,Schlitz,Lidl Vertriebs-GmbH & Co. KG,1017.9,11121.86,1.67
-V19,Sonneberg,Lidl Vertriebs-GmbH & Co. KG,1338,13193.35,1.08
-V19,Sonneberg,KIK Textilien und Non-Food GmbH,602,5376.97,0.83
-V19,Sonneberg,Beiersdorfer Landbrot Inh. Roland Herppich,213,1579.63,1.17
-V2,Bayreuth,Netto Marken-Discount Stiftung & Co. KG,987,14522.83,3.03
-V2,Bayreuth,Landmetzgerei Witt Inh. Karl Witt,65,2239.95,1.33
-V2,Bayreuth,Leerstand stpfl.,45,0,0
-V20,Schneeberg,Netto Marken-Discount Stiftung & Co. KG,1247,14657.39,5.6
-V21,Wuppertal,Netto Marken-Discount AG & Co. KG,988.91,27617.68,1.54
-V21,Wuppertal,Slate Mobility GmbH & Co. KG,0,275,0
-V22,Cottbus,REWE Markt GmbH Zweigniederlassung OST,1504.55,18225.54,4.33
-V22,Cottbus,Cottbusser Hair Team GmbH,100,1599.15,1
-V22,Cottbus,Kosmetikstudio Zeißler,104.16,712.03,0.58
-V22,Cottbus,Burger Blumengroßhandel,38.33,641.88,1.33
-V22,Cottbus,VU Gastronomie UG,245,2450,4.33
-V23,Gelsenkirchen,Netto Marken-Discount Stiftung & Co. KG,929.5,14524.43,3.98
-V24,Hannover,Netto Marken-Discount Stiftung & Co. KG,1110,18239.32,-5.74
-V26,Königswinter,Netto Marken-Discount Stiftung & Co. KG,926,14914.79,3.82
-V26,Königswinter,Slate Mobility GmbH & Co. KG,0,282.15,23.25
-V27,Magdeburg,Leerstand stpfl.,535,0,0
-V27,Magdeburg,PENNY Markt GmbH Zweigniederlassung Berlin,1004.1,11466.67,0.45
-V27,Magdeburg,WVG Getränkefachgroßhandel GmbH,675,4470.55,1.83
-V27,Magdeburg,Grill-und Partyservice Marter Inh. Thorsten Marter,30,100,0.33
-V28,Berlin,Netto Marken-Discount Stiftung & Co. KG,901,17224.13,0
-V29,Wallenhorst,Leerstand stpfl.,4673,0,0
-V29,Wallenhorst,J. Bünting Beteiligungs AG,3954,33600.85,3.33
-V3,Marktredwitz,Leerstand stpfl.,58,0,0
-V3,Marktredwitz,Netto Marken-Discount Stiftung & Co. KG,987,8621.1,0
-V3,Marktredwitz,Landmetzgerei Witt,111,2094.98,0
-V30,Gotha,Leerstand stpfl.,1037,0,0
-V30,Gotha,Plakat Ströer,0,66.67,0.25
-V4,Dassel,REWE Markt GmbH,1900,26086.2,0
-V5,Dortmund,Leerstand stpfl.,38,0,0
-V5,Dortmund,Netto Marken-Discount Stiftung & Co. KG,987,15835.06,3.2
-V6,Schwandorf,Leerstand stpfl.,856,0,0
-V6,Schwandorf,NORMA Lebensmittelhandels Stiftung & Co. KG,1036,10137.45,5.33
-V6,Schwandorf,A.T.U Auto-Teile-Unger GmbH & Co. KG,1145,9489.06,4.33
-V6,Schwandorf,Apotheke Prainer,225,3407.7,5.33
-V6,Schwandorf,Selcuk Karakas - Schreibwaren,135,1757.34,8.33
-V6,Schwandorf,Meindl Metzgerei GmbH,148,1500,0.67
-V6,Schwandorf,"Bäckerei Ernst Schmid ""Der Beck"" e.K.",77.02,825,1.33
-V6,Schwandorf,Johann Schmalzl,0,140,12.08
-V6,Schwandorf,Physiotherapie Seifert & Kuhn,113,1229.25,1.08
-V6,Schwandorf,Pflegedienst Sida Care Pflegegesellschaft mbH,302,1880,4.58
-V8,Hameln,PENNY Markt GmbH,992.35,14368.65,7.17
-V8,Hameln,Bäckerei Bohne GmbH,70,1902.69,2.2
-V9,Hannover,Slate Mobility GmbH & Co. KG (Amperio),0,300,0
-V9,Hannover,Netto Marken-Discount Stiftung & Co. KG,1233,18362.42,0
-V9,Hannover,Takko Holding GmbH,556,6704.95,0
-V9,Hannover,Slate Mobility GmbH & Co. KG (Climova),0,260.42,0
-Z1,Kümmersbruck,EDEKA Grundstücksgesellschaft N-S-T mbH,1100,5200,0.67
-Z3,Sankt Johann,Netto Marken-Discount Stiftung & Co. KG,1322,10200.09,5.17
-Z3,Sankt Johann,Fa. Bayer & Raach,0,225,0
+O1,Donaueschingen,BAG Drs. M. Frerk P. Dorner,252.28,2430.05,3.92
+O1,Donaueschingen,Praxis für Physiotherapie J. Küssner & S. Recel GbR,110.11,1151.1,8.67
+V6,Schwandorf,Physiotherapie Seifert & Kuhn,113,1229.25,1
+V6,Schwandorf,Pflegedienst Sida Care Pflegegesellschaft mbH,302,1880,4.5
+V1,Bad Blankenburg,Praxis für Ergotherapie,132.28,859.82,1.17
+V11,Magdeburg,LVM Versicherungsbüro,55,905.5,-0.75
+V12,Niederkassel,Sahin Yagmur,229,2380,5.54

@@ -327,9 +327,9 @@ export default function TenancyComparePage() {
               Subtotal&nbsp;: <strong>{subtotal}</strong>
             </div>
             <div className="legend">
-              <span className="legendItem hl-red">Δ important</span>
-              <span className="legendItem hl-orange">PM uniquement</span>
-              <span className="legendItem hl-blue">Odoo uniquement</span>
+              <span className="legendItem hl-red">Matching issues</span>
+              <span className="legendItem hl-orange">Missing in Odoo</span>
+              <span className="legendItem hl-blue">Missing in 3PM</span>
             </div>
           </div>
         </header>
