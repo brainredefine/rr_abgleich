@@ -1,4 +1,4 @@
-// app/tenancy/api/comments/[type]/route.ts
+// app/api/comments/[type]/route.ts
 export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -47,7 +47,7 @@ function toRows(v: unknown): CommentRow[] {
   return out;
 }
 
-/** GET /tenancy/api/comments/[type]?ids=a,b,c */
+/** GET /api/comments/[type]?ids=a,b,c */
 export async function GET(
   req: NextRequest,
   ctx: { params: Promise<{ type: string }> } // ← conforme à ton config
@@ -77,7 +77,7 @@ export async function GET(
   }
 }
 
-/** POST /tenancy/api/comments/[type]  { id, comment } */
+/** POST /api/comments/[type]  { id, comment } */
 export async function POST(
   req: NextRequest,
   ctx: { params: Promise<{ type: string }> } // ← conforme à ton config
