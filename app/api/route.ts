@@ -17,23 +17,67 @@ type TenantRow = {
 
 export const runtime = "nodejs";
 
+/* ===== Types auxiliaires sûrs ===== */
+
+// format attendu depuis Supabase (colonnes sélectionnées)
+interface PmRow {
+  asset_ref: string | null;
+  city: string | null;
+  tenant_am_name: string | null;
+  space: number | null;
+  rent: number | null;
+  walt: number | null;
+}
+
+// formats possibles pour banlist.json
+type BanListJson =
+  | string[]
+  | {
+      assets?: Array<
+        | string
+        | {
+            asset_ref?: unknown;
+            reference_id?: unknown;
+          }
+      >;
+    };
+
+/* ===== Utils safe (pas de any) ===== */
+
+function toUpperNonEmpty(s: unknown): string | null {
+  if (typeof s !== "string") return null;
+  const t = s.trim();
+  return t ? t.toUpperCase() : null;
+}
+
+function refFromUnknown(obj: unknown): string | null {
+  if (typeof obj !== "object" || obj === null) return null;
+  const rec = obj as Record<string, unknown>;
+  const a = rec.asset_ref;
+  const b = rec.reference_id;
+  return toUpperNonEmpty(typeof a === "string" ? a : typeof b === "string" ? b : null);
+}
+
 /** Charge public/data/banlist.json et renvoie un Set d'asset_ref bannis (en MAJ). */
 function loadBanSet(): Set<string> {
   try {
     const p = `${process.cwd()}/public/data/banlist.json`;
     const raw = fs.readFileSync(p, "utf8");
-    const json = JSON.parse(raw);
+    const json = JSON.parse(raw) as BanListJson;
+
     const banned = new Set<string>();
-    const add = (v: unknown) => {
-      if (!v) return;
-      if (typeof v === "string" && v.trim()) banned.add(v.trim().toUpperCase());
-      else if (typeof v === "object") {
-        const ref = String((v as any).asset_ref ?? (v as any).reference_id ?? "").trim();
-        if (ref) banned.add(ref.toUpperCase());
-      }
+    const addString = (v: string | null) => {
+      if (v) banned.add(v);
     };
-    if (Array.isArray(json)) json.forEach(add);
-    else if (json && Array.isArray(json.assets)) json.assets.forEach(add);
+
+    if (Array.isArray(json)) {
+      for (const it of json) addString(toUpperNonEmpty(it));
+    } else if (json && Array.isArray(json.assets)) {
+      for (const it of json.assets) {
+        if (typeof it === "string") addString(toUpperNonEmpty(it));
+        else addString(refFromUnknown(it));
+      }
+    }
     return banned;
   } catch {
     return new Set<string>();
@@ -44,16 +88,20 @@ function loadBanSet(): Set<string> {
  * Récupère TOUTES les lignes de pm_datatenant en paginant par OFFSET.
  * On calcule d'abord le total exact, puis on boucle. Trié par asset_ref pour stabilité.
  */
-async function fetchAllPmRows(): Promise<any[]> {
+async function fetchAllPmRows(): Promise<PmRow[]> {
   const pageSize = 1000;
+
   // 1) total exact (HEAD)
   const head = await supabase
     .from("pm_datatenant")
     .select("asset_ref", { count: "exact", head: true });
-  if (head.error) throw new Error(`Supabase pm_datatenant (count): ${head.error.message}`);
+
+  if (head.error) {
+    throw new Error(`Supabase pm_datatenant (count): ${head.error.message}`);
+  }
   const total = head.count ?? 0;
 
-  const out: any[] = [];
+  const out: PmRow[] = [];
   let offset = 0;
   let safety = 0;
 
@@ -64,15 +112,19 @@ async function fetchAllPmRows(): Promise<any[]> {
       .order("asset_ref", { ascending: true, nullsFirst: true })
       .range(offset, offset + pageSize - 1); // inclusif
 
-    if (error) throw new Error(`Supabase pm_datatenant: ${error.message}`);
+    if (error) {
+      throw new Error(`Supabase pm_datatenant: ${error.message}`);
+    }
+    if (!data || data.length === 0) break;
 
-    if (!data || data.length === 0) break; // plus rien
-    out.push(...data);
+    // `data` est inconnu côté type, mais on sait quelles colonnes on a demandé :
+    for (const r of data as unknown as PmRow[]) out.push(r);
 
     offset += data.length;
     safety++;
     if (safety > 200) break; // garde-fou (200k lignes)
   }
+
   return out;
 }
 
@@ -85,7 +137,7 @@ export async function GET(req: Request) {
 
     // PM (paginé pour dépasser la limite par défaut ~1000)
     const pmRows = await fetchAllPmRows();
-    const pmAll: TenantRow[] = pmRows.map((r: any) => ({
+    const pmAll: TenantRow[] = pmRows.map((r): TenantRow => ({
       asset_ref: String(r.asset_ref ?? ""),
       tenant_name: String(r.tenant_am_name ?? ""), // ← ta colonne canonique
       space: Number(r.space ?? 0),
