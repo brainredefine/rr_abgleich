@@ -1,10 +1,10 @@
 // lib/textnorm.ts
-export function normalizeForKey(s: string) {
+export function normalizeForKey(s: string): string {
   return String(s)
     .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "")   // ü/ö/ä/ß → u/o/a/ss
+    .replace(/\p{Diacritic}/gu, "")
     .toLowerCase()
-    .replace(/[-–—_/.,;:()&]/g, " ")  // tirets & ponctuation → espace
+    .replace(/[-–—_/.,;:()&]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }

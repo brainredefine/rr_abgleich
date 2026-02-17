@@ -1,11 +1,15 @@
-import { createClient } from "@supabase/supabase-js";
+// lib/supabase.ts
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-const url = process.env.SUPABASE_URL!;
-const key = process.env.SUPABASE_API_KEY!; // clé anon ok si RLS autorise insert/select
-if (!url || !key) {
-  throw new Error("Missing SUPABASE_URL or SUPABASE_API_KEY");
+let _client: SupabaseClient | null = null;
+
+export function getSupabase(): SupabaseClient {
+  if (_client) return _client;
+
+  const url = process.env.SUPABASE_URL ?? "";
+  const key = process.env.SUPABASE_API_KEY ?? "";
+  if (!url || !key) throw new Error("Missing SUPABASE_URL or SUPABASE_API_KEY");
+
+  _client = createClient(url, key, { auth: { persistSession: false } });
+  return _client;
 }
-
-export const supabase = createClient(url, key, {
-  auth: { persistSession: false },
-});
