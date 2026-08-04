@@ -9,6 +9,7 @@ interface Row {
   asset: string;
   tenant: string;
   am: string;
+  city: string;
   present: "am" | "pm" | "both";
   gla_am: number;
   gla_pm: number;
@@ -19,8 +20,6 @@ interface Row {
 }
 
 type Comments = Record<string, { am: string; pm: string }>;
-type ViewFilter = "all" | "diffs" | "missing";
-type PresenceFilter = "all" | "both" | "am" | "pm";
 type LoadState = "loading" | "ready" | "error";
 
 /* ══════════ Helpers ══════════ */
@@ -29,14 +28,23 @@ const fmt = (v: number) =>
   v === 0 ? "–" : Math.round(v).toLocaleString("de-DE");
 const fmtW = (v: number) =>
   v === 0 ? "–" : v.toFixed(2);
+const signed = (n: number, body: string) => (n > 0 ? `+${body}` : body);
 const fmtDelta = (a: number, b: number, th: number, formatter: (n: number) => string) => {
   const d = a - b;
-  return Math.abs(d) < th ? "" : formatter(d);
+  return Math.abs(d) < th ? "" : signed(d, formatter(d));
 };
+
+/* One colour per asset manager — the badge and its filter pill stay in step. */
+const AM_COLORS: Record<string, string> = {
+  BKO: "#4a7ba7",
+  CFR: "#5b8a72",
+  JSC: "#a8763e",
+};
+const amColor = (code: string) => AM_COLORS[code] ?? "#7c7a72";
 
 const isHidden = (name: string) => {
   const n = normalizeForKey(name);
-  return n.includes("leerstand") || n.includes("vacant");
+  return n.includes("leerstand") || n.includes("vacant") || n === "available";
 };
 
 const mkKey = (r: Row) => `${r.asset.toUpperCase()}@@${normalizeForKey(r.tenant)}`;
@@ -51,6 +59,44 @@ const TH_WALT = 0.3;
 /* ══════════ Row status ══════════ */
 
 type RowStatus = "ok" | "minor" | "severe" | "missing_pm" | "missing_am";
+
+/* One filter, one meaning. "missing" always holds both sides at once — never one or
+   the other — so an asset where a tenant drops out of Tabula and shows up in 3PM
+   under another name puts the two rows side by side. */
+type Filter = "all" | "severe" | "minor" | "missing" | "severe_missing" | "ok";
+
+const MISS_DOT = "linear-gradient(90deg,#e07830 50%,#3878c8 50%)";
+const SEV_MISS_DOT = "linear-gradient(90deg,#c82828 34%,#e07830 34% 67%,#3878c8 67%)";
+
+const FILTERS: { id: Filter; label: string; color?: string; bg?: string; dot?: string; title?: string }[] = [
+  { id: "all", label: "All" },
+  {
+    id: "severe", label: "Δ GLA/Rent", color: "#c82828", bg: "rgba(200,40,40,.18)",
+    title: `GLA off by more than ${TH_SEVERE.GLA} m² or rent by more than ${TH_SEVERE.RENT} €`,
+  },
+  {
+    id: "minor", label: "Δ WALT", color: "#a08520", bg: "rgba(217,170,50,.20)",
+    title: `WALT off by more than ${TH_WALT} y, GLA and rent in line`,
+  },
+  {
+    id: "missing", label: "Missing AM + PM", color: "#8a5a2b", bg: "rgba(190,120,50,.18)", dot: MISS_DOT,
+    title: "Missing on either side — 3PM-only and Tabula-only rows together",
+  },
+  {
+    id: "severe_missing", label: "Δ + Missing", color: "#9c3a4a", bg: "rgba(160,60,80,.16)", dot: SEV_MISS_DOT,
+    title: "GLA/Rent differences and missing rows together — a lease merged on one side and split on the other shows up as both at once",
+  },
+  { id: "ok", label: "OK", color: "#5a8a5a", bg: "rgba(80,140,80,.16)" },
+];
+
+const isMissing = (s: RowStatus) => s === "missing_am" || s === "missing_pm";
+
+const matchesFilter = (s: RowStatus, f: Filter): boolean => {
+  if (f === "all") return true;
+  if (f === "missing") return isMissing(s);
+  if (f === "severe_missing") return s === "severe" || isMissing(s);
+  return s === f;
+};
 
 function getStatus(r: { present: string; dGla: number; dRent: number; dWalt: number }): RowStatus {
   if (r.present === "am") return "missing_pm";
@@ -67,7 +113,7 @@ function getStatus(r: { present: string; dGla: number; dRent: number; dWalt: num
 
 /* ══════════ Debounced save ══════════ */
 
-function useDebouncedSave(ms = 600) {
+function useDebouncedSave(onError: (msg: string | null) => void, ms = 600) {
   const timers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
 
   return useCallback(
@@ -80,16 +126,20 @@ function useDebouncedSave(ms = 600) {
         setTimeout(async () => {
           timers.current.delete(k);
           try {
-            await fetch("/api/comments", {
+            const res = await fetch("/api/comments", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ id, type, comment }),
             });
-          } catch { /* non-critical */ }
+            // A silent failure here used to lose comments without a trace.
+            onError(res.ok ? null : `Comment not saved (HTTP ${res.status})`);
+          } catch {
+            onError("Comment not saved — server unreachable");
+          }
         }, ms),
       );
     },
-    [ms],
+    [ms, onError],
   );
 }
 
@@ -115,15 +165,15 @@ export default function RentRollPage() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const [q, setQ] = useState("");
-  const [view, setView] = useState<ViewFilter>("all");
-  const [presFilter, setPresFilter] = useState<PresenceFilter>("all");
-  const [statusFilter, setStatusFilter] = useState<RowStatus | "all">("all");
+  const [filter, setFilter] = useState<Filter>("all");
+  const [suspectOnly, setSuspectOnly] = useState(false);
   const [amFilter, setAmFilter] = useState("ALL");
   const [hideGLA, setHideGLA] = useState(false);
   const [hideWALT, setHideWALT] = useState(false);
 
   const [comments, setComments] = useState<Comments>({});
-  const save = useDebouncedSave();
+  const [commentsErr, setCommentsErr] = useState<string | null>(null);
+  const save = useDebouncedSave(setCommentsErr);
   const editingRef = useRef<string | null>(null);
 
   /* ── Load Excel rows ── */
@@ -161,7 +211,12 @@ export default function RentRollPage() {
   const fetchComments = useCallback(async () => {
     try {
       const res = await fetch("/api/comments", { cache: "no-store" });
-      if (!res.ok) return;
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        setCommentsErr(body?.error ? `Comments unavailable — ${body.error}` : `Comments unavailable (HTTP ${res.status})`);
+        return;
+      }
+      setCommentsErr(null);
       const json = await res.json();
       if (json.comments) {
         setComments((prev) => {
@@ -175,7 +230,9 @@ export default function RentRollPage() {
           return next;
         });
       }
-    } catch {}
+    } catch {
+      setCommentsErr("Comments unavailable — server unreachable");
+    }
   }, []);
 
   useEffect(() => {
@@ -187,29 +244,65 @@ export default function RentRollPage() {
   /* ── Enriched + filtered rows ── */
   const qn = normalizeForKey(q);
 
-  const display = useMemo<DisplayRow[]>(() => {
-    return rows
+  const enriched = useMemo<DisplayRow[]>(() =>
+    rows
       .map((r): DisplayRow => {
         const dGla = r.gla_am - r.gla_pm;
         const dRent = r.rent_am - r.rent_pm;
         const dWalt = r.walt_am - r.walt_pm;
         return { ...r, id: mkKey(r), dGla, dRent, dWalt, status: getStatus({ present: r.present, dGla, dRent, dWalt }) };
       })
-      .filter((r) => {
-        if (qn && !normalizeForKey(`${r.asset} ${r.tenant}`).includes(qn)) return false;
-        if (amFilter !== "ALL" && r.am !== amFilter) return false;
-        if (presFilter === "both" && r.present !== "both") return false;
-        if (presFilter === "am" && r.present !== "am") return false;
-        if (presFilter === "pm" && r.present !== "pm") return false;
-        if (statusFilter !== "all" && r.status !== statusFilter) return false;
-        if (view === "diffs" && r.status === "ok") return false;
-        if (view === "missing" && r.present === "both") return false;
-        return true;
-      })
       .sort((a, b) =>
         a.asset === b.asset ? a.tenant.localeCompare(b.tenant) : a.asset.localeCompare(b.asset),
-      );
-  }, [rows, qn, amFilter, presFilter, statusFilter, view]);
+      ),
+  [rows]);
+
+  /* Assets that miss a tenant on BOTH sides: almost always the same lease sitting
+     under two names, i.e. a hole in the Mapping sheet rather than a real gap.
+     Computed on the whole set — it is a property of the data, not of the search. */
+  const suspectAssets = useMemo(() => {
+    const pm = new Set<string>(), am = new Set<string>();
+    for (const r of enriched) {
+      if (r.status === "missing_pm") pm.add(r.asset);
+      else if (r.status === "missing_am") am.add(r.asset);
+    }
+    return new Set([...pm].filter((a) => am.has(a)));
+  }, [enriched]);
+
+  const searched = useMemo(() =>
+    enriched.filter((r) => {
+      if (qn && !normalizeForKey(`${r.asset} ${r.tenant}`).includes(qn)) return false;
+      if (amFilter !== "ALL" && r.am !== amFilter) return false;
+      return true;
+    }),
+  [enriched, qn, amFilter]);
+
+  /* The suspect rows themselves — not the whole asset, which would bury them under
+     every matched tenant of a big centre. */
+  const isSuspect = useCallback(
+    (r: DisplayRow) =>
+      suspectAssets.has(r.asset) && (r.status === "missing_am" || r.status === "missing_pm"),
+    [suspectAssets],
+  );
+
+  /* Everything except the status filter — so the pill counts show what a click gives. */
+  const scope = useMemo(
+    () => (suspectOnly ? searched.filter(isSuspect) : searched),
+    [searched, suspectOnly, isSuspect],
+  );
+
+  const suspectCount = useMemo(() => searched.filter(isSuspect).length, [searched, isSuspect]);
+
+  const counts = useMemo(() => {
+    const c = Object.fromEntries(FILTERS.map((f) => [f.id, 0])) as Record<Filter, number>;
+    for (const r of scope) for (const f of FILTERS) if (matchesFilter(r.status, f.id)) c[f.id]++;
+    return c;
+  }, [scope]);
+
+  const display = useMemo(
+    () => scope.filter((r) => matchesFilter(r.status, filter)),
+    [scope, filter],
+  );
 
   /* ── Comment handlers ── */
   const onFocus = useCallback((type: "am" | "pm", id: string) => { editingRef.current = `${type}:${id}`; }, []);
@@ -235,15 +328,6 @@ export default function RentRollPage() {
     return c.join(" ");
   }, [hideGLA, hideWALT]);
 
-  /* ── Stats ── */
-  const stats = useMemo(() => {
-    const severe = display.filter((r) => r.status === "severe").length;
-    const minor = display.filter((r) => r.status === "minor").length;
-    const missPm = display.filter((r) => r.status === "missing_pm").length;
-    const missAm = display.filter((r) => r.status === "missing_am").length;
-    return { severe, minor, missPm, missAm };
-  }, [display]);
-
   /* ═══════ Render ═══════ */
 
   return (
@@ -263,92 +347,96 @@ export default function RentRollPage() {
 
         /* ── Navbar ── */
         .nav{
-          background:#1a1d21;color:#d4d0c8;
-          padding:8px 24px;min-height:50px;
+          background:linear-gradient(#20242a,#1a1d21);color:#d4d0c8;
+          padding:9px 24px;min-height:52px;
           display:flex;align-items:center;gap:14px;
           position:sticky;top:0;z-index:30;
-          border-bottom:2px solid #c9a84c;
+          border-bottom:1px solid #c9a84c;
+          box-shadow:0 1px 0 rgba(201,168,76,.25), 0 4px 14px rgba(0,0,0,.18);
           flex-wrap:wrap;
         }
-        .brand{font-weight:700;font-size:15px;letter-spacing:.05em;color:#c9a84c;white-space:nowrap}
-        .brand em{font-style:normal;color:#7c7a72;font-weight:400;margin-left:6px;font-size:12px}
+        .brand{
+          display:flex;align-items:baseline;gap:7px;white-space:nowrap;
+          font-weight:700;font-size:14.5px;letter-spacing:.08em;color:#c9a84c;
+        }
+        .brand em{
+          font-style:normal;color:#84817a;font-weight:500;font-size:10px;
+          letter-spacing:.1em;text-transform:uppercase;
+        }
 
-        .search{position:relative;flex:1;max-width:300px;min-width:160px}
+        .search{position:relative;flex:1;max-width:300px;min-width:170px}
         .search input{
-          width:100%;padding:7px 30px 7px 10px;
-          background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
-          border-radius:5px;color:#e0ddd5;font-family:inherit;font-size:12px;outline:none;
-          transition:border-color .15s;
+          width:100%;padding:7px 30px 7px 11px;
+          background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+          border-radius:6px;color:#e6e3db;font-family:inherit;font-size:12px;outline:none;
+          transition:border-color .15s, background .15s, box-shadow .15s;
         }
-        .search input::placeholder{color:#555}
-        .search input:focus{border-color:#c9a84c}
+        .search input::placeholder{color:#63605a}
+        .search input:focus{
+          border-color:#c9a84c;background:rgba(255,255,255,.09);
+          box-shadow:0 0 0 3px rgba(201,168,76,.12);
+        }
         .search .x{
-          position:absolute;right:5px;top:50%;transform:translateY(-50%);
-          width:18px;height:18px;border:none;background:rgba(255,255,255,.08);
-          border-radius:3px;color:#888;cursor:pointer;font-size:14px;
-          display:flex;align-items:center;justify-content:center;
+          position:absolute;right:6px;top:50%;transform:translateY(-50%);
+          width:18px;height:18px;border:none;background:rgba(255,255,255,.1);
+          border-radius:4px;color:#9a968e;cursor:pointer;font-size:13px;line-height:1;
+          display:flex;align-items:center;justify-content:center;transition:background .1s;
         }
+        .search .x:hover{background:rgba(255,255,255,.18);color:#e6e3db}
 
-        /* pill groups */
-        .pills{display:flex}
-        .pill{
-          padding:6px 11px;
-          background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
-          color:#888;font-family:inherit;font-size:10.5px;font-weight:500;
-          cursor:pointer;transition:all .1s;letter-spacing:.02em;
-        }
-        .pill:first-child{border-radius:5px 0 0 5px}
-        .pill:last-child{border-radius:0 5px 5px 0}
-        .pill.on{background:#c9a84c;border-color:#c9a84c;color:#1a1d21;font-weight:600}
-
-        .am-pills{display:flex}
+        .am-pills{display:flex;gap:1px}
         .am-pill{
-          padding:6px 10px;
-          background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
-          color:#777;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;
-          cursor:pointer;transition:all .1s;letter-spacing:.04em;
+          padding:6px 11px;
+          background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);
+          color:#8b8880;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;
+          cursor:pointer;transition:all .12s;letter-spacing:.06em;
         }
-        .am-pill:first-child{border-radius:5px 0 0 5px}
-        .am-pill:last-child{border-radius:0 5px 5px 0}
-        .am-pill.on{background:#5b8a72;border-color:#5b8a72;color:#fff}
-
-        .pres-pills{display:flex}
-        .pres-pill{
-          padding:6px 10px;
-          background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
-          color:#777;font-family:inherit;font-size:10.5px;font-weight:500;
-          cursor:pointer;transition:all .1s;
+        .am-pill:hover{background:rgba(255,255,255,.09);color:#c8c4bb}
+        .am-pill:first-child{border-radius:6px 0 0 6px}
+        .am-pill:last-child{border-radius:0 6px 6px 0}
+        .am-pill.on{
+          background:var(--am);border-color:var(--am);color:#fff;font-weight:600;
         }
-        .pres-pill:first-child{border-radius:5px 0 0 5px}
-        .pres-pill:last-child{border-radius:0 5px 5px 0}
-        .pres-pill.on{background:#6484aa;border-color:#6484aa;color:#fff;font-weight:600}
 
         .chk{display:flex;align-items:center;gap:4px;font-size:10.5px;color:#777;cursor:pointer;white-space:nowrap;user-select:none}
         .chk input{accent-color:#c9a84c}
 
-        .color-pills{display:flex}
-        .cpill{
-          padding:6px 11px;
-          background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
-          color:#888;font-family:inherit;font-size:10.5px;font-weight:500;
-          cursor:pointer;transition:all .1s;letter-spacing:.02em;
-        }
-        .cpill:first-child{border-radius:5px 0 0 5px}
-        .cpill:last-child{border-radius:0 5px 5px 0}
-        .cpill.on{background:var(--cpill-bg);border-color:var(--cpill-color);color:var(--cpill-color);font-weight:600}
-
-        /* ── Status bar ── */
+        /* ── Filter bar — single source of truth, doubles as the colour legend ── */
         .bar{
           display:flex;align-items:center;justify-content:space-between;
-          padding:9px 24px;background:#eceae4;border-bottom:1px solid #d9d6ce;
+          padding:8px 24px;background:#eceae4;border-bottom:1px solid #d9d6ce;
           font-size:11.5px;color:#666;flex-wrap:wrap;gap:8px;
         }
         .bar .nums{display:flex;gap:16px;align-items:center}
         .bar b{color:#1c1917;font-variant-numeric:tabular-nums}
-        .legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-        .leg{display:flex;align-items:center;gap:5px;font-size:10.5px}
-        .dot{width:12px;height:5px;border-radius:2px;flex-shrink:0}
         .live{display:flex;align-items:center;gap:4px;font-size:10px;color:#888}
+        .offline{
+          display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;
+          color:#b83230;background:rgba(220,53,69,.08);border:1px solid rgba(220,53,69,.22);
+          border-radius:5px;padding:3px 8px;cursor:help;
+        }
+        .offline::before{content:"";width:6px;height:6px;border-radius:50%;background:#c82828}
+
+        .fbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+        .fpill{
+          display:flex;align-items:center;gap:6px;
+          padding:5px 10px;border-radius:5px;
+          background:#f5f4f0;border:1px solid #d7d4cc;
+          color:#5c5952;font-family:inherit;font-size:11px;font-weight:500;
+          cursor:pointer;transition:all .1s;white-space:nowrap;
+        }
+        .fpill:hover{background:#fff;border-color:#bcb8ae}
+        .fpill.on{
+          background:var(--f-bg);border-color:var(--f-color);
+          color:var(--f-color);font-weight:600;
+        }
+        .fpill .fdot{width:8px;height:8px;border-radius:2px;background:var(--f-color);flex-shrink:0}
+        /* multi-tone dot for the combined filters — the legend stays honest about
+           which row colours a click brings in (orange = miss PM, blue = miss AM) */
+        .fpill .fdot.wide{width:16px}
+        .fpill .n{font-family:'IBM Plex Mono',monospace;font-size:10px;opacity:.7;font-weight:500}
+        .fpill.tgl{border-style:dashed}
+        .sep{width:1px;height:18px;background:#d0cdc5;margin:0 3px}
         .live::before{content:"";width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
@@ -363,84 +451,94 @@ export default function RentRollPage() {
 
         .hdr{
           position:sticky;top:0;z-index:10;
-          background:#e2e0d9;border-bottom:2px solid #1a1d21;
+          background:linear-gradient(#e7e5de,#dedcd4);
+          border-bottom:1px solid #1a1d21;
+          box-shadow:0 2px 6px rgba(0,0,0,.07);
         }
         .hdr .c{
-          font-weight:600;font-size:10px;text-transform:uppercase;
-          letter-spacing:.06em;color:#555;padding:10px 4px;white-space:nowrap;
+          font-weight:600;font-size:9.5px;text-transform:uppercase;
+          letter-spacing:.08em;color:#6a6760;padding:11px 4px;white-space:nowrap;
         }
 
         .rw{
-          border-bottom:1px solid #dddbd4;
-          transition:background .06s;
+          border-bottom:1px solid #e2e0d9;
+          transition:background .08s;
           min-height:42px;
         }
         /* alternating subtle stripe */
-        .rw:nth-child(even){background:rgba(0,0,0,.015)}
-        .rw:hover{background:rgba(201,168,76,.06) !important}
+        .rw:nth-child(even){background:rgba(0,0,0,.012)}
+        .rw:hover{background:rgba(201,168,76,.08) !important}
 
         .c{padding:8px 4px;font-size:12.5px;min-width:0;line-height:1.4}
-        .c.r{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:11.5px;white-space:nowrap}
+        .c.r{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
         .c.nowrap{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-        .c.am-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.04em;color:#5b8a72}
+        .c.tenant{font-weight:500;color:#26221e}
+        .c.asset{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#57534e;letter-spacing:.02em}
+        .badge{
+          display:inline-block;padding:2px 6px;border-radius:4px;
+          font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;
+          color:#fff;background:var(--am);opacity:.92;
+        }
+        .badge.none{background:transparent;color:#b5b1a8;padding-left:0}
 
         .sp{padding:0!important;position:relative;align-self:stretch}
         .sp::after{content:"";position:absolute;top:6px;bottom:6px;left:0;width:1px;background:#c5c3bb}
 
-        /* ── Row status colors (4 tiers) — STRONG ── */
+        /* ── Row status colours — saturated rail, calmer fill ── */
 
         /* Severe difference — bold red */
         .rw.st-severe{
-          background:rgba(200,40,40,.22);
-          border-left:4px solid #c82828;
+          background:rgba(200,40,40,.14);
+          box-shadow:inset 3px 0 0 #c82828;
         }
-        .rw.st-severe:hover{background:rgba(200,40,40,.30) !important}
+        .rw.st-severe:hover{background:rgba(200,40,40,.22) !important}
 
         /* Minor difference — warm amber */
         .rw.st-minor{
-          background:rgba(217,170,50,.22);
-          border-left:4px solid #d4a830;
+          background:rgba(217,170,50,.16);
+          box-shadow:inset 3px 0 0 #d4a830;
         }
-        .rw.st-minor:hover{background:rgba(217,170,50,.30) !important}
+        .rw.st-minor:hover{background:rgba(217,170,50,.24) !important}
 
         /* Missing in PM (present=am) — orange */
         .rw.st-missing_pm{
-          background:rgba(230,130,50,.22);
-          border-left:4px solid #e07830;
+          background:rgba(230,130,50,.14);
+          box-shadow:inset 3px 0 0 #e07830;
         }
-        .rw.st-missing_pm:hover{background:rgba(230,130,50,.30) !important}
+        .rw.st-missing_pm:hover{background:rgba(230,130,50,.22) !important}
 
         /* Missing in AM (present=pm) — blue */
         .rw.st-missing_am{
-          background:rgba(60,120,200,.20);
-          border-left:4px solid #3878c8;
+          background:rgba(60,120,200,.13);
+          box-shadow:inset 3px 0 0 #3878c8;
         }
-        .rw.st-missing_am:hover{background:rgba(60,120,200,.28) !important}
+        .rw.st-missing_am:hover{background:rgba(60,120,200,.21) !important}
 
-        /* OK rows get transparent left border for alignment */
-        .rw.st-ok{border-left:4px solid transparent}
+        .rw{padding-left:17px;padding-right:14px}
+        .hdr{padding-left:17px;padding-right:14px}
 
-        .delta-minor{font-weight:600;color:#a08520}
+        .delta-minor{font-weight:600;color:#96791c}
         .delta-severe{font-weight:700;color:#c82828}
 
         /* ── Comments ── */
         .cm{
-          width:100%;padding:5px 7px;border:1px solid transparent;border-radius:4px;
-          background:transparent;font-family:inherit;font-size:11.5px;color:#333;
+          width:100%;padding:5px 8px;border:1px solid transparent;border-radius:5px;
+          background:transparent;font-family:inherit;font-size:11.5px;color:#3a3532;
           resize:vertical;min-height:30px;
           white-space:pre-wrap;word-break:break-word;overflow-wrap:break-word;
-          transition:border-color .12s,background .12s;
+          transition:border-color .12s,background .12s,box-shadow .12s;
           field-sizing:content;
-          line-height:1.4;
+          line-height:1.45;
         }
-        .cm:hover{background:rgba(0,0,0,.025);border-color:#d5d3cc}
-        .cm:focus{outline:none;background:#fff;border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.12)}
+        .cm::placeholder{color:#bdb9b0}
+        .cm:hover{background:rgba(255,255,255,.6);border-color:#dbd8d1}
+        .cm:focus{outline:none;background:#fff;border-color:#c9a84c;box-shadow:0 0 0 3px rgba(201,168,76,.14)}
 
         /* ── States ── */
-        .state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;gap:10px;color:#999}
-        .spin{width:28px;height:28px;border:3px solid #e2e0da;border-top-color:#c9a84c;border-radius:50%;animation:sp .7s linear infinite}
+        .state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 20px;gap:12px;color:#a5a19a;font-size:12px}
+        .spin{width:26px;height:26px;border:2.5px solid #e2e0da;border-top-color:#c9a84c;border-radius:50%;animation:sp .7s linear infinite}
         @keyframes sp{to{transform:rotate(360deg)}}
-        .err{padding:8px 16px;background:rgba(220,53,69,.07);border:1px solid rgba(220,53,69,.18);border-radius:6px;color:#b83230;font-size:12px}
+        .err{padding:9px 16px;background:rgba(220,53,69,.06);border:1px solid rgba(220,53,69,.2);border-radius:7px;color:#b83230;font-size:12px}
 
         @media(max-width:900px){
           .nav{padding:10px 16px;gap:10px}
@@ -459,58 +557,73 @@ export default function RentRollPage() {
             {q && <button className="x" onClick={() => setQ("")}>×</button>}
           </div>
 
-          <div className="pills">
-            {(["all", "diffs", "missing"] as ViewFilter[]).map((v) => (
-              <button key={v} className={`pill ${view === v ? "on" : ""}`} onClick={() => setView(v)}>
-                {v === "all" ? "All" : v === "diffs" ? "Diffs" : "Missing"}
-              </button>
-            ))}
-          </div>
-
-          <div className="pres-pills">
-            {(["all", "both", "am", "pm"] as PresenceFilter[]).map((p) => (
-              <button key={p} className={`pres-pill ${presFilter === p ? "on" : ""}`} onClick={() => setPresFilter(p)}>
-                {p === "all" ? "All" : p === "both" ? "Both" : p === "am" ? "AM only" : "PM only"}
-              </button>
-            ))}
-          </div>
-
           {amCodes.length > 0 && (
             <div className="am-pills">
-              <button className={`am-pill ${amFilter === "ALL" ? "on" : ""}`} onClick={() => setAmFilter("ALL")}>ALL</button>
+              <button
+                className={`am-pill ${amFilter === "ALL" ? "on" : ""}`}
+                onClick={() => setAmFilter("ALL")}
+                style={{ "--am": "#7c7a72" } as React.CSSProperties}
+              >
+                ALL
+              </button>
               {amCodes.map((code) => (
-                <button key={code} className={`am-pill ${amFilter === code ? "on" : ""}`} onClick={() => setAmFilter(amFilter === code ? "ALL" : code)}>
+                <button
+                  key={code}
+                  className={`am-pill ${amFilter === code ? "on" : ""}`}
+                  onClick={() => setAmFilter(amFilter === code ? "ALL" : code)}
+                  style={{ "--am": amColor(code) } as React.CSSProperties}
+                >
                   {code}
                 </button>
               ))}
             </div>
           )}
 
-          <div className="color-pills">
-            <button className={`cpill ${statusFilter === "all" ? "on" : ""}`} onClick={() => setStatusFilter("all")} style={{"--cpill-color":"#888","--cpill-bg":"rgba(255,255,255,.08)"} as React.CSSProperties}>All</button>
-            <button className={`cpill ${statusFilter === "severe" ? "on" : ""}`} onClick={() => setStatusFilter(statusFilter === "severe" ? "all" : "severe")} style={{"--cpill-color":"#c82828","--cpill-bg":"rgba(200,40,40,.25)"} as React.CSSProperties}>Severe</button>
-            <button className={`cpill ${statusFilter === "minor" ? "on" : ""}`} onClick={() => setStatusFilter(statusFilter === "minor" ? "all" : "minor")} style={{"--cpill-color":"#b89420","--cpill-bg":"rgba(217,170,50,.25)"} as React.CSSProperties}>Minor</button>
-            <button className={`cpill ${statusFilter === "missing_pm" ? "on" : ""}`} onClick={() => setStatusFilter(statusFilter === "missing_pm" ? "all" : "missing_pm")} style={{"--cpill-color":"#d06820","--cpill-bg":"rgba(230,130,50,.25)"} as React.CSSProperties}>Miss PM</button>
-            <button className={`cpill ${statusFilter === "missing_am" ? "on" : ""}`} onClick={() => setStatusFilter(statusFilter === "missing_am" ? "all" : "missing_am")} style={{"--cpill-color":"#3070c0","--cpill-bg":"rgba(60,120,200,.25)"} as React.CSSProperties}>Miss AM</button>
-            <button className={`cpill ${statusFilter === "ok" ? "on" : ""}`} onClick={() => setStatusFilter(statusFilter === "ok" ? "all" : "ok")} style={{"--cpill-color":"#5a8a5a","--cpill-bg":"rgba(80,140,80,.20)"} as React.CSSProperties}>OK</button>
-          </div>
-
           <label className="chk"><input type="checkbox" checked={hideGLA} onChange={(e) => setHideGLA(e.target.checked)} />Hide GLA</label>
           <label className="chk"><input type="checkbox" checked={hideWALT} onChange={(e) => setHideWALT(e.target.checked)} />Hide WALT</label>
         </div>
 
-        {/* ── Status bar ── */}
+        {/* ── Filter bar (doubles as the colour legend) ── */}
         {loadState === "ready" && (
           <div className="bar">
+            <div className="fbar">
+              {FILTERS.map((f) => (
+                <button
+                  key={f.id}
+                  className={`fpill ${filter === f.id ? "on" : ""}`}
+                  onClick={() => setFilter(f.id)}
+                  title={f.title}
+                  style={{ "--f-color": f.color ?? "#666", "--f-bg": f.bg ?? "#e2e0d9" } as React.CSSProperties}
+                >
+                  {f.color && (
+                    <span
+                      className={`fdot ${f.dot ? "wide" : ""}`}
+                      style={f.dot ? { background: f.dot } : undefined}
+                    />
+                  )}
+                  {f.label}
+                  <span className="n">{counts[f.id]}</span>
+                </button>
+              ))}
+
+              <span className="sep" />
+
+              <button
+                className={`fpill tgl ${suspectOnly ? "on" : ""}`}
+                onClick={() => setSuspectOnly((v) => !v)}
+                title={`Only the missing rows of the ${suspectAssets.size} assets that miss a tenant on both sides at once — usually a hole in the Mapping sheet`}
+                style={{ "--f-color": "#7c5aa6", "--f-bg": "rgba(124,90,166,.16)" } as React.CSSProperties}
+              >
+                Mapping ?
+                <span className="n">{suspectCount}</span>
+              </button>
+            </div>
+
             <div className="nums">
               <span>Rows: <b>{display.length}</b></span>
-            </div>
-            <div className="legend">
-              <span className="leg"><span className="dot" style={{ background: "#c82828" }} />{stats.severe} severe</span>
-              <span className="leg"><span className="dot" style={{ background: "#d4a830" }} />{stats.minor} minor</span>
-              <span className="leg"><span className="dot" style={{ background: "#e07830" }} />{stats.missPm} missing PM</span>
-              <span className="leg"><span className="dot" style={{ background: "#3878c8" }} />{stats.missAm} missing AM</span>
-              <div className="live">Live</div>
+              {commentsErr
+                ? <div className="offline" title={commentsErr}>Comments offline</div>
+                : <div className="live">Live</div>}
             </div>
           </div>
         )}
@@ -538,7 +651,7 @@ export default function RentRollPage() {
           {loadState === "error" && (
             <div className="state">
               <div className="err">⚠ {errorMsg}</div>
-              <span style={{ fontSize: 11 }}>Check <code>public/data/rentroll.xlsx</code></span>
+              <span style={{ fontSize: 11 }}>Check <code>public/data/SourceRR.xlsx</code></span>
             </div>
           )}
           {loadState === "ready" && display.length === 0 && <div className="state">No rows match your filters.</div>}
@@ -560,9 +673,16 @@ export default function RentRollPage() {
 
             return (
               <div key={r.id} className={`rw st-${r.status}`} style={{ gridTemplateColumns: gridCols }}>
-                <div className="c nowrap" title={r.asset}>{r.asset}</div>
-                <div className="c am-badge">{r.am || "–"}</div>
-                <div className="c nowrap" title={r.tenant}>{r.tenant}</div>
+                <div className="c nowrap asset" title={r.city ? `${r.asset} — ${r.city}` : r.asset}>{r.asset}</div>
+                <div className="c">
+                  <span
+                    className={`badge ${r.am ? "" : "none"}`}
+                    style={{ "--am": amColor(r.am) } as React.CSSProperties}
+                  >
+                    {r.am || "–"}
+                  </span>
+                </div>
+                <div className="c nowrap tenant" title={r.tenant}>{r.tenant}</div>
                 <div className="c sp" />
 
                 {!hideGLA && (<>
